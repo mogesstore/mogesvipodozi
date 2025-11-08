@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wasiliana Nasi — MOGES VIPODOZI</title>
@@ -20,12 +20,17 @@
       background:linear-gradient(to right, #8aff669c, #5effcf86);
       display:flex; justify-content:space-between; align-items:center;
       padding:10px 25px; z-index:100; backdrop-filter:blur(6px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
 
     .logo {display:flex; align-items:center; gap:10px;}
-    .logo h1 {color:white; font-size:1.4rem;}
+    .logo h1 {color:white; font-size:1.4rem; letter-spacing:1px;}
     .logo span {color:#fff176;}
-    nav a {color:white; text-decoration:none; margin-left:15px; font-weight:500; transition:color .3s ease;}
+    nav a {
+      color:white; text-decoration:none; margin-left:15px; font-weight:500;
+      transition:color .3s ease;
+    }
     nav a:hover {color:#fff176;}
 
     .hero {
@@ -40,6 +45,7 @@
       text-align:center;
       color:white;
     }
+
     .hero h2 {font-size:2.5rem; margin-bottom:15px; text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
     .hero p {font-size:1.1rem; max-width:700px; margin:0 auto; text-shadow:1px 1px 4px rgba(0,0,0,0.5);}
 
@@ -105,9 +111,43 @@
       margin-top:10px;
     }
 
+    /* ===== MOBILE CLASSIC HEADER STYLE ===== */
     @media(max-width:768px){
-      .contact-container{grid-template-columns:1fr;margin:80px 20px;}
-      .hero h2{font-size:2rem;}
+      header {
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:12px 10px;
+        border-radius:0 0 18px 18px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.15);
+        background:linear-gradient(120deg, #6effb1c7, #4dd0ffb8);
+      }
+      .logo h1 {font-size:1.3rem;}
+      nav {
+        margin-top:6px;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+      }
+      nav a {
+        background:rgba(255,255,255,0.15);
+        padding:8px 12px;
+        border-radius:10px;
+        font-size:0.9rem;
+        transition:all .3s;
+      }
+      nav a:hover {
+        background:#fff176;
+        color:#000;
+      }
+      .contact-container {
+        grid-template-columns:1fr;
+        margin:90px 15px;
+        padding:25px 18px;
+      }
+      .hero h2 {font-size:1.9rem;}
+      .hero p {font-size:0.95rem;}
     }
   </style>
 </head>
@@ -149,7 +189,6 @@
     <div class="contact-form">
       <h3>Tuma Ujumbe</h3>
       <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <!-- Access Key yako ya Web3Forms -->
         <input type="hidden" name="access_key" value="e11d30a6-f76d-4607-819f-d9c230265eb4">
 
         <label for="name">Jina lako</label>
@@ -169,7 +208,6 @@
 
   <footer>
     <p>© 2025 MOGES STORE | Vipodozi vya Kisasa kwa Bei Nafuu</p>
-    
   </footer>
 
   <script>
@@ -195,9 +233,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
