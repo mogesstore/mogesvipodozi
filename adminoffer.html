@@ -1,75 +1,100 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<link rel="icon" href="https://th.bing.com/th?q=Red+Alert+Icon+No+Background&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&pid=InlineBlock&rm=3&ucfimg=1&mkt=en-WW&cc=TZ&setlang=en&adlt=moderate&t=1&mw=247"> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moges Store — Admin Panel</title>
+<link rel="icon" href="https://th.bing.com/th?q=Red+Alert+Icon+No+Background&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&pid=InlineBlock&rm=3&ucfimg=1&mkt=en-WW&cc=TZ&setlang=en&adlt=moderate&t=1&mw=247">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#bbdefb,#e3f2fd); min-height:100vh;color:#333;}
-  header{background:#1976d2;color:white;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;position:sticky;top:0;}
-  header .logo{font-size:1.4rem;font-weight:600;}
-  nav a{color:white;text-decoration:none;margin:0 10px;}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{min-height:100vh;background:linear-gradient(135deg,#bbdefb,#e3f2fd);display:flex;flex-direction:column;}
+  header{background:#1976d2;color:white;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;position:sticky;top:0;box-shadow:0 3px 6px rgba(0,0,0,0.1);}
+  header .logo img{height:40px;}
+  nav a{color:white;text-decoration:none;margin-left:15px;font-weight:500;}
   nav a:hover{color:#ffeb3b;}
-  .container{max-width:700px;margin:80px auto;padding:20px;background:white;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-  h2{text-align:center;margin-bottom:20px;color:#1976d2;}
+
+  /* LOGIN TILE */
+  #loginContainer{display:flex;justify-content:center;align-items:center;flex:1;}
+  #loginForm{background:white;padding:40px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);width:100%;max-width:400px;text-align:center;transition:all 0.3s;}
+  #loginForm h2{color:#1976d2;margin-bottom:25px;}
+  #loginForm input{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:25px;font-size:1rem;}
+  #loginForm button{width:100%;padding:12px;background:#1976d2;color:white;border:none;border-radius:25px;font-weight:bold;cursor:pointer;transition:0.3s;}
+  #loginForm button:hover{background:#0d47a1;}
+  #loginError{margin-top:10px;color:red;display:none;}
+
+  /* ADMIN PANEL */
+  #adminPanel{display:none;padding:20px;flex:1;}
+  .container{background:white;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.1);padding:20px;margin:20px auto;max-width:800px;transition:all 0.3s;}
+  .container h2{color:#1976d2;text-align:center;margin-bottom:20px;}
   label{display:block;margin:10px 0 5px;font-weight:600;}
-  input,textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:10px;font-size:1rem;margin-bottom:10px;}
-  button{width:100%;padding:12px;background:#1976d2;color:white;border:none;border-radius:25px;font-weight:bold;cursor:pointer;transition:background .3s;}
-  button:hover{background:#0d47a1;}
+  input,textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:10px;margin-bottom:10px;font-size:1rem;}
+  input[type="file"]{padding:3px;}
+  button{cursor:pointer;transition:0.3s;}
+  button:hover{opacity:0.9;}
   .success-msg{color:green;text-align:center;margin-top:10px;display:none;}
-  .offers-list{margin-top:30px;}
-  .offer-item{background:#e3f2fd;padding:10px;margin-bottom:10px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-  .offer-item img{width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:10px;}
-  .offer-details{flex:1;}
-  .offer-actions button{margin-left:5px;background:#0d47a1;padding:6px 10px;font-size:0.85rem;}
+
+  /* IMAGE PREVIEW */
+  #preview{width:100%;max-height:200px;margin-bottom:15px;object-fit:cover;border-radius:12px;display:none;}
+
+  /* OFFERS LIST */
+  .offers-list{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;}
+  .offer-item{background:#e3f2fd;padding:15px;border-radius:12px;display:flex;flex-direction:column;align-items:center;position:relative;transition:transform 0.2s;}
+  .offer-item:hover{transform:scale(1.03);}
+  .offer-item img{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:10px;}
+  .offer-details{width:100%;text-align:center;}
+  .offer-details strong{display:block;margin-top:5px;}
+  .offer-actions{margin-top:10px;display:flex;justify-content:center;gap:10px;}
+  .offer-actions button{padding:6px 12px;border:none;border-radius:8px;color:white;}
+  .offer-actions button.edit{background:#0d47a1;}
   .offer-actions button.delete{background:#d32f2f;}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">MogesStore Admin</div>
+  <div class="logo"><img src="y logo.png.png" alt="Moges Store Logo"></div>
   <nav>
     <a href="index.html">Nyumbani</a>
     <a href="offers.html">Offers</a>
   </nav>
 </header>
 
-<div class="container" id="loginContainer">
-  <h2>Login Admin</h2>
+<!-- LOGIN TILE -->
+<div id="loginContainer">
   <form id="loginForm">
-    <label for="username">Username</label>
-    <input type="text" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" id="password" required>
+    <h2>Login Admin</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
     <button type="submit">Ingia</button>
-    <p id="loginError" style="color:red;text-align:center;margin-top:10px;display:none;">Username au password si sahihi!</p>
+    <p id="loginError">Username au password si sahihi!</p>
   </form>
 </div>
 
-<div class="container" id="adminPanel" style="display:none;">
-  <h2>Admin Panel — Ongeza / Badilisha Ofa</h2>
-  <form id="offerForm">
-    <input type="hidden" id="editIndex">
-    <label for="title">Jina la Bidhaa</label>
-    <input type="text" id="title" required>
-    <label for="description">Maelezo</label>
-    <textarea id="description" rows="3" required></textarea>
-    <label for="price">Bei ya Ofa</label>
-    <input type="text" id="price" required>
-    <label for="image">Picha ya Bidhaa</label>
-    <input type="file" id="image" accept="image/*">
-    <button type="submit">Hifadhi Ofa</button>
-    <p id="success" class="success-msg">✅ Ofa imehifadhiwa!</p>
-  </form>
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+  <div class="container">
+    <h2>Admin Panel — Ongeza / Badilisha Ofa</h2>
+    <form id="offerForm">
+      <input type="hidden" id="editIndex">
+      <label for="title">Jina la Bidhaa</label>
+      <input type="text" id="title" required>
+      <label for="description">Maelezo</label>
+      <textarea id="description" rows="3" required></textarea>
+      <label for="price">Bei ya Ofa</label>
+      <input type="text" id="price" required>
+      <label for="image">Picha ya Bidhaa</label>
+      <input type="file" id="image" accept="image/*">
+      <img id="preview" alt="Image Preview">
+      <button type="submit" style="background:#1976d2;color:white;width:100%;padding:12px;border-radius:25px;">Hifadhi Ofa</button>
+      <p id="success" class="success-msg">✅ Ofa imehifadhiwa!</p>
+    </form>
+  </div>
 
   <div class="offers-list" id="offersList"></div>
 </div>
 
 <script>
-  // ===== Admin login =====
+  // ===== ADMIN LOGIN =====
   const loginForm = document.getElementById('loginForm');
   const loginContainer = document.getElementById('loginContainer');
   const adminPanel = document.getElementById('adminPanel');
@@ -91,24 +116,30 @@
     }
   });
 
-  // ===== Manage offers =====
+  // ===== MANAGE OFFERS =====
   const form = document.getElementById('offerForm');
   const success = document.getElementById('success');
   const offersList = document.getElementById('offersList');
+  const preview = document.getElementById('preview');
+  const imageInput = document.getElementById('image');
 
-  function cleanExpiredOffers(){
-    let offers = JSON.parse(localStorage.getItem('offers'))||[];
-    const now = new Date().getTime();
-    offers = offers.filter(offer=>{
-      // expiryTime is 7 days after creation
-      return now - offer.timestamp < 7*24*60*60*1000;
-    });
-    localStorage.setItem('offers',JSON.stringify(offers));
-  }
+  // Preview image before upload
+  imageInput.addEventListener('change', ()=>{
+    const file = imageInput.files[0];
+    if(file){
+      const reader = new FileReader();
+      reader.onload = e=>{
+        preview.src = e.target.result;
+        preview.style.display='block';
+      }
+      reader.readAsDataURL(file);
+    } else {
+      preview.style.display='none';
+    }
+  });
 
   function displayOffers(){
-    cleanExpiredOffers();
-    const offers = JSON.parse(localStorage.getItem('offers'))||[];
+    const offers = JSON.parse(localStorage.getItem('offers')) || [];
     if(offers.length===0){
       offersList.innerHTML="<p>Hakuna offers zilizopo.</p>";
       return;
@@ -117,36 +148,35 @@
       <div class="offer-item">
         <img src="${offer.image}" alt="${offer.title}">
         <div class="offer-details">
-          <strong>${offer.title}</strong><br>
-          ${offer.description}<br>
-          <strong>Bei:</strong> ${offer.price}<br>
+          <strong>${offer.title}</strong>
+          <p>${offer.description}</p>
+          <strong>Bei: ${offer.price}</strong>
           <em>${offer.date}</em>
         </div>
         <div class="offer-actions">
-          <button onclick="editOffer(${index})">Badilisha</button>
+          <button class="edit" onclick="editOffer(${index})">Badilisha</button>
           <button class="delete" onclick="deleteOffer(${index})">Futa</button>
         </div>
       </div>
     `).join('');
   }
 
-  form.addEventListener('submit', (e)=>{
+  form.addEventListener('submit',(e)=>{
     e.preventDefault();
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
     const price = document.getElementById('price').value;
-    const imageFile = document.getElementById('image').files[0];
+    const imageFile = imageInput.files[0];
     const editIndex = document.getElementById('editIndex').value;
 
     const reader = new FileReader();
     reader.onload = function(){
       const imageData = imageFile ? reader.result : JSON.parse(localStorage.getItem('offers')||'[]')[editIndex]?.image || '';
       const date = new Date().toLocaleDateString('sw-TZ');
-      const timestamp = new Date().getTime();
       const offers = JSON.parse(localStorage.getItem('offers')) || [];
-      const newOffer = {title,description,price,image:imageData,date,timestamp};
+      const newOffer = {title,description,price,image:imageData,date};
 
-      if(editIndex !== ''){
+      if(editIndex!==''){
         offers[editIndex] = newOffer;
         document.getElementById('editIndex').value='';
       } else {
@@ -156,23 +186,22 @@
       localStorage.setItem('offers',JSON.stringify(offers));
       success.style.display='block';
       form.reset();
+      preview.style.display='none';
       displayOffers();
       setTimeout(()=>success.style.display='none',2000);
     };
-    if(imageFile){
-      reader.readAsDataURL(imageFile);
-    } else {
-      reader.onload();
-    }
+    if(imageFile){reader.readAsDataURL(imageFile);} else {reader.onload();}
   });
 
   function editOffer(index){
     const offers = JSON.parse(localStorage.getItem('offers'))||[];
     const offer = offers[index];
-    document.getElementById('title').value=offer.title;
-    document.getElementById('description').value=offer.description;
-    document.getElementById('price').value=offer.price;
-    document.getElementById('editIndex').value=index;
+    document.getElementById('title').value = offer.title;
+    document.getElementById('description').value = offer.description;
+    document.getElementById('price').value = offer.price;
+    document.getElementById('editIndex').value = index;
+    preview.src = offer.image;
+    preview.style.display = 'block';
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
@@ -183,10 +212,11 @@
     displayOffers();
   }
 
-  // Run cleanup on page load
-  cleanExpiredOffers();
+  // Show offers if already saved
+  if(localStorage.getItem('offers')){
+    displayOffers();
+  }
 </script>
+
 </body>
 </html>
-
-
