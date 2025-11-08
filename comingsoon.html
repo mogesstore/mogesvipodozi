@@ -5,69 +5,170 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moges Store — Coming Soon</title>
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  * {margin:0; padding:0; box-sizing:border-box;}
-  body {
-    font-family:'Poppins',sans-serif;
-    min-height:100vh;
-    background:
-      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-      url("https://th.bing.com/th/id/OIP.bJ8_JP5vJtbb0W9tx0yvGAHaEJ?w=322&h=181&c=7&r=0&o=7&pid=1.7&rm=3");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-  }
-  header {
-    position:absolute; top:0; left:0; width:100%;
-    display:flex; justify-content:space-between; align-items:center;
-    padding:15px 30px;
-  }
-  .logo h1 { font-size:1.8rem; color:#00e676; }
-  nav a {
-    color:white; text-decoration:none; margin-left:15px; font-weight:500;
-    transition: color .3s;
-  }
-  nav a:hover { color:#00e676; }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  .content {
-    max-width:700px;
-  }
-  .content h2 {
-    font-size:3rem;
-    margin-bottom:15px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  }
-  .content p {
-    font-size:1.2rem;
-    margin-bottom:30px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-  }
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Poppins',sans-serif;
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://th.bing.com/th/id/OIP.bJ8_JP5vJtbb0W9tx0yvGAHaEJ?w=322&h=181&c=7&r=0&o=7&pid=1.7&rm=3");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
 
-  .countdown {
-    display:flex; justify-content:center; gap:20px;
-    font-size:1.5rem; font-weight:bold;
-  }
-  .countdown div {
-    background: rgba(0,191,165,0.3);
-    padding:15px 20px;
-    border-radius:10px;
-    min-width:60px;
-  }
+    /* ===== Header ===== */
+    header {
+      position:absolute;
+      top:0; left:0; width:100%;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 30px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(6px);
+    }
+    .logo h1 {
+      font-size:1.8rem;
+      color:#00e676;
+      letter-spacing:1px;
+    }
+    .logo span {
+      color:white;
+    }
+    nav a {
+      color:white;
+      text-decoration:none;
+      margin-left:15px;
+      font-weight:500;
+      transition: color .3s;
+    }
+    nav a:hover { color:#00e676; }
 
-  footer {
-    position:absolute; bottom:10px; width:100%;
-    text-align:center;
-    font-size:0.9rem;
-    color:#ddd;
-  }
-</style>
+    /* ===== Main Content ===== */
+    .content {
+      max-width:700px;
+      padding: 20px;
+    }
+    .content h2 {
+      font-size:3rem;
+      margin-bottom:15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    .content p {
+      font-size:1.2rem;
+      margin-bottom:30px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+      line-height:1.6;
+    }
+
+    /* ===== Countdown ===== */
+    .countdown {
+      display:flex;
+      justify-content:center;
+      flex-wrap: wrap;
+      gap:20px;
+      font-size:1.5rem;
+      font-weight:bold;
+    }
+    .countdown div {
+      background: rgba(0,191,165,0.3);
+      padding:15px 20px;
+      border-radius:10px;
+      min-width:70px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== Back Button (for mobile) ===== */
+    .back-btn {
+      display: none;
+      margin-top: 30px;
+      background: #00e676;
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .back-btn:hover {
+      background: #00c853;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      position:absolute;
+      bottom:10px;
+      width:100%;
+      text-align:center;
+      font-size:0.9rem;
+      color:#ddd;
+    }
+
+    /* ===== Mobile Responsive (Classic Style) ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding:10px 15px;
+        text-align:center;
+      }
+      .logo h1 {
+        font-size:1.5rem;
+        margin-bottom:8px;
+      }
+      nav {
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+      }
+      nav a {
+        margin: 5px;
+        font-size:0.9rem;
+      }
+      .content h2 {
+        font-size:2.2rem;
+      }
+      .content p {
+        font-size:1rem;
+      }
+      .countdown {
+        gap:10px;
+        font-size:1.2rem;
+      }
+      .countdown div {
+        padding:10px 12px;
+        min-width:60px;
+      }
+      footer {
+        font-size:0.8rem;
+        padding:5px 10px;
+      }
+      /* Show back button on mobile */
+      .back-btn {
+        display: inline-block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content h2 { font-size:1.8rem; }
+      .content p { font-size:0.95rem; }
+      .countdown { font-size:1rem; }
+      .countdown div { padding:8px 10px; }
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <div class="logo"><h1>Moges <span>Store</span></h1></div>
@@ -88,38 +189,40 @@
       <div><span id="minutes">00</span><br>Minutes</div>
       <div><span id="seconds">00</span><br>Seconds</div>
     </div>
+
+    <!-- Mobile back button -->
+    <button class="back-btn" onclick="window.location.href='index.html'">⬅️ Rudi Nyumbani</button>
   </div>
 
   <footer>
     <p>© 2025 MOGES STORE | Vipodozi vya Kisasa kwa Bei Nafuu</p>
   </footer>
 
-<script>
-  // Countdown Timer
-  const launchDate = new Date("january 01, 2027 00:00:00").getTime();
+  <script>
+    // Countdown Timer
+    const launchDate = new Date("January 01, 2027 00:00:00").getTime();
 
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = launchDate - now;
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
 
-    if(distance < 0){
-      clearInterval(timer);
-      document.querySelector(".countdown").innerHTML = "<span>Site is Live!</span>";
-      return;
-    }
+      if(distance < 0){
+        clearInterval(timer);
+        document.querySelector(".countdown").innerHTML = "<span>Site is Live!</span>";
+        return;
+      }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 *24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 *24)) / (1000*60*60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 *24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 *24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("days").innerText = days.toString().padStart(2,'0');
-    document.getElementById("hours").innerText = hours.toString().padStart(2,'0');
-    document.getElementById("minutes").innerText = minutes.toString().padStart(2,'0');
-    document.getElementById("seconds").innerText = seconds.toString().padStart(2,'0');
-  }, 1000);
-</script>
+      document.getElementById("days").innerText = days.toString().padStart(2,'0');
+      document.getElementById("hours").innerText = hours.toString().padStart(2,'0');
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2,'0');
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2,'0');
+    }, 1000);
+  </script>
 
 </body>
 </html>
-
