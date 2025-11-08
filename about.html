@@ -21,50 +21,59 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%;
-      background-color: rgba(69, 245, 148, 0.637);
+      background-color: rgba(69, 245, 148, 0.95);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 25px;
+      padding: 12px 20px;
       z-index: 100;
       backdrop-filter: blur(6px);
+      flex-wrap: wrap;
     }
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .logo img { height: 80px; width: 80px; border-radius: 50%; }
-    .logo h1 { color: white; font-size: 1.4rem; letter-spacing: 1px; }
+    .logo img { height: 60px; width: 60px; border-radius: 50%; }
+    .logo h1 { color: white; font-size: 1.3rem; letter-spacing: 1px; }
     .logo span { color: #ffe6f0; }
+
+    nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 15px;
       font-weight: 500;
       transition: color 0.3s ease;
+      font-size: 0.95rem;
     }
-    nav a:hover { color: #ffdbe0; }
+    nav a:hover { color: #ffeff3; }
 
     /* ===== Hero ===== */
     .hero {
+      margin-top: 90px;
       background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
         url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg');
       background-size: cover;
       background-position: center;
-      height: 60vh;
+      height: 55vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
+      border-radius: 0 0 30px 30px;
     }
     .hero-content {
       max-width: 700px;
       padding: 20px;
     }
     .hero h2 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       margin-bottom: 15px;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
@@ -72,7 +81,7 @@
     /* ===== Main ===== */
     .container {
       max-width: 1000px;
-      margin: 100px auto 60px;
+      margin: 60px auto;
       background: white;
       border-radius: 20px;
       padding: 40px 30px;
@@ -80,7 +89,7 @@
     }
     h3.section-title {
       color: #e91e63;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-bottom: 15px;
       border-left: 4px solid #ff80ab;
       padding-left: 10px;
@@ -100,7 +109,7 @@
     .values {
       margin-top: 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
     }
     .value-card {
@@ -112,7 +121,7 @@
       transition: transform 0.2s;
     }
     .value-card:hover { transform: translateY(-5px); }
-    .value-card h4 { color: #1edce9e1; margin-bottom: 8px; }
+    .value-card h4 { color: #00c2b8; margin-bottom: 8px; }
 
     footer {
       text-align: center;
@@ -123,10 +132,31 @@
       margin-top: 40px;
     }
 
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .container { margin: 80px 20px; }
+    /* ===== Responsive Design ===== */
+    @media (max-width: 900px) {
       .hero h2 { font-size: 2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .container { margin: 40px 15px; padding: 25px; }
+      nav { justify-content: center; margin-top: 8px; }
+      nav a { font-size: 0.9rem; }
+      .logo img { height: 55px; width: 55px; }
+      .hero { height: 45vh; border-radius: 0 0 20px 20px; }
+    }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: center; padding: 10px; }
+      .hero-content { padding: 10px; }
+      .hero h2 { font-size: 1.6rem; }
+      p { font-size: 0.95rem; }
+      .values { grid-template-columns: 1fr 1fr; }
+      .value-card { padding: 15px; font-size: 0.9rem; }
+      nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 400px) {
+      nav a { font-size: 0.85rem; }
+      .hero h2 { font-size: 1.4rem; }
+      .values { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -201,5 +231,3 @@
   </footer>
 </body>
 </html>
-
-
