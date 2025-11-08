@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moges Store — Offers</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg">
+  <link rel="icon" href="logo.png.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -48,7 +48,6 @@
       font-weight:600;
     }
 
-    /* NAVIGATION */
     nav {
       display:flex;
       gap:15px;
@@ -63,7 +62,6 @@
 
     nav a:hover { color: #004d40; }
 
-    /* MOBILE MENU ICON */
     .menu-toggle {
       display:none;
       flex-direction:column;
@@ -103,10 +101,13 @@
       border-radius:15px;
       overflow:hidden;
       box-shadow:0 4px 15px rgba(0,0,0,0.1);
-      transition:transform .3s;
+      transition:transform .3s, box-shadow .3s;
     }
 
-    .offer-card:hover { transform:translateY(-5px); }
+    .offer-card:hover { 
+      transform:translateY(-5px); 
+      box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    }
 
     .offer-card img {
       width:100%;
@@ -128,7 +129,6 @@
       margin-bottom:5px;
     }
 
-    /* FOOTER */
     footer {
       text-align:center;
       padding:15px;
@@ -140,44 +140,18 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width:768px) {
-      .logo img {
-        height:50px;
-        width:50px;
-      }
-      .logo h1 {
-        font-size:1rem;
-      }
-      nav {
-        display:none;
-        flex-direction:column;
-        background:rgba(0,77,64,0.95);
-        position:absolute;
-        top:70px;
-        right:20px;
-        padding:15px;
-        border-radius:10px;
-      }
-      nav.active {
-        display:flex;
-      }
-      .menu-toggle {
-        display:flex;
-      }
+      .logo img { height:50px; width:50px; }
+      .logo h1 { font-size:1rem; }
+      nav { display:none; flex-direction:column; background:rgba(0,77,64,0.95); position:absolute; top:70px; right:20px; padding:15px; border-radius:10px;}
+      nav.active { display:flex; }
+      .menu-toggle { display:flex; }
     }
 
     @media (max-width:480px) {
-      .offers-container {
-        padding-top:80px;
-      }
-      h1 {
-        font-size:1.5rem;
-      }
-      .offer-card img {
-        height:180px;
-      }
-      .offer-info p {
-        font-size:0.9rem;
-      }
+      .offers-container { padding-top:80px; }
+      h1 { font-size:1.5rem; }
+      .offer-card img { height:180px; }
+      .offer-info p { font-size:0.9rem; }
     }
   </style>
 </head>
@@ -220,25 +194,35 @@
       nav.classList.toggle('active');
     });
 
-    // OFFERS DISPLAY
+    // DISPLAY OFFERS WITH 7-DAY EXPIRY
     const container = document.getElementById('offersList');
-    const offers = JSON.parse(localStorage.getItem('offers')) || [];
 
-    if (offers.length === 0) {
-      container.innerHTML = "<p>Hakuna offers kwa sasa. Tafadhali rudi baadae.</p>";
-    } else {
-      container.innerHTML = offers.map(offer => `
-        <div class="offer-card">
-          <img src="${offer.image}" alt="${offer.title}">
-          <div class="offer-info">
-            <h3>${offer.title}</h3>
-            <p>${offer.description}</p>
-            <p><strong>Bei ya Ofa:</strong> ${offer.price}</p>
-            <p>⏰ ${offer.date}</p>
+    function displayOffers() {
+      let offers = JSON.parse(localStorage.getItem('offers')) || [];
+      
+      // Remove expired offers (older than 7 days)
+      const now = new Date().getTime();
+      offers = offers.filter(offer => now - offer.timestamp < 7*24*60*60*1000);
+      localStorage.setItem('offers', JSON.stringify(offers));
+
+      if (offers.length === 0) {
+        container.innerHTML = "<p>Hakuna offers kwa sasa. Tafadhali rudi baadae.</p>";
+      } else {
+        container.innerHTML = offers.map(offer => `
+          <div class="offer-card">
+            <img src="${offer.image}" alt="${offer.title}">
+            <div class="offer-info">
+              <h3>${offer.title}</h3>
+              <p>${offer.description}</p>
+              <p><strong>Bei ya Ofa:</strong> ${offer.price}</p>
+              <p>⏰ ${offer.date}</p>
+            </div>
           </div>
-        </div>
-      `).join('');
+        `).join('');
+      }
     }
+
+    displayOffers();
   </script>
 </body>
 </html>
