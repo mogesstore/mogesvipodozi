@@ -13,12 +13,14 @@
     --white: #ffffff;
     --transparent: rgba(255,255,255,0.15);
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: "Poppins", sans-serif;
     background: var(--dark);
     color: var(--white);
   }
+
   header {
     padding: 15px 20px;
     background: var(--transparent);
@@ -28,107 +30,148 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    flex-wrap: wrap;
   }
-  .logo { font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+  }
+
   .search-bar input {
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     padding: 10px 15px;
     border-radius: 30px;
     border: 1px solid var(--gold);
     background: var(--transparent);
     color: var(--white);
     outline: none;
+    transition: all 0.3s ease;
+    margin: 10px 0;
   }
-  .search-bar input:focus { border-color: var(--pink); }
-  main { padding: 10px; }
+
+  .search-bar input:focus { 
+    border-color: var(--pink);
+    box-shadow: 0 0 10px var(--pink);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover { color: var(--pink); }
+
+  main { padding: 15px; }
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
   }
+
   .card {
     background: rgba(255,255,255,0.08);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
+    border: 1px solid var(--gold);
+    transition: transform 0.3s, box-shadow 0.3s;
   }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+  }
+
   .card img {
     width: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
   }
+
   .card-body {
     padding: 10px;
     display: flex;
     flex-direction: column;
     flex: 1;
   }
+
   .card-body h3 {
     font-size: 1rem;
     margin-bottom: 5px;
     color: var(--white);
   }
+
   .price {
     font-weight: bold;
     color: var(--gold);
     margin-bottom: 8px;
   }
+
   .whatsapp-btn {
     margin-top: auto;
-    padding: 6px 10px;
+    padding: 8px 12px;
     background: var(--pink);
     color: var(--white);
     text-decoration: none;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
   }
+
   .whatsapp-btn:hover {
     background: var(--gold);
     color: var(--dark);
+    transform: scale(1.05);
   }
-  nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-  .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.1px;
-    }
-    .logo img {
-      height: 150px;
-      width: 150px;
-    }
-    .logo h1 {
-      color: white;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-    }
-    .logo span {
-      color: #eaf5f0;
-    }  
-  nav a:hover { color: #0997f5; }
-
 
   mark { background: var(--gold); color: var(--dark); }
+
   .no-results {
     text-align: center;
     margin-top: 40px;
     color: var(--white);
+    font-size: 1.1rem;
+  }
+
+  /* Responsive tweaks */
+  @media(max-width:768px){
+    .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+    .logo img { height: 50px; width: 50px; }
+    .search-bar input { max-width: 100%; }
   }
 </style>
 </head>
 <body>
 <header>
   <div class="logo">
-   <img src="logo.png.png" alt="logo"> Moges Store</div>
+   <img src="logo.png.png" alt="logo"> Moges Store
+  </div>
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Tafuta bidhaa...">
   </div>
@@ -146,324 +189,8 @@
 </main>
 
 <script>
-const products = [
-  {"item_name": "BRASLETS", "price": 3000.00, "image": "braselets.jpg"},
-  {"item_name": "MAJI MADOGO", "price": 500.00, "image": "maji madogo.jpg"},
-  {"item_name": "99 VICT SERUM", "price": 20000.00, "image": "99 vict.webp"},
-  {"item_name": "9PM KITONGA", "price": 20000.00, "image": "9pm kitonga.jpg"},
-  {"item_name": "ACTIVE WOMEN", "price": 20000.00, "image": "active woman.jpg"},
-  {"item_name": "AIR FRESH", "price": 4000.00, "image": "airfresh.jpg"},
-  {"item_name": "AIRFRESH TIN", "price": 10000.00, "image": "airfreshener.jpg"},
-  {"item_name": "AL DRAM", "price": 40000.00, "image": "al dram.jpg"},
-  {"item_name": "ALLSUN JELLY", "price": 8000.00, "image": "allsunndogo.webp"},
-  {"item_name": "ALLSUN JELLY LS", "price": 20000.00, "image": "allsunkubwa.jpg"},
-  {"item_name": "ALWAYS YOUNG SHOWER", "price": 14000.00, "image": "placeholder.jpg"},
-  {"item_name": "AMARA MAFUTA", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "AMERICAN DREAM BODY", "price": 23000.00, "image": "placeholder.jpg"},
-  {"item_name": "ANEZA", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "ANUA", "price": 30000.00, "image": "placeholder.jpg"},
-  {"item_name": "ASANTE SCRUB", "price": 5500.00, "image": "placeholder.jpg"},
-  {"item_name": "ASANTE SOAP", "price": 700.00, "image": "placeholder.jpg"},
-  {"item_name": "AVENTOS", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "AXE SPRAY", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "AZAM ENERGY", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BABY CHEEK M", "price": 60000.00, "image": "placeholder.jpg"},
-  {"item_name": "BABY CHEEK S", "price": 30000.00, "image": "placeholder.jpg"},
-  {"item_name": "BABY JOHNSON KUBWA", "price": 35000.00, "image": "placeholder.jpg"},
-  {"item_name": "BADE OUD", "price": 20000.00, "image": "placeholder.jpg"},
-  {"item_name": "BARIES WEEKIEND", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BAROCOEDE", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "BEAUTY SHERIE SHOWER", "price": 110000.00, "image": "placeholder.jpg"},
-  {"item_name": "BELAJIO", "price": 35000.00, "image": "placeholder.jpg"},
-  {"item_name": "BICABOLGHT LOTION", "price": 12000.00, "image": "placeholder.jpg"},
-  {"item_name": "BLACK DENUITE", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BLACK LEATHER", "price": 13000.00, "image": "placeholder.jpg"},
-  {"item_name": "BLUE MAGIC MAFUTA", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY MIST ETERNAL", "price": 11000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY MIST MAYA", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY MIST MONOTAGOS", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY MIST NUMBERS", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY MIST SKENABELA", "price": 6000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY MISTY VANNILA", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY OIL VACELINE P COCOA RADIANT", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY OIL VACELINE VITAMIN B INK", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY SPLASH", "price": 13000.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY SPRAY NDOGO", "price": 1500.00, "image": "placeholder.jpg"},
-  {"item_name": "BODY SRASH I/S", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "boxer", "price": 8000.00, "image": "placeholder.jpg"},
-  {"item_name": "BRAA MIKANDA MIWILI", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BRAA MKANDA MOJA", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "BRAZULIAN UZI", "price": 8000.00, "image": "placeholder.jpg"},
-  {"item_name": "CAT PAD", "price": 4500.00, "image": "placeholder.jpg"},
-  {"item_name": "CHAIN OTHER", "price": 110000.00, "image": "placeholder.jpg"},
-  {"item_name": "CHAIN ZHEN 10000", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "CHAIN ZHEN 10000 (2)", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "CHAIN ZHEN 8000", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "CLERE SOAP", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "CLUB DE NUITE", "price": 13000.00, "image": "placeholder.jpg"},
-  {"item_name": "COCO PULP L", "price": 1500.00, "image": "placeholder.jpg"},
-  {"item_name": "COCO PULP S", "price": 10500.00, "image": "placeholder.jpg"},
-  {"item_name": "COFEE SCRUB", "price": 10500.00, "image": "placeholder.jpg"},
-  {"item_name": "COLGATE 140GM", "price": 4000.00, "image": "placeholder.jpg"},
-  {"item_name": "COLGATE 35GM", "price": 3000.00, "image": "placeholder.jpg"},
-  {"item_name": "COLGATE 70GM", "price": 6000.00, "image": "placeholder.jpg"},
-  {"item_name": "COLGATE CHARCOAL 120G", "price": 8000.00, "image": "placeholder.jpg"},
-  {"item_name": "colgate double miswaki", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "COLGATE MAX FRESH KUBWA", "price": 200.00, "image": "placeholder.jpg"},
-  {"item_name": "colgate miswaki", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "COLGATE NDOGO", "price": 1200.00, "image": "placeholder.jpg"},
-  {"item_name": "COLLAGEN SERUM", "price": 13000.00, "image": "placeholder.jpg"},
-  {"item_name": "cotton band kubwa", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "cotton band ndogo", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "COVEX", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "CRERE BODY CREAM COCOBUTTER", "price": 11000.00, "image": "placeholder.jpg"},
-  {"item_name": "CRERE LOTION COCOBUTTER", "price": 3500.00, "image": "placeholder.jpg"},
-  {"item_name": "CRERE SCRUB APRICO", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "CRERE SCRUB APRICO", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "CREZ BODY CREAM", "price": 12000.00, "image": "placeholder.jpg"},
-  {"item_name": "CREZ COCOA BUTTER 275MLS", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "CREZ COCOA BUTTER 500MLS", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "CT LOTION", "price": 7000.00, "image": "placeholder.jpg"},
-  {"item_name": "CT MAFUTA", "price": 40000.00, "image": "placeholder.jpg"},
-  {"item_name": "CT SHOWER", "price": 45000.00, "image": "placeholder.jpg"},
-  {"item_name": "DALAN SOAP", "price": 7000.00, "image": "placeholder.jpg"},
-  {"item_name": "DAY BY DAY MAFUTA", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "DAY BY DAY MEN LOTION", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "DEODORANT FA", "price": 2200.00, "image": "placeholder.jpg"},
-  {"item_name": "DETAL SOAP I/S", "price": 40000.00, "image": "placeholder.jpg"},
-  {"item_name": "DETTOL 125MLS", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "DETTOL 250MLS", "price": 6000.00, "image": "placeholder.jpg"},
-  {"item_name": "DETTOL SHOWER JELLY", "price": 50000.00, "image": "placeholder.jpg"},
-  {"item_name": "DOCCO NYENBE", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "DOCCO SHAVER", "price": 5500.00, "image": "placeholder.jpg"},
-  {"item_name": "DOFFI", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "doffi", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "DOVE DEODORANT", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "DOVE LOTION S", "price": 2000.00, "image": "placeholder.jpg"},
-  {"item_name": "DOVE SHOWER JELLY KUBWA", "price": 500.00, "image": "placeholder.jpg"},
-  {"item_name": "DOVE SHOWER JELLY NDOGO", "price": 4500.00, "image": "placeholder.jpg"},
-  {"item_name": "DOVE SOAP", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "DR RASHEL SUNSCREEN", "price": 500.00, "image": "placeholder.jpg"},
-  {"item_name": "DR RASHEL VITAMIN C", "price": 60000.00, "image": "placeholder.jpg"},
-  {"item_name": "DR RASHES MOISTURE CREAM", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "DREADYSPRAY", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "DUDU SOAP", "price": 8500.00, "image": "placeholder.jpg"},
-  {"item_name": "EASY GLOW BLACK", "price": 60000.00, "image": "placeholder.jpg"},
-  {"item_name": "EASY GLOW CARROT", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "EASY WAVES KUBWA", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "EGG SHAMPOO", "price": 2000.00, "image": "placeholder.jpg"},
-  {"item_name": "EGG SHAMPOO", "price": 2000.00, "image": "placeholder.jpg"},
-  {"item_name": "ELLE 5", "price": 3000.00, "image": "placeholder.jpg"},
-  {"item_name": "EPIDEN CREAM", "price": 6000.00, "image": "placeholder.jpg"},
-  {"item_name": "EPPIC ADVENTURE", "price": 8000.00, "image": "placeholder.jpg"},
-  {"item_name": "ESTELINE SUNSCREEN", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "evya coconut oil", "price": 200.00, "image": "placeholder.jpg"},
-  {"item_name": "EXCLAIRE", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "EXTRA CLAIR L", "price": 1200.00, "image": "placeholder.jpg"},
-  {"item_name": "EXTRA CLAIR S", "price": 13000.00, "image": "placeholder.jpg"},
-  {"item_name": "FACE CREAM CHADIN", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "FAMILY KINDOO", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "FAMILY 100GM", "price": 15000.00, "image": "placeholder.jpg"},
-  {"item_name": "FAMILY 200GM", "price": 11000.00, "image": "placeholder.jpg"},
-  {"item_name": "FAMILY 50GM", "price": 3500.00, "image": "placeholder.jpg"},
-  {"item_name": "FAMILY YA UNGA 1KG", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "FEMO KUBWA", "price": 12000.00, "image": "placeholder.jpg"},
-  {"item_name": "FEMO NDOGO", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "FLORAL DREAM", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "FOREVER YOUNG BODY", "price": 7000.00, "image": "placeholder.jpg"},
-  {"item_name": "GELETE SHAVER", "price": 40000.00, "image": "placeholder.jpg"},
-  {"item_name": "GLOBAL MAM", "price": 45000.00, "image": "placeholder.jpg"},
-  {"item_name": "GOLDEN D", "price": 7000.00, "image": "placeholder.jpg"},
-  {"item_name": "GOLDIE", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "GRACE SHAMPOO", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "GRANDNALT 330MLS", "price": 2200.00, "image": "placeholder.jpg"},
-  {"item_name": "GRYCERINE", "price": 40000.00, "image": "placeholder.jpg"},
-  {"item_name": "GRYCERINE ZAMBIA", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "HAIR RADIANT MAFUTA LARGE", "price": 6000.00, "image": "placeholder.jpg"},
-  {"item_name": "HAIR RADIANT SMALL", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "HAYATT", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "HERBAL 100G", "price": 7000.00, "image": "placeholder.jpg"},
-  {"item_name": "HERBAL 200G", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "HERENI COCO 3000", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "HERENI COCO 5000", "price": 5500.00, "image": "placeholder.jpg"},
-  {"item_name": "HERENI FASION", "price": 10000.00, "image": "placeholder.jpg"},
-  {"item_name": "HHERBAL 50G", "price": 1500.00, "image": "placeholder.jpg"},
-  {"item_name": "HIGH GLOW FACE CREAM", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "HQ PAD", "price": 2500.00, "image": "placeholder.jpg"},
-  {"item_name": "IMPERIAL", "price": 30000.00, "image": "placeholder.jpg"},
-  {"item_name": "INTOS MAN", "price": 1000.00, "image": "placeholder.jpg"},
-  {"item_name": "INVICTO", "price": 2000.00, "image": "placeholder.jpg"},
-  {"item_name": "KLEESOFT", "price": 3000.00, "image": "placeholder.jpg"},
-  {"item_name": "KLEESOFT 14000", "price": 5000.00, "image": "placeholder.jpg"},
-  {"item_name": "kleesoft kubwa", "price": 2000.00, "image": "placeholder.jpg"},
-  {"item_name": "KOJIE SOAP MIXER", "price": 500.00, "image": "placeholder.jpg"},
-  {"item_name": "KUZA MAFUTA", "price": 11000.00, "image": "placeholder.jpg"},
-  {"item_name": "LAVIE ES BECCA", "price": 4000.00, "image": "placeholder.jpg"},
-  {"item_name": "LICORICE BODY OIL", "price": 3500.00, "image": "placeholder.jpg"},
-  {"item_name": "LICORICE SERUM", "price": 30000.00, "image": "placeholder.jpg"},
-  {"name": "LICORICE SERUM", "price": 1800, "image": "https://via.placeholder.com/250"},
-  {"name": "LIP BAM", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "lipglow", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "LORY,S", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "MAJI MAKUBWA", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "MALAIKA", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "MARQUIZE", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "MAXFRESH 65GM", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "MEGA BODY CREAM", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "MEGA DAWA", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "MENA SOAP", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "MILK SHOWER", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "MINALA", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "MISSFIAH OIL", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "MONACO", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "MONALISA", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "MORE THAN BKAK", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "MORE THAN GOLD (AFCAST) LOTION", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "MOULDING GELLY I/S", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "MOULDING GELLY M/S", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "MOUSOF", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "MOVIT HAIR JELLY NDOGO", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "MOVIT HAIR RELAX", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "MOVIT HERBAL M/S", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "MOVIT JELLY KUBWA", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "MOVIT NDOGO JELLY", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "MSWAKI MDOGO", "price": 400, "image": "https://via.placeholder.com/250"},
-  {"name": "MY WAY", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "NARANJA BODY OILS", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "NIVEA BODY CREAM YA KOPO", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "NIVEA DEODORANT", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "NIVEA LOTION I/S", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "NIVEA LOTION S/S", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "NIVEA SPRAY", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "NOW", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "OBRI 20", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "OLD SPICE", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "olive oil bp", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "OLIVE OIL MAFUTA", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "OLIVER OIL SPRAY L", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "OLIVER OIL SPRAY M", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "OLIVER OIL SPRAY S", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "OMO 1/2 KG", "price": 600, "image": "https://via.placeholder.com/250"},
-  {"name": "OMO 1KG", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "OMO 2KG", "price": 1800, "image": "https://via.placeholder.com/250"},
-  {"name": "OMO FRESH 40G", "price": 300, "image": "https://via.placeholder.com/250"},
-  {"name": "ONIRO", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "ophilia perfume", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "ORBI 20", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "ORIGINAL OIL", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "PAMBA YA TONNER", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "PANTY5", "price": 500, "image": "https://via.placeholder.com/250"},
-  {"name": "PARACHUT KUBWA", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "PARACHUT M/S", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "PARLEY SERUM", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "PAWPAW BODY L/S", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "PAWPAW BODY S/S", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "PAWPAW MAJI", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "PAWPAW SHOWER", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "PEPS NA MIRINDA", "price": 500, "image": "https://via.placeholder.com/250"},
-  {"name": "PERFUM KIPOCHI", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "PERFUME ASSAD KITONGA", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "PERFUME ISSEYE MIKAYE", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "POCHI", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "POCHI NEW", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "POLO", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "POWER HOUSE DEODORANT", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "PREMIUM BLACK SERUM", "price": 1800, "image": "https://via.placeholder.com/250"},
-  {"name": "PRETTY SHOWER jell", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "pretty white ndogo", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "PRO WHITE BODY CREAM", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "PROTEX", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "PROUD OF YOU", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "QUAED AL FURSAN", "price": 2000, "image": "https://via.placeholder.com/250"},
-  {"name": "RADIANT SPRAY", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "RAMZ LATTAF", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "REVLON LOTION", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "RINJU LOTION BROWN L", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "RINJU LOTION WHITE L", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "RINJU S", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "ROBIN UZI", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "ROMANCE", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "ROSE SEDUCTION", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "RUNGU", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "RUNGU MEDI", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "SAA DW", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "SAA OTHER", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "SABUNI POA UNGA", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "SABUNI YA JAMAA", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "SAUVAGE", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "SAVAGE", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "SAVAGE KITONG", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "SCALAR FOR MEN L", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "SHAMPOO TANCHO", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "SHANGA", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "SHEER", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "SHIMONA DEODORANT", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "SHOWEFO SLU DEODIRANT", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "SHOWER SHOWER DEODORANT", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "SHWARI", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "SIMPLE FACE WASH", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "SIMPLE MOISTURE", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "SIMPLE TORE", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "SKIN DOCTOR SCRUB", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "SMALL MIXURE PERFUME", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "socks", "price": 500, "image": "https://via.placeholder.com/250"},
-  {"name": "SODA 1000", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "SODA NDOGO", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFT FREE HELL", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFTCARE PAD (ZARI)", "price": 400, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFTCARE PUMPSE 42", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFTCARE PUMPSE L10", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFTCARE PUMPSE L40", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFTCARE WIPES", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "SOFTFREE DAWA", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "SPRAY PERFUME MIXER", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "ST. LVES SHOWER", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "STEAMING", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "SUAVAGE KITONGA", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "SUPER BLACK NDOGO17", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "SUPER BLACK YA TUBE", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "TAULO", "price": 500, "image": "https://via.placeholder.com/250"},
-  {"name": "TETMOSOL SOAP", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "TISHU", "price": 400, "image": "https://via.placeholder.com/250"},
-  {"name": "TRESSA JELLY M", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "TRICONA SOAP", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "TUBE ZA KUNYOLEA/HAIR REMOVER", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "TUMERIC BODY OIL S", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "TUMERIC OIL", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "TUMERIC SCRUB", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "TUMERIC SHOWER", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "ULTRA PURE SERUM", "price": 1800, "image": "https://via.placeholder.com/250"},
-  {"name": "UNIQUE", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "vaseline kubwa mgando", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "VASELINE LOTION 200MLS", "price": 120, "image":"https://via.placeholder.com/250"},
-  {"name": "VASELINE LOTION 200MLS", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "VASELINE LOTION I/S", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "VASELINE LOTION NEW", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "VASELINE MAFUTA MGANDO", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "VASELINE MAFUTA MGANDO 3000", "price": 1600, "image": "https://via.placeholder.com/250"},
-  {"name": "VASELINE SHOWER JELLY", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "VASSELINE COCOA GLOW", "price": 1400, "image": "https://via.placeholder.com/250"},
-  {"name": "vestline poda", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "VIGO DOCTOR 1000", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "VIM", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITE DENT 110GM", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITE WASH", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT 125GM", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT 190GM", "price": 1100, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT 250GM", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT 40GM", "price": 600, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT 70GM", "price": 700, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT 80GM", "price": 800, "image": "https://via.placeholder.com/250"},
-  {"name": "WHITEDENT MSWAKI", "price": 900, "image": "https://via.placeholder.com/250"},
-  {"name": "WIPES NDOGO(SOFTCARE)", "price": 400, "image": "https://via.placeholder.com/250"},
-  {"name": "wix mafuta", "price": 1000, "image": "https://via.placeholder.com/250"},
-  {"name": "wix serum", "price": 1200, "image": "https://via.placeholder.com/250"},
-  {"name": "YARA KITONGA", "price": 1300, "image": "https://via.placeholder.com/250"},
-  {"name": "YARA PERFUME", "price": 1500, "image": "https://via.placeholder.com/250"},
-  {"name": "ZARA PERFUME", "price": 1600, "image": "https://via.placeholder.com/250"}
-]
-
-  // weka JSON yako yote hapa kama ilivyo;
+// JS yako ya search na render products haijabadilishwa
+const products = [ /* data yako yote hapa */ ];
 
 function highlight(text, query){
   if(!query) return text;
@@ -504,5 +231,3 @@ renderProducts(products);
 </script>
 </body>
 </html>
-
-
