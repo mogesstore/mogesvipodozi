@@ -1,174 +1,226 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOGES STORE - Admin Dashboard</title>
+<title>Admin Dashboard - Moges Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        background: #f5f5f5;
-    }
-    header {
-        background: #28a745;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 15px 20px;
-        font-size: 24px;
-        gap: 15px;
-    }
-    header img {
-        height: 40px;
-    }
-    .container {
-        padding: 20px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 20px;
-    }
-    .item-card {
-        background: white;
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .item-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    .item-card img {
-        max-width: 100%;
-        border-radius: 5px;
-    }
-    .item-card h3 {
-        font-size: 16px;
-        margin: 10px 0 5px;
-    }
-    .item-card p {
-        font-size: 14px;
-        color: #333;
-        margin: 0;
-    }
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background: url('https://images.unsplash.com/photo-1586074292257-6c77e0a10c11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI1M3wwfDF8c2VlfHx8fHx8Mnx8MTY4Njk5MjQ2OA&ixlib=rb-4.0.3&q=80&w=1080') center/cover fixed no-repeat;
+  color: #fff;
+  margin: 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+}
+header img { height: 55px; border-radius: 8px; }
+nav a { color: #00eaff; margin-left: 15px; text-decoration: none; font-weight: 600; }
+nav a:hover { text-decoration: underline; color: #fff; }
+nav button {
+  padding: 8px 14px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+nav button:hover { background: #1e7e34; }
 
-    /* Admin form */
-    .admin-form {
-        background: white;
-        padding: 15px;
-        border-radius: 10px;
-        margin: 20px;
-        max-width: 400px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .admin-form input, .admin-form button {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        font-size: 14px;
-    }
-    .admin-form button {
-        background: #28a745;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    .admin-form button:hover {
-        background: #218838;
-    }
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: rgba(0,0,0,0.55);
+  border-radius: 16px;
+  padding: 30px;
+}
+h1 { text-align: center; color: #00eaff; margin-bottom: 20px; }
 
-    footer {
-        text-align: center;
-        padding: 15px;
-        background: #28a745;
-        color: white;
-        margin-top: 20px;
-    }
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+form label { flex: 1 0 150px; font-weight: 600; }
+form input, form select { flex: 2 0 300px; padding: 8px; border-radius: 6px; border: none; }
+form button {
+  padding: 10px 20px;
+  background: #00eaff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #000;
+  transition: 0.3s;
+}
+form button:hover { background: #fff; }
+
+#itemsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+#itemsTable th, #itemsTable td {
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+#itemsTable th { background: rgba(0, 234, 255, 0.3); }
+
+.delete-btn {
+  background: red;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.delete-btn:hover { background: darkred; }
+
+footer {
+  text-align: center;
+  background: rgba(0,0,0,0.7);
+  padding: 15px;
+  color: #00eaff;
+  font-weight: 500;
+  margin-top: 40px;
+}
 </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Moges Store Logo">
-    MOGES STORE DASHBOARD
+  <img src="logo.png" alt="Logo">
+  <nav>
+    <a href="#">Dashboard</a>
+    <button id="logoutBtn">Logout</button>
+  </nav>
 </header>
 
-<div class="admin-form">
-    <h3>Add New Item</h3>
-    <input type="text" id="item_name" placeholder="Item Name" required>
-    <input type="number" id="item_price" placeholder="Price (Ksh)" required>
-    <input type="text" id="item_image" placeholder="Image Filename (e.g., item.jpg)" required>
-    <button onclick="addItem()">Add Item</button>
-    <button onclick="downloadJSON()">Download JSON</button>
+<div class="container">
+  <h1>Admin Dashboard - Moges Store</h1>
+
+  <form id="addItemForm">
+    <div>
+      <label for="name">Item Name:</label>
+      <input type="text" id="name" required>
+    </div>
+    <div>
+      <label for="price">Price (Ksh):</label>
+      <input type="number" id="price" required>
+    </div>
+    <div>
+      <label for="image">Image Filename:</label>
+      <input type="text" id="image" placeholder="example.jpg" required>
+    </div>
+    <div style="flex: 1 0 100%;">
+      <button type="submit">Add Item</button>
+      <button type="button" onclick="downloadJSON()">Download JSON</button>
+    </div>
+  </form>
+
+  <h2>Current Items</h2>
+  <table id="itemsTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4">Loading...</td></tr>
+    </tbody>
+  </table>
 </div>
 
-<div class="container" id="items-container"></div>
+<footer>© 2025 Moges Store | Admin Dashboard</footer>
 
 <script>
-    // Array to store items
-    let items = [
-        {"item_name": "BRASLETS", "price": 3000.00, "image": "braslets.jpg"},
-        {"item_name": "MAJI MADOGO", "price": 500.00, "image": "maji_madogo.jpg"},
-        {"item_name": "99 VICT SERUM", "price": 20000.00, "image": "99_vict_serum.jpg"}
-    ];
+let itemsData = [];
 
-    const container = document.getElementById('items-container');
+// Load data from data.json
+fetch("data.json")
+  .then(res => res.json())
+  .then(data => {
+    itemsData = data; // assume data.json is an array of items
+    renderTable();
+  })
+  .catch(err => {
+    console.log("Could not load data.json, starting with empty array.");
+    itemsData = [];
+    renderTable();
+  });
 
-    // Function to display items
-    function renderItems() {
-        container.innerHTML = '';
-        items.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'item-card';
-            card.innerHTML = `
-                <img src="${item.image}" alt="${item.item_name}">
-                <h3>${item.item_name}</h3>
-                <p>Price: Ksh ${item.price.toLocaleString()}</p>
-            `;
-            container.appendChild(card);
-        });
-    }
+// Render table
+function renderTable(){
+  const tbody = document.querySelector("#itemsTable tbody");
+  tbody.innerHTML = "";
+  if(itemsData.length === 0){
+    tbody.innerHTML = "<tr><td colspan='4'>No items yet.</td></tr>";
+    return;
+  }
+  itemsData.forEach((item, index) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.price.toLocaleString()}</td>
+      <td>${item.image}</td>
+      <td><button class="delete-btn" onclick="deleteItem(${index})">Delete</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
 
-    renderItems();
+// Add new item
+document.getElementById("addItemForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const price = parseFloat(document.getElementById("price").value);
+  const image = document.getElementById("image").value.trim();
 
-    // Function to add item
-    function addItem() {
-        const name = document.getElementById('item_name').value.trim();
-        const price = parseFloat(document.getElementById('item_price').value);
-        const image = document.getElementById('item_image').value.trim();
+  if(!name || !price || !image){
+    alert("Please fill all fields.");
+    return;
+  }
 
-        if(!name || !price || !image) {
-            alert("Please fill all fields correctly.");
-            return;
-        }
+  itemsData.push({name, price, image});
+  renderTable();
+  this.reset();
+});
 
-        items.push({item_name: name, price: price, image: image});
-        renderItems();
+// Delete item
+function deleteItem(index){
+  if(confirm("Delete this item?")){
+    itemsData.splice(index,1);
+    renderTable();
+  }
+}
 
-        // Clear form
-        document.getElementById('item_name').value = '';
-        document.getElementById('item_price').value = '';
-        document.getElementById('item_image').value = '';
-    }
+// Download JSON
+function downloadJSON(){
+  const blob = new Blob([JSON.stringify(itemsData, null, 2)], {type: "application/json"});
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "moges_items.json";
+  link.click();
+}
 
-    // Function to download JSON
-    function downloadJSON() {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(items, null, 4));
-        const dlAnchor = document.createElement('a');
-        dlAnchor.setAttribute("href", dataStr);
-        dlAnchor.setAttribute("download", "moges_items.json");
-        document.body.appendChild(dlAnchor);
-        dlAnchor.click();
-        dlAnchor.remove();
-    }
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  window.location.href = "index.html";
+});
 </script>
-
-<footer>
-    &copy; 2025 Moges Store. All rights reserved.
-</footer>
 
 </body>
 </html>
