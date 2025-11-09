@@ -1,340 +1,174 @@
-<!doctype html>
-<html lang="sw">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Moges Store — Admin (Local, single file)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOGES STORE - Admin Dashboard</title>
 <style>
-  :root{--primary:#1976d2;--bg1:#f0f7ff}
-  *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-  body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--bg1),#fff);display:flex;flex-direction:column}
-  header{background:var(--primary);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
-  header h1{font-size:18px;margin:0}
-  main{padding:18px;flex:1;max-width:1000px;margin:0 auto;width:100%}
-  .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,0.06);margin-bottom:16px}
-  form input[type=text], form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-top:6px}
-  label{font-weight:600;margin-top:8px;display:block}
-  .row{display:flex;gap:10px}
-  .col{flex:1}
-  button{background:var(--primary);color:#fff;border:none;padding:10px 12px;border-radius:10px;cursor:pointer;font-weight:700}
-  button.secondary{background:#0d47a1}
-  .muted{color:#666;font-size:.9rem}
-  #preview{max-width:200px;max-height:160px;border-radius:8px;display:none;margin-top:8px;object-fit:cover}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:12px}
-  .offer{padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#f7fbff);box-shadow:0 6px 18px rgba(0,0,0,0.04)}
-  .offer img{width:100%;height:140px;object-fit:cover;border-radius:8px}
-  .actions{display:flex;gap:8px;margin-top:8px}
-  .btn-danger{background:#d32f2f}
-  #loginWrap{display:flex;align-items:center;justify-content:center;height:70vh}
-  #loginBox{width:100%;max-width:420px}
-  .small{font-size:.85rem;color:#444}
-  footer{padding:10px;text-align:center;color:#666}
-  @media(min-width:900px){ main{padding:30px} }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background: #f5f5f5;
+    }
+    header {
+        background: #28a745;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 24px;
+        gap: 15px;
+    }
+    header img {
+        height: 40px;
+    }
+    .container {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+    }
+    .item-card {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .item-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .item-card img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+    .item-card h3 {
+        font-size: 16px;
+        margin: 10px 0 5px;
+    }
+    .item-card p {
+        font-size: 14px;
+        color: #333;
+        margin: 0;
+    }
+
+    /* Admin form */
+    .admin-form {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 20px;
+        max-width: 400px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .admin-form input, .admin-form button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    .admin-form button {
+        background: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .admin-form button:hover {
+        background: #218838;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background: #28a745;
+        color: white;
+        margin-top: 20px;
+    }
 </style>
 </head>
 <body>
+
 <header>
-  <h1>Moges Store — Admin (Local)</h1>
-  <div class="small">Data saved locally (IndexedDB)</div>
+    <img src="logo.png" alt="Moges Store Logo">
+    MOGES STORE DASHBOARD
 </header>
 
-<main>
-  <!-- LOGIN -->
-  <div id="loginWrap">
-    <div id="loginBox" class="card">
-      <h2>Login Admin</h2>
-      <label>Username</label>
-      <input id="loginUser" placeholder="admin">
-      <label>Password</label>
-      <input id="loginPass" type="password" placeholder="moges123">
-      <div style="margin-top:12px;display:flex;gap:8px">
-        <button id="loginBtn">Ingia</button>
-        <button id="demoBtn" class="secondary">Tumia Demo</button>
-      </div>
-      <p id="loginError" class="muted" style="color:#d32f2f;display:none;margin-top:8px">Username au password si sahihi.</p>
-      <p class="muted" style="margin-top:8px">Default: <strong>admin</strong> / <strong>moges123</strong></p>
-    </div>
-  </div>
+<div class="admin-form">
+    <h3>Add New Item</h3>
+    <input type="text" id="item_name" placeholder="Item Name" required>
+    <input type="number" id="item_price" placeholder="Price (Ksh)" required>
+    <input type="text" id="item_image" placeholder="Image Filename (e.g., item.jpg)" required>
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="downloadJSON()">Download JSON</button>
+</div>
 
-  <!-- ADMIN AREA -->
-  <div id="adminArea" style="display:none">
-    <div class="card">
-      <h2>Ongeza / Badilisha Ofa</h2>
-      <form id="offerForm">
-        <input type="hidden" id="editingId">
-        <label>Jina la Bidhaa</label>
-        <input id="title" required>
-        <label>Maelezo</label>
-        <textarea id="description" rows="3" required></textarea>
-        <div class="row" style="margin-top:8px">
-          <div class="col">
-            <label>Bei</label>
-            <input id="price" required>
-          </div>
-          <div style="width:230px">
-            <label>Picha</label>
-            <input id="imageInput" type="file" accept="image/*">
-            <img id="preview" alt="preview">
-          </div>
-        </div>
-        <div style="margin-top:10px;display:flex;gap:8px">
-          <button type="submit">Hifadhi Ofa</button>
-          <button type="button" id="clearBtn" class="secondary">Angalia Toleo</button>
-        </div>
-        <p id="saveMsg" class="muted" style="display:none;color:green;margin-top:8px">✅ Ofa imehifadhiwa.</p>
-      </form>
-    </div>
-
-    <div class="card">
-      <h2>Offers Zilizohifadhiwa</h2>
-      <div id="offersGrid" class="grid">
-        <!-- offers -->
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer>© Moges Store — Local Admin</footer>
+<div class="container" id="items-container"></div>
 
 <script>
-/* ===== Simple IndexedDB wrapper ===== */
-const DB_NAME = 'moges_store_db';
-const DB_VERSION = 1;
-const STORE = 'offers';
+    // Array to store items
+    let items = [
+        {"item_name": "BRASLETS", "price": 3000.00, "image": "braslets.jpg"},
+        {"item_name": "MAJI MADOGO", "price": 500.00, "image": "maji_madogo.jpg"},
+        {"item_name": "99 VICT SERUM", "price": 20000.00, "image": "99_vict_serum.jpg"}
+    ];
 
-function openDB() {
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.open(DB_NAME, DB_VERSION);
-    req.onupgradeneeded = (e) => {
-      const db = e.target.result;
-      if (!db.objectStoreNames.contains(STORE)) {
-        const os = db.createObjectStore(STORE, { keyPath: 'id' });
-        os.createIndex('date', 'date', { unique: false });
-      }
-    };
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  });
-}
+    const container = document.getElementById('items-container');
 
-async function addOfferObj(obj) {
-  const db = await openDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction(STORE, 'readwrite');
-    tx.objectStore(STORE).put(obj);
-    tx.oncomplete = () => { db.close(); res(true); };
-    tx.onerror = () => { db.close(); rej(tx.error); };
-  });
-}
-
-async function getAllOffers() {
-  const db = await openDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction(STORE, 'readonly');
-    const req = tx.objectStore(STORE).getAll();
-    req.onsuccess = () => { db.close(); res(req.result.sort((a,b)=>b.id-a.id)); };
-    req.onerror = () => { db.close(); rej(req.error); };
-  });
-}
-
-async function deleteOfferById(id) {
-  const db = await openDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction(STORE, 'readwrite');
-    tx.objectStore(STORE).delete(id);
-    tx.oncomplete = () => { db.close(); res(true); };
-    tx.onerror = () => { db.close(); rej(tx.error); };
-  });
-}
-
-/* ===== Utilities ===== */
-function fileToBlob(file) {
-  return new Promise((res, rej) => {
-    if (!file) return res(null);
-    // just return file (it's already a blob), but sometimes we want a copy:
-    res(file);
-  });
-}
-
-function blobToUrl(blob) {
-  if (!blob) return '';
-  return URL.createObjectURL(blob);
-}
-
-/* ===== Sync across tabs using BroadcastChannel ===== */
-const chan = ('BroadcastChannel' in window) ? new BroadcastChannel('moges_offers_chan') : null;
-function broadcastUpdate() { if (chan) chan.postMessage({ type: 'refresh' }); }
-
-/* ===== UI logic ===== */
-const loginWrap = document.getElementById('loginWrap');
-const adminArea = document.getElementById('adminArea');
-const loginBtn = document.getElementById('loginBtn');
-const demoBtn = document.getElementById('demoBtn');
-const loginError = document.getElementById('loginError');
-
-loginBtn.addEventListener('click', () => {
-  const user = document.getElementById('loginUser').value.trim();
-  const pass = document.getElementById('loginPass').value.trim();
-  if (user === 'admin' && pass === 'moges123') {
-    loginWrap.style.display = 'none';
-    adminArea.style.display = 'block';
-    renderOffers();
-  } else {
-    loginError.style.display = 'block';
-  }
-});
-
-// demo quick access
-demoBtn.addEventListener('click', () => {
-  document.getElementById('loginUser').value='admin';
-  document.getElementById('loginPass').value='moges123';
-  loginBtn.click();
-});
-
-/* Form + preview */
-const imageInput = document.getElementById('imageInput');
-const preview = document.getElementById('preview');
-let currentPreviewUrl = '';
-
-imageInput.addEventListener('change', () => {
-  const f = imageInput.files[0];
-  if (!f) { preview.style.display='none'; return; }
-  const reader = new FileReader();
-  reader.onload = e => {
-    preview.src = e.target.result; preview.style.display = 'block';
-    if (currentPreviewUrl) { URL.revokeObjectURL(currentPreviewUrl); currentPreviewUrl=''; }
-  };
-  reader.readAsDataURL(f);
-});
-
-/* Submit handler */
-const offerForm = document.getElementById('offerForm');
-const saveMsg = document.getElementById('saveMsg');
-
-offerForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const idField = document.getElementById('editingId');
-  const title = document.getElementById('title').value.trim();
-  const description = document.getElementById('description').value.trim();
-  const price = document.getElementById('price').value.trim();
-  const file = imageInput.files[0] || null;
-  const id = idField.value ? Number(idField.value) : Date.now();
-
-  // Convert file to blob (file is already a Blob)
-  const blob = await fileToBlob(file);
-
-  const offerObj = { id, title, description, price, date: new Date().toLocaleDateString('sw-TZ'), imageBlob: blob };
-
-  try {
-    await addOfferObj(offerObj);
-    saveMsg.style.display='block';
-    setTimeout(()=>saveMsg.style.display='none',1500);
-    // reset form
-    document.getElementById('editingId').value='';
-    document.getElementById('title').value='';
-    document.getElementById('description').value='';
-    document.getElementById('price').value='';
-    imageInput.value='';
-    preview.style.display='none';
-    renderOffers();
-    broadcastUpdate();
-  } catch (err) {
-    alert('Kosa kuokoa: ' + err);
-  }
-});
-
-/* Render offers to grid */
-async function renderOffers(){
-  const grid = document.getElementById('offersGrid');
-  grid.innerHTML = '<div class="muted">Loading...</div>';
-  try {
-    const offers = await getAllOffers();
-    if (!offers.length) {
-      grid.innerHTML = '<div class="muted">Hakuna offers zilizohifadhiwa.</div>';
-      return;
+    // Function to display items
+    function renderItems() {
+        container.innerHTML = '';
+        items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'item-card';
+            card.innerHTML = `
+                <img src="${item.image}" alt="${item.item_name}">
+                <h3>${item.item_name}</h3>
+                <p>Price: Ksh ${item.price.toLocaleString()}</p>
+            `;
+            container.appendChild(card);
+        });
     }
-    grid.innerHTML = offers.map(o => {
-      // we can't synchronously convert blob to dataURL here; will create DOM and set src after
-      return `<div class="offer" data-id="${o.id}">
-        <div style="height:140px;background:#f0f5fb;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center">
-          <img data-src-id="${o.id}" style="width:100%;height:140px;object-fit:cover;display:block" alt="${escapeHtml(o.title)}">
-        </div>
-        <div style="margin-top:8px"><strong>${escapeHtml(o.title)}</strong></div>
-        <div class="muted" style="margin-top:6px">${escapeHtml(o.description)}</div>
-        <div style="margin-top:8px"><strong>Bei: ${escapeHtml(o.price)}</strong></div>
-        <div class="muted" style="margin-top:6px">${o.date}</div>
-        <div class="actions">
-          <button onclick="startEdit(${o.id})">Badilisha</button>
-          <button class="btn-danger" onclick="doDelete(${o.id})">Futa</button>
-        </div>
-      </div>`;
-    }).join('');
-    // set images from blobs
-    offers.forEach(o => {
-      const imgEl = document.querySelector(`img[data-src-id="${o.id}"]`);
-      if (imgEl) {
-        if (o.imageBlob) {
-          // recreate blob objectURL
-          const url = blobToUrl(o.imageBlob);
-          imgEl.src = url;
-          // revoke later when element removed (not done here for simplicity)
-        } else {
-          imgEl.src = '';
+
+    renderItems();
+
+    // Function to add item
+    function addItem() {
+        const name = document.getElementById('item_name').value.trim();
+        const price = parseFloat(document.getElementById('item_price').value);
+        const image = document.getElementById('item_image').value.trim();
+
+        if(!name || !price || !image) {
+            alert("Please fill all fields correctly.");
+            return;
         }
-      }
-    });
-  } catch (err) {
-    grid.innerHTML = '<div class="muted">Kosa kuonyesha offers.</div>';
-    console.error(err);
-  }
-}
 
-/* Edit flow */
-window.startEdit = async (id) => {
-  const offers = await getAllOffers();
-  const o = offers.find(x => x.id === id);
-  if (!o) return alert('Offer haipatikani');
-  document.getElementById('editingId').value = o.id;
-  document.getElementById('title').value = o.title;
-  document.getElementById('description').value = o.description;
-  document.getElementById('price').value = o.price;
-  if (o.imageBlob) {
-    const url = blobToUrl(o.imageBlob);
-    preview.src = url; preview.style.display='block';
-    currentPreviewUrl = url;
-  } else {
-    preview.style.display='none';
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+        items.push({item_name: name, price: price, image: image});
+        renderItems();
 
-/* Delete flow */
-window.doDelete = async (id) => {
-  if (!confirm('Una uhakika unataka kufuta?')) return;
-  await deleteOfferById(id);
-  renderOffers();
-  broadcastUpdate();
-};
+        // Clear form
+        document.getElementById('item_name').value = '';
+        document.getElementById('item_price').value = '';
+        document.getElementById('item_image').value = '';
+    }
 
-/* Escape helper */
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
-}
-
-/* Listen for broadcast from other tabs */
-if (chan) {
-  chan.onmessage = (m) => {
-    if (m.data && m.data.type === 'refresh') renderOffers();
-  };
-}
-
-/* On load, if admin logged in previously? We'll always show login first for simplicity.
-   But we can optionally auto-open if local flag present. */
-(function init(){
-  // nothing until login to keep it simple
-})();
-
+    // Function to download JSON
+    function downloadJSON() {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(items, null, 4));
+        const dlAnchor = document.createElement('a');
+        dlAnchor.setAttribute("href", dataStr);
+        dlAnchor.setAttribute("download", "moges_items.json");
+        document.body.appendChild(dlAnchor);
+        dlAnchor.click();
+        dlAnchor.remove();
+    }
 </script>
+
+<footer>
+    &copy; 2025 Moges Store. All rights reserved.
+</footer>
+
 </body>
 </html>
