@@ -177,8 +177,8 @@
   </div>
   <nav>
       <a href="index.html">Nyumbani</a>
-      <a href="comingsoon.html">Bidhaa</a>
-      <a href="offers.html">Ofa</a>
+      <a href="gfoods.html">Bidhaa</a>
+      <a href="comingsoon.html">Ofa</a>
       <a href="about.html">Kuhusu</a>
       <a href="contact.html">Wasiliana</a>
     </nav>
@@ -189,9 +189,6 @@
 </main>
 
 <script>
-// JS yako ya search na render products haijabadilishwa
-const products = [ /* data yako yote hapa */ ];
-
 function highlight(text, query){
   if(!query) return text;
   const regex = new RegExp(`(${query})`, "gi");
@@ -221,14 +218,27 @@ function renderProducts(list, query=""){
   });
 }
 
+// search event
 document.getElementById("searchInput").addEventListener("input", e=>{
   const query = e.target.value.toLowerCase().trim();
-  const filtered = products.filter(p => ((p.item_name||p.name||"").toLowerCase().includes(query)));
-  renderProducts(filtered, query);
+  if(window.products){
+    const filtered = window.products.filter(p => ((p.item_name||p.name||"").toLowerCase().includes(query)));
+    renderProducts(filtered, query);
+  }
 });
 
-renderProducts(products);
+// fetch data kutoka data.json
+fetch("data.json")
+  .then(res => res.json())
+  .then(json => {
+    window.products = json; // kuweka globally ili search iende
+    renderProducts(json);
+  })
+  .catch(err => {
+    console.error("Kushindwa kupakia bidhaa:", err);
+    document.getElementById("noResults").style.display = "block";
+    document.getElementById("noResults").innerText = "Kuna hitilafu katika kupakia bidhaa.";
+  });
 </script>
 </body>
 </html>
-
