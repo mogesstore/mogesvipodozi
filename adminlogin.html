@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - Moges Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  html, body { height: 100%; font-family: 'Poppins', sans-serif; }
+
+  body {
+    background: url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    z-index:0;
+  }
+
+  .container {
+    position: relative;
+    z-index:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 50px 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .container img {
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .greeting {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #00eaff;
+    font-weight: 500;
+  }
+
+  h2 {
+    color: #00eaff;
+    margin-bottom: 25px;
+    font-size: 24px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  input::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+
+  button.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  button.login-btn:hover {
+    background: #1e7e34;
+  }
+
+  .social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .social-login button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px 0;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  .social-login button.facebook { background:#3b5998; }
+  .social-login button.google { background:#db4437; }
+  .social-login button.twitter { background:#1da1f2; }
+
+  .social-login button:hover { opacity: 0.85; }
+
+  a.forgot {
+    display: block;
+    margin-top: 15px;
+    color: #00eaff;
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  a.forgot:hover { text-decoration: underline; }
+
+  @media(max-width:480px){
+    .container { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="logo.png" alt="Logo">
+  <div class="greeting" id="greeting"></div>
+  <h2>Admin Login</h2>
+  <form onsubmit="handleLogin(event)">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button class="login-btn" type="submit">Login</button>
+  </form>
+  <div class="social-login">
+    <button class="facebook">Facebook</button>
+    <button class="google">Google</button>
+    <button class="twitter">Twitter</button>
+  </div>
+  <a class="forgot" href="#">Forgot Password?</a>
+</div>
+
+<script>
+// Dynamic greeting based on current hour
+function setGreeting(){
+  const hour = new Date().getHours();
+  let greetingText = "Hello";
+  if(hour >= 5 && hour < 12) greetingText = "Good Morning!";
+  else if(hour >= 12 && hour < 17) greetingText = "Good Afternoon!";
+  else greetingText = "Good Evening!";
+  document.getElementById("greeting").textContent = greetingText;
+}
+setGreeting();
+
+// Login demo
+function handleLogin(event){
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if(username === "admin" && password === "admin123"){
+    alert("Login successful!");
+    window.location.href = "adminoffer.html";
+  } else {
+    alert("Invalid credentials.");
+  }
+}
+</script>
+
+</body>
+</html>
