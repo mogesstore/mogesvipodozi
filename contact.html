@@ -11,8 +11,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
-      // Public Key yako uliyotoa: 5YibMRUKMXnWuqebg
-      emailjs.init("5YibMRUKMXnWuqebg");
+      emailjs.init("5YibMRUKMXnWuqebg"); // Public Key yako
     })();
   </script>
 
@@ -108,7 +107,7 @@
       <h3>Tuandikie Ujumbe</h3>
       <p>
         <i class="fas fa-map-marker-alt"></i> 
-        <a href="https://www.google.com/maps/search/esso+Mbeya" target="_blank">Mwanjelwa - Mbeya, Tanzania</a>
+        <a href="https://www.google.com/maps/search/Mwanjelwa+Mbeya highway service station(banji esso ya zamani)+Tanzania" target="_blank">dukani kwetu - Mbeya, Tanzania</a>
       </p>
 
       <p><i class="fas fa-phone-alt"></i> <a href="tel:+255756019062">+255 756 019 062</a></p>
@@ -124,6 +123,8 @@
 
     <div class="contact-form">
       <form id="contactForm">
+        <input type="hidden" name="access_key" value="e11d30a6-f76d-4607-819f-d9c230265eb4">
+        
         <label>Jina Kamili</label>
         <input type="text" name="name" id="name" placeholder="Ingiza jina lako hapa..." required>
 
@@ -137,7 +138,7 @@
         <textarea name="message" id="message" rows="4" placeholder="Andika maswali au hitaji lako hapa..." required></textarea>
 
         <button type="submit" id="submitBtn">Tuma Ujumbe Sasa</button>
-        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umetumwa kwa mafanikio. Tutakujibu hivi punde.</p>
+        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umepokelewa. Angalia email yako kwa uthibitisho.</p>
       </form>
     </div>
   </section>
@@ -151,7 +152,7 @@
       <a href="#" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://wa.me/255756019062" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p class="copy-text">&copy; 2026 MOGES STORE | Mbeya - Tanzania</p>
+    <p class="copy-text">© 2026 MOGES STORE | Mbeya - Tanzania</p>
   </footer>
 
   <script>
@@ -159,35 +160,49 @@
     const successMsg = document.getElementById("successMsg");
     const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       
       submitBtn.innerText = "Inatuma... Tafadhali subiri";
       submitBtn.disabled = true;
       submitBtn.style.opacity = "0.7";
 
-      // Kutuma kupitia EmailJS ukitumia ID zako:
-      // Service ID: service_gf7vp3i
-      // Template ID: template_nltawnn
-      emailjs.sendForm('service_gf7vp3i', 'template_nltawnn', this)
-        .then(function() {
+      // 1. Tuma kwenda Web3Forms (Ili upate notification wewe)
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      try {
+        // Hii inatuma kwenda Web3Forms
+        const web3Response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: json
+        });
+
+        // 2. Tuma kwenda EmailJS (Ili mteja apate Auto-reply)
+        // Service ID: service_gf7vp3i, Template ID: template_nltawnn
+        await emailjs.sendForm('service_gf7vp3i', 'template_nltawnn', form);
+
+        if (web3Response.status === 200) {
           successMsg.style.display = "block";
           form.reset();
-          submitBtn.innerText = "Tuma Ujumbe Sasa";
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = "1";
-
-          setTimeout(() => {
-            successMsg.style.display = "none";
-          }, 8000);
-        }, function(error) {
-          alert("Imeshindikana! Error: " + error.text);
-          submitBtn.innerText = "Tuma Ujumbe Sasa";
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = "1";
-        });
+        } else {
+          alert("Kuna tatizo kidogo upande wa seva.");
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Imeshindikana kutuma. Angalia internet yako.");
+      } finally {
+        submitBtn.innerText = "Tuma Ujumbe Sasa";
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+        
+        setTimeout(() => {
+          successMsg.style.display = "none";
+        }, 10000);
+      }
     });
   </script>
 </body>
 </html>
-
