@@ -1,260 +1,136 @@
-
 <!DOCTYPE html>
-
 <html lang="sw">
-
 <head>
-
    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Kuhusu — Moges Vipodozi</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
-
     * {margin:0; padding:0; box-sizing:border-box;}
-
     body {
-
       font-family: 'Poppins', sans-serif;
-
       background: linear-gradient(135deg, #fff8f8, #ffe6f0);
-
       color: #333;
-
       line-height: 1.7;
-
     }
-
-
 
     /* ===== Header ===== */
-
     header {
-
       position: fixed;
-
       top: 0; left: 0;
-
       width: 100%;
-
       background-color: rgba(69, 245, 148, 0.95);
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       padding: 12px 20px;
-
       z-index: 100;
-
       backdrop-filter: blur(6px);
-
       flex-wrap: wrap;
-
     }
-
     .logo {
-
       display: flex;
-
       align-items: center;
-
       gap: 10px;
-
     }
-
     .logo img { height: 60px; width: 60px; border-radius: 50%; }
-
     .logo h1 { color: white; font-size: 1.3rem; letter-spacing: 1px; }
-
     .logo span { color: #ffe6f0; }
 
-
-
     nav {
-
       display: flex;
-
       gap: 15px;
-
       flex-wrap: wrap;
-
     }
-
     nav a {
-
       color: white;
-
       text-decoration: none;
-
       font-weight: 500;
-
       transition: color 0.3s ease;
-
       font-size: 0.95rem;
-
     }
-
     nav a:hover { color: #ffeff3; }
 
-
-
     /* ===== Hero ===== */
-
     .hero {
-
       margin-top: 90px;
-
       background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-
         url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg');
-
       background-size: cover;
-
       background-position: center;
-
       height: 55vh;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       text-align: center;
-
       color: white;
-
       border-radius: 0 0 30px 30px;
-
     }
-
     .hero-content {
-
       max-width: 700px;
-
       padding: 20px;
-
     }
-
     .hero h2 {
-
       font-size: 2.3rem;
-
       margin-bottom: 15px;
-
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-
     }
-
-
 
     /* ===== Main ===== */
-
     .container {
-
       max-width: 1000px;
-
       margin: 60px auto;
-
       background: white;
-
       border-radius: 20px;
-
       padding: 40px 30px;
-
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
     }
-
     h3.section-title {
-
       color: #e91e63;
-
       font-size: 1.5rem;
-
       margin-bottom: 15px;
-
       border-left: 4px solid #ff80ab;
-
       padding-left: 10px;
-
     }
-
     .about-grid {
-
       display: grid;
-
       grid-template-columns: 1fr 1fr;
-
       gap: 30px;
-
       align-items: center;
-
     }
-
     .about-grid img {
-
       width: 100%;
-
       border-radius: 20px;
-
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-
     }
-
-
 
     .values {
-
       margin-top: 40px;
-
       display: grid;
-
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-
       gap: 20px;
-
     }
-
     .value-card {
-
       background-color: #ffeef5;
-
       padding: 25px;
-
       border-radius: 20px;
-
       text-align: center;
-
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
       transition: transform 0.2s;
-
     }
-
     .value-card:hover { transform: translateY(-5px); }
-
     .value-card h4 { color: #00c2b8; margin-bottom: 8px; }
 
-
-
-     footer {
+    footer {
       background: linear-gradient(90deg, #1b5e20, #2e7d32);
       padding: 45px 20px;
       margin-top: 60px;
-      border-top: 3px solid var(--gold);
+      border-top: 3px solid #bfa14a;
       color: white;
+      text-align: center;
     }
 
     .social-grid {
@@ -265,7 +141,7 @@
       margin-bottom: 25px;
     }
 
-    .social-grid a { font-size: 2.2rem; transition: 0.3s; }
+    .social-grid a { font-size: 2.2rem; transition: 0.3s; text-decoration: none; }
     .fa-x-twitter { color: #ffffff; }
     .fa-facebook { color: #ffffff; }
     .fa-tiktok { color: #ffffff; }
@@ -273,230 +149,110 @@
     .fa-youtube { color: #FF0000; }
     .fa-whatsapp { color: #25D366; }
 
-    .social-grid a:hover { transform: scale(1.2); color: var(--gold); }
+    .social-grid a:hover { transform: scale(1.2); }
 
-    .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.8rem; }
-      header { padding: 10px; }
-      nav { gap: 10px; }
-      .unit { min-width: 65px; padding: 10px 5px; }
-    }
-
-
+    .copy-text { font-size: 0.85rem; font-weight: 600; color: #bfa14a; }
 
     /* ===== Responsive Design ===== */
-
     @media (max-width: 900px) {
-
       .hero h2 { font-size: 2rem; }
-
       .about-grid { grid-template-columns: 1fr; }
-
       .container { margin: 40px 15px; padding: 25px; }
-
       nav { justify-content: center; margin-top: 8px; }
-
       nav a { font-size: 0.9rem; }
-
       .logo img { height: 55px; width: 55px; }
-
       .hero { height: 45vh; border-radius: 0 0 20px 20px; }
-
     }
-
-
 
     @media (max-width: 600px) {
-
       header { flex-direction: column; align-items: center; padding: 10px; }
-
       .hero-content { padding: 10px; }
-
       .hero h2 { font-size: 1.6rem; }
-
       p { font-size: 0.95rem; }
-
       .values { grid-template-columns: 1fr 1fr; }
-
       .value-card { padding: 15px; font-size: 0.9rem; }
-
       nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
-
     }
-
-
 
     @media (max-width: 400px) {
-
       nav a { font-size: 0.85rem; }
-
       .hero h2 { font-size: 1.4rem; }
-
       .values { grid-template-columns: 1fr; }
-
     }
-
   </style>
-
 </head>
 
-
-
 <body>
-
   <header>
-
     <div class="logo">
-
       <img src="logo.png.png" alt="logo">
-
       <h1>MOGES <span>VIPODOZI</span></h1>
-
     </div>
-
     <nav>
-
       <a href="index.html">Nyumbani</a>
-
       <a href="comingsoon.html">Bidhaa</a>
-
       <a href="comingsoon.html">Ofa</a>
-
       <a href="about.html">Kuhusu</a>
-
       <a href="contact.html">Wasiliana</a>
-
     </nav>
-
   </header>
 
-
-
   <section class="hero">
-
     <div class="hero-content">
-
       <h2>Kuhusu Moges Vipodozi</h2>
-
       <p>Tunakuleta ulimwengu wa urembo kwa spidi ya teknolojia. Ubora, mwonekano, na thamani ndizo tunazoishi nazo.</p>
-
     </div>
-
   </section>
-
-
 
   <section class="container">
-
     <div class="about-grid">
-
       <img src="https://img.freepik.com/premium-photo/beauty-products-pink-table_1048944-18026106.jpg" alt="Moges Store">
-
       <div>
-
         <h3 class="section-title">Historia Yetu</h3>
-
         <p>
-
           <strong>MOGES(Mori General Supplier) VIPODOZI</strong> ni duka la kisasa la urembo linalotoa bidhaa bora kutoka ndani na nje ya nchi.
-
           Tumejikita katika kuhakikisha kila mteja anapata bidhaa halisi, salama, na zenye matokeo halisi.
-
         </p>
-
         <p>
-
           Lengo letu ni kufanya ununuzi wa bidhaa za urembo kuwa rahisi, wa haraka na wa kuaminika —
-
           ukiwa nyumbani, ofisini au hata safarini, bidhaa zako tunakuletea kwa spidi ya teknolojia.
-
         </p>
-
       </div>
-
     </div>
-
-
 
     <div style="margin-top:40px;">
-
       <h3 class="section-title">Dhamira Yetu</h3>
-
-      <p>
-
-        Kuleta furaha, urembo na ujasiri kwa kila mteja kupitia bidhaa za ubora wa juu na huduma bora.
-
-      </p>
-
+      <p>Kuleta furaha, urembo na ujasiri kwa kila mteja kupitia bidhaa za ubora wa juu na huduma bora.</p>
     </div>
-
-
 
     <div style="margin-top:30px;">
-
       <h3 class="section-title">Maono Yetu</h3>
-
-      <p>
-
-        Kuwa duka namba moja Tanzania katika sekta ya vipodozi na urembo,
-
-        likijulikana kwa ubunifu, uwazi, na huduma ya haraka.
-
-      </p>
-
+      <p>Kuwa duka namba moja Tanzania katika sekta ya vipodozi na urembo, likijulikana kwa ubunifu, uwazi, na huduma ya haraka.</p>
     </div>
-
-
 
     <div class="values">
-
       <div class="value-card"><h4>Ubora</h4><p>Bidhaa zetu zote ni halisi na zenye viwango vya kimataifa.</p></div>
-
       <div class="value-card"><h4>Huduma Bora</h4><p>Tunathamini kila mteja kama sehemu ya familia ya Moges.</p></div>
-
       <div class="value-card"><h4>Uaminifu</h4><p>Tunaamini biashara nzuri hujengwa kwa uaminifu na uwazi.</p></div>
-
       <div class="value-card"><h4>Ubunifu</h4><p>Tunatumia teknolojia ya kisasa kuongeza urahisi na kasi ya huduma.</p></div>
-
       <div class="value-card"><h4>Thamani</h4><p>Tunatoa bidhaa bora kwa bei rafiki na ofa za kuvutia kila mwezi.</p></div>
-
       <div class="value-card"><h4>Urembo wa Asili</h4><p>Tunakuza bidhaa zinazolinda ngozi na mwili bila madhara.</p></div>
-
       <div class="value-card"><h4>Upendo</h4><p>Tunajali muonekano wako kwa dhati, si biashara tu.</p></div>
-
       <div class="value-card"><h4>Haraka</h4><p>Huduma zetu ni za spidi ya teknolojia — unachotaka, papo hapo.</p></div>
-
     </div>
-
   </section>
 
-
-
- <footer>
+  <footer>
     <div style="margin-bottom: 20px; font-weight: bold; letter-spacing: 1px;">TUFUATILIE MITANDAONI</div>
     <div class="social-grid">
-      <div class="social-grid">
-  <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
-  <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
-  <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
-  <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
-  <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
+      <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
     <p class="copy-text">&copy; 2026 MOGES STORE | Chaguo Namba Moja</p>
   </footer>
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
