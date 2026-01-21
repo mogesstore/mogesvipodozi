@@ -123,5 +123,121 @@
     "item_name": "YARA PERFUME",
     "price": 1500,
     "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "DUDU SOAP",
+    "price": 8500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51BqC8P53LL._SL1000_.jpg"
+  },
+  {
+    "item_name": "EGG SHAMPOO",
+    "price": 2000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71YvR04L68L._SL1500_.jpg"
+  },
+  {
+    "item_name": "FAMILIA MAFUTA",
+    "price": 5000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71y+vX1nU5L._SL1500_.jpg"
+  },
+  {
+    "item_name": "FAIR AND WHITE SERUM",
+    "price": 15000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61e089XpYmL._SL1500_.jpg"
+  },
+  {
+    "item_name": "GLYCERIN PURE",
+    "price": 3500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51p1I63vXHL._SL1000_.jpg"
+  },
+  {
+    "item_name": "HAWAIIAN SILK",
+    "price": 12000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61vY4Jm6-xL._SL1000_.jpg"
+  },
+  {
+    "item_name": "JOHNSON BABY OIL",
+    "price": 8000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71f-B8l63eL._SL1500_.jpg"
+  },
+  {
+    "item_name": "KOJIC SOAP",
+    "price": 5000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61S7p6rW1ML._SL1000_.jpg"
+  },
+  {
+    "item_name": "LURE PERFUME",
+    "price": 25000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51mXvU8iWHL._SL1000_.jpg"
+  },
+  {
+    "item_name": "MARY KAJAL",
+    "price": 1500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61-mS5k+4pL._SL1000_.jpg"
+  },
+  {
+    "item_name": "MOVATE CREAM",
+    "price": 3000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71lD2W79x0L._SL1500_.jpg"
+  },
+  {
+    "item_name": "NIVEA BODY CREAM",
+    "price": 1500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71y+vX1nU5L._SL1500_.jpg"
+  },
+  {
+    "item_name": "OMO 1KG",
+    "price": 1000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X8k8QG-2L._SL1500_.jpg"
+  },
+  {
+    "item_name": "OLD SPICE DEO",
+    "price": 12000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/81xG2U-X-ML._SL1500_.jpg"
+  },
+  {
+    "item_name": "PEARL DROPS",
+    "price": 15000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61-mS5k+4pL._SL1000_.jpg"
+  },
+  {
+    "item_name": "POND'S POWDER",
+    "price": 7000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61S7p6rW1ML._SL1000_.jpg"
+  },
+  {
+    "item_name": "SENSODYNE REPAIR",
+    "price": 9000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/81+G7vInBGL._SL1500_.jpg"
+  },
+  {
+    "item_name": "ST IVES SCRUB",
+    "price": 15000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X-O0-O-pL._SL1500_.jpg"
+  },
+  {
+    "item_name": "SOFTCARE WIPES",
+    "price": 800,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X-O0-O-pL._SL1500_.jpg"
+  },
+  {
+    "item_name": "VIVA WHITE",
+    "price": 2500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71lD2W79x0L._SL1500_.jpg"
+  },
+  {
+    "item_name": "WHITE DENT",
+    "price": 1000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61-mS5k+4pL._SL1000_.jpg"
+  },
+  {
+    "item_name": "YARA PERFUME",
+    "price": 1500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51mXvU8iWHL._SL1000_.jpg"
+  },
+  {
+    "item_name": "ZARA PERFUME",
+    "price": 45000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51mXvU8iWHL._SL1000_.jpg"
   }
 ]
+
