@@ -1,1 +1,52 @@
-
+[
+  {
+    "item_name": "Luxury Leather Tote Bag",
+    "price": 85000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71rI9f7BfSL._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Designer Crossbody Bag",
+    "price": 45000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71e-36j47yL._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Michael Kors Style Satchel",
+    "price": 120000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/81pP6B6+vKL._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Classic Evening Clutch",
+    "price": 35000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X8k8QG-2L._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Shoulder Hobo Bag",
+    "price": 55000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71S-57A1JzL._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Leather Backpack Purse",
+    "price": 65000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71u9zV6K3NL._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Small Chain Square Bag",
+    "price": 25000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61m9f1U6v0L._AC_SL1000_.jpg"
+  },
+  {
+    "item_name": "Oversized Canvas Tote",
+    "price": 30000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71U7BvP6VYL._AC_SL1500_.jpg"
+  },
+  {
+    "item_name": "Elegant Office Handbag",
+    "price": 95000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61vY4Jm6-xL._AC_SL1000_.jpg"
+  },
+  {
+    "item_name": "Vintage Suede Bag",
+    "price": 50000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71y+vX1nU5L._AC_SL1500_.jpg"
+  }
+]
