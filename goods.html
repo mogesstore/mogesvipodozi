@@ -1,176 +1,294 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duka Langu la Bidhaa</title>
-    <style>
-        /* MITINDO YA JUMLA (CSS) */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moges vipodozi</title>
+  <style>
+    :root {
+      --pink: #e91e63;
+      --gold: #bfa14a;
+      --dark: #1a1a1a;
+      --white: #ffffff;
+      --transparent: rgba(255,255,255,0.15);
+    }
 
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--dark);
+      color: var(--white);
+    }
 
-        /* Muundo wa Filter Buttons */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-            flex-wrap: wrap; /* Muhimu kwa simu */
-            position: sticky;
-            top: 0;
-            background: #f4f4f9;
-            z-index: 100;
-        }
+    header {
+      padding: 15px 20px;
+      background: var(--transparent);
+      display: flex;
+      flex-direction: column; /* Ili vitu vijipange chini kwa chini kwenye simu */
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
 
-        .filter-btn {
-            padding: 12px 25px;
-            border: none;
-            background-color: #ffffff;
-            color: #2c3e50;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
 
-        .filter-btn.active {
-            background-color: #3498db;
-            color: white;
-        }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        /* Muundo wa Grid ya Bidhaa */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-            padding: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .logo img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+    }
 
-        /* Kadi ya Bidhaa Moja Moja */
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
+    /* FILTER STYLES */
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      justify-content: center;
+    }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
+    .filter-btn {
+      background: var(--transparent);
+      border: 1px solid var(--gold);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
 
-        .product-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+    .filter-btn.active {
+      background: var(--pink);
+      border-color: var(--pink);
+    }
 
-        .product-card h4 {
-            font-size: 0.95rem;
-            margin: 10px 0;
-            color: #333;
-            height: 40px;
-            overflow: hidden;
-        }
+    .search-bar { width: 100%; display: flex; justify-content: center; }
 
-        .product-card .price {
-            color: #e67e22;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+    .search-bar input {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px 15px;
+      border-radius: 30px;
+      border: 1px solid var(--gold);
+      background: var(--transparent);
+      color: var(--white);
+      outline: none;
+      transition: all 0.3s ease;
+      margin-bottom: 10px;
+    }
 
-        /* Kwa ajili ya Screen ndogo sana (Simu) */
-        @media (max-width: 480px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr); /* Inaonyesha bidhaa mbili pembeni */
-                gap: 10px;
-                padding: 10px;
-            }
-            .filter-btn {
-                padding: 8px 15px;
-                font-size: 14px;
-            }
-        }
-    </style>
+    .search-bar input:focus { 
+      border-color: var(--pink);
+      box-shadow: 0 0 10px var(--pink);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover { color: var(--pink); }
+
+    main { padding: 15px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid var(--gold);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+
+    .card img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+
+    .card-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-body h3 {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      color: var(--white);
+    }
+
+    .price {
+      font-weight: bold;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .whatsapp-btn {
+      margin-top: auto;
+      padding: 8px 12px;
+      background: var(--pink);
+      color: var(--white);
+      text-decoration: none;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    @media(max-width:768px){
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .logo img { height: 45px; width: 45px; }
+      .filter-btn { padding: 6px 12px; font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>DUKA LA BIDHAA</h1>
+  <div class="top-bar">
+    <div class="logo">
+      <img src="logo.png.png" alt="logo"> Moges Store
+    </div>
+    <nav>
+      <a href="index.html">Nyumbani</a>
+      <a href="goods.html">Bidhaa</a>
+      <a href="contact.html">Wasiliana</a>
+    </nav>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="filter-btn active" onclick="fetchData('data.json', this)">All</button>
+    <button class="filter-btn" onclick="fetchData('data2.json', this)">Pochi Tu</button>
+    <button class="filter-btn" onclick="fetchData('data3.json', this)">Vipodozi</button>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Tafuta kwenye kundi hili...">
+  </div>
 </header>
 
-<div class="filter-container">
-    <button class="filter-btn active" onclick="loadData('data.json', this)">All</button>
-    <button class="filter-btn" onclick="loadData('data2.json', this)">Pochi Tu</button>
-    <button class="filter-btn" onclick="loadData('data3.json', this)">Vipodozi</button>
-</div>
-
-<div id="product-display" class="product-grid">
-    </div>
+<main>
+  <div class="grid" id="productGrid"></div>
+  <div id="noResults" class="no-results" style="display:none; text-align:center; padding:20px;">Hakuna bidhaa zinazolingana.</div>
+</main>
 
 <script>
-    // JAVASCRIPT YA KUVUTA DATA
-    async function loadData(fileName, element) {
-        const display = document.getElementById('product-display');
-        
-        // 1. Rekebisha muonekano wa button iliyobonyezwa
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
+let currentProducts = [];
 
-        // 2. Onyesha loading message
-        display.innerHTML = "<p style='text-align:center; width:100%;'>Inapakia bidhaa, tafadhali subiria...</p>";
+function highlight(text, query){
+  if(!query) return text;
+  const regex = new RegExp(`(${query})`, "gi");
+  return text.replace(regex, "<mark>$1</mark>");
+}
 
-        try {
-            // 3. Vuta data kutoka kwenye file husika
-            const response = await fetch(fileName);
-            if (!response.ok) throw new Error("File halijapatikana");
-            
-            const data = await response.json();
+function renderProducts(list, query=""){
+  const grid = document.getElementById("productGrid");
+  const noResults = document.getElementById("noResults");
+  grid.innerHTML = "";
+  
+  if(!list || !list.length){ 
+    noResults.style.display="block"; 
+    return; 
+  }
+  
+  noResults.style.display="none";
+  
+  list.forEach(p=>{
+    const name = p.item_name || p.name || "BIDHAA";
+    // Tumia proxy kuzuia picha giza
+    const imageUrl = p.image.includes('weserv.nl') ? p.image : `https://images.weserv.nl/?url=${p.image}`;
+    
+    const card = document.createElement("div");
+    card.className="card";
+    card.innerHTML = `
+      <img src="${imageUrl}" alt="${name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      <div class="card-body">
+        <h3>${highlight(name, query)}</h3>
+        <p class="price">TZS ${p.price.toLocaleString()}</p>
+        <a class="whatsapp-btn" href="https://wa.me/255756019062?text=Hello%20Moges%20Store%2C%20naomba%20kuagiza%20${encodeURIComponent(name)}%20kwa%20bei%20ya%20TZS%20${p.price}" target="_blank">Agiza WhatsApp</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
 
-            // 4. Safisha eneo la kuonyeshea bidhaa
-            display.innerHTML = "";
+function fetchData(fileName, btnElement) {
+  // Badilisha rangi ya button
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  if(btnElement) btnElement.classList.add('active');
 
-            // 5. Tengeneza HTML kwa kila bidhaa
-            data.forEach(item => {
-                // Tunatumia Image Proxy (weserv.nl) ili picha zifunguke bila kukataa
-                const secureImg = `https://images.weserv.nl/?url=${item.image}`;
-                
-                display.innerHTML += `
-                    <div class="product-card">
-                        <img src="${secureImg}" alt="${item.item_name}" loading="lazy">
-                        <h4>${item.item_name}</h4>
-                        <div class="price">Tsh ${item.price.toLocaleString()}</div>
-                    </div>
-                `;
-            });
-        } catch (error) {
-            display.innerHTML = `<p style='color:red; text-align:center; width:100%;'>Hitilafu: Hakikisha file la <b>${fileName}</b> lipo kwenye folder moja na hii code.</p>`;
-            console.error(error);
-        }
-    }
+  fetch(fileName)
+    .then(res => res.json())
+    .then(json => {
+      currentProducts = json;
+      renderProducts(json);
+      document.getElementById("searchInput").value = ""; // Safisha search unapochange file
+    })
+    .catch(err => {
+      console.error("Kushindwa kupakia data:", err);
+      document.getElementById("productGrid").innerHTML = "";
+      document.getElementById("noResults").style.display = "block";
+      document.getElementById("noResults").innerText = "File la " + fileName + " halijapatikana.";
+    });
+}
 
-    // Pakia data za mwanzo (data.json) ukurasa ukifunguka kwa mara ya kwanza
-    window.onload = () => {
-        loadData('data.json', document.querySelector('.filter-btn'));
-    };
+// Search event
+document.getElementById("searchInput").addEventListener("input", e=>{
+  const query = e.target.value.toLowerCase().trim();
+  const filtered = currentProducts.filter(p => ((p.item_name||p.name||"").toLowerCase().includes(query)));
+  renderProducts(filtered, query);
+});
+
+// Pakia data ya kwanza (All) ukurasa ukifunguka
+window.onload = () => {
+  fetchData('data.json', document.querySelector('.filter-btn'));
+};
 </script>
-
 </body>
 </html>
