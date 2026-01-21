@@ -1,136 +1,470 @@
 <!DOCTYPE html>
+
 <html lang="sw">
+
 <head>
+
+   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOGES VIPODOZI | Urembo wenye kasi zaidi kwa ngozi yako</title>
-  https://github.com/mogesstore/mogesvipodozi/edit/main/index.html#L94C23
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+  <title>Kuhusu — Moges Vipodozi</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
+
+
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body{font-family:'Poppins',sans-serif;background:#f5f5f5;color:#333;line-height:1.6;}
 
-    header{position:fixed;top:0;left:0;width:100%;background:rgba(9,241,113,0.288);display:flex;justify-content:space-between;align-items:center;padding:10px 25px;z-index:100;backdrop-filter:blur(6px);}
-    .logo{display:flex;align-items:center;gap:5px;}
-    .logo img{height:80px;width:80px;border-radius:50%;}
-    .logo h1{color:white;font-size:1.2rem;letter-spacing:1px;}
-    .logo span{color:#eaf5f0;}
-    nav{display:flex;gap:15px;}
-    nav a{color:white;text-decoration:none;font-weight:500;transition:color 0.3s;}
-    nav a:hover{color:#00e676;}
-    .menu-toggle{display:none;flex-direction:column;cursor:pointer;}
-    .menu-toggle span{background:white;height:3px;width:25px;margin:4px 0;border-radius:3px;transition:all 0.3s;}
+    * {margin:0; padding:0; box-sizing:border-box;}
 
-    .hero{background-image:url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg');background-size:cover;background-position:center;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:20px;position:relative;}
-    .hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.55);}
-    .hero-content{position:relative;z-index:2;max-width:650px;}
-    .hero h2{font-size:2.8rem;margin-bottom:15px;animation:fadeInDown 1.2s ease;}
-    .hero p{font-size:1.1rem;margin-bottom:25px;animation:fadeInUp 1.3s ease;}
-    .btn-primary{background-color:#00e676;color:#004d40;padding:12px 30px;border-radius:25px;text-decoration:none;font-weight:bold;transition:background 0.3s,transform 0.3s;}
-    .btn-primary:hover{background-color:#b2ff59;transform:scale(1.05);}
+    body {
 
-    .live-stats{margin-top:25px;text-align:center;display:inline-block;background:rgba(0,0,0,0.5);padding:20px 30px;border-radius:30px;color:#00e676;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.3);max-width:700px;line-height:1.5;}
-    .live-stats span{color:#ffeb3b;font-size:1.4rem;}
-    
-    .quick-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;padding:50px 20px;background:#fff;text-align:center;}
-    .quick-links a{background-color:#e0f2f1;padding:25px 10px;border-radius:20px;color:#004d40;font-weight:600;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:transform 0.2s,background 0.3s;}
-    .quick-links a:hover{background-color:#b2dfdb;transform:scale(1.05);}
-    
-    footer{text-align:center;background-color:#004d40;color:white;padding:20px;font-size:0.9rem;}
+      font-family: 'Poppins', sans-serif;
 
-    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+      background: linear-gradient(135deg, #fff8f8, #ffe6f0);
 
-    @media(max-width:768px){nav{display:none;flex-direction:column;position:absolute;top:70px;right:20px;background:rgba(0,77,64,0.9);padding:15px;border-radius:10px;}nav.active{display:flex;}.menu-toggle{display:flex;}.hero h2{font-size:1.9rem;}.hero p{font-size:1rem;}}
-    @media(max-width:480px){.hero{height:90vh;}.logo img{height:60px;width:60px;}.live-stats span{font-size:1rem;}}
+      color: #333;
+
+      line-height: 1.7;
+
+    }
+
+
+
+    /* ===== Header ===== */
+
+    header {
+
+      position: fixed;
+
+      top: 0; left: 0;
+
+      width: 100%;
+
+      background-color: rgba(69, 245, 148, 0.95);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 12px 20px;
+
+      z-index: 100;
+
+      backdrop-filter: blur(6px);
+
+      flex-wrap: wrap;
+
+    }
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+    }
+
+    .logo img { height: 60px; width: 60px; border-radius: 50%; }
+
+    .logo h1 { color: white; font-size: 1.3rem; letter-spacing: 1px; }
+
+    .logo span { color: #ffe6f0; }
+
+
+
+    nav {
+
+      display: flex;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+    }
+
+    nav a {
+
+      color: white;
+
+      text-decoration: none;
+
+      font-weight: 500;
+
+      transition: color 0.3s ease;
+
+      font-size: 0.95rem;
+
+    }
+
+    nav a:hover { color: #ffeff3; }
+
+
+
+    /* ===== Hero ===== */
+
+    .hero {
+
+      margin-top: 90px;
+
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+
+        url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg');
+
+      background-size: cover;
+
+      background-position: center;
+
+      height: 55vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      color: white;
+
+      border-radius: 0 0 30px 30px;
+
+    }
+
+    .hero-content {
+
+      max-width: 700px;
+
+      padding: 20px;
+
+    }
+
+    .hero h2 {
+
+      font-size: 2.3rem;
+
+      margin-bottom: 15px;
+
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+
+    }
+
+
+
+    /* ===== Main ===== */
+
+    .container {
+
+      max-width: 1000px;
+
+      margin: 60px auto;
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 40px 30px;
+
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+    }
+
+    h3.section-title {
+
+      color: #e91e63;
+
+      font-size: 1.5rem;
+
+      margin-bottom: 15px;
+
+      border-left: 4px solid #ff80ab;
+
+      padding-left: 10px;
+
+    }
+
+    .about-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 30px;
+
+      align-items: center;
+
+    }
+
+    .about-grid img {
+
+      width: 100%;
+
+      border-radius: 20px;
+
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+
+    }
+
+
+
+    .values {
+
+      margin-top: 40px;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+      gap: 20px;
+
+    }
+
+    .value-card {
+
+      background-color: #ffeef5;
+
+      padding: 25px;
+
+      border-radius: 20px;
+
+      text-align: center;
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+      transition: transform 0.2s;
+
+    }
+
+    .value-card:hover { transform: translateY(-5px); }
+
+    .value-card h4 { color: #00c2b8; margin-bottom: 8px; }
+
+
+
+    footer {
+
+      text-align: center;
+
+      background-color: #1ee984a8;
+
+      color: white;
+
+      padding: 20px;
+
+      font-size: 0.9rem;
+
+      margin-top: 40px;
+
+    }
+
+
+
+    /* ===== Responsive Design ===== */
+
+    @media (max-width: 900px) {
+
+      .hero h2 { font-size: 2rem; }
+
+      .about-grid { grid-template-columns: 1fr; }
+
+      .container { margin: 40px 15px; padding: 25px; }
+
+      nav { justify-content: center; margin-top: 8px; }
+
+      nav a { font-size: 0.9rem; }
+
+      .logo img { height: 55px; width: 55px; }
+
+      .hero { height: 45vh; border-radius: 0 0 20px 20px; }
+
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      header { flex-direction: column; align-items: center; padding: 10px; }
+
+      .hero-content { padding: 10px; }
+
+      .hero h2 { font-size: 1.6rem; }
+
+      p { font-size: 0.95rem; }
+
+      .values { grid-template-columns: 1fr 1fr; }
+
+      .value-card { padding: 15px; font-size: 0.9rem; }
+
+      nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    }
+
+
+
+    @media (max-width: 400px) {
+
+      nav a { font-size: 0.85rem; }
+
+      .hero h2 { font-size: 1.4rem; }
+
+      .values { grid-template-columns: 1fr; }
+
+    }
+
   </style>
+
 </head>
+
+
+
 <body>
 
   <header>
+
     <div class="logo">
+
       <img src="logo.png.png" alt="logo">
+
       <h1>MOGES <span>VIPODOZI</span></h1>
+
     </div>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
-    </div>
-    <nav id="nav">
+
+    <nav>
+
       <a href="index.html">Nyumbani</a>
-      <a href="about.html">Kuhusu</a>
-      <a href="goods.html">Bidhaa Zetu</a>
+
+      <a href="comingsoon.html">Bidhaa</a>
+
       <a href="comingsoon.html">Ofa</a>
+
+      <a href="about.html">Kuhusu</a>
+
       <a href="contact.html">Wasiliana</a>
-      <a href="adminlogin.html">Admin</a>
+
     </nav>
+
   </header>
 
+
+
   <section class="hero">
+
     <div class="hero-content">
-      <h2>Karibu MOGES VIPODOZI</h2>
-      <p>Urembo na muonekano wako ni kipaumbele chetu. Pata vipodozi, mafuta, sabuni na marashi ya kipekee — tunaleta mwonekano wa kisasa kwa bei nafuu.</p>
-      <a href="comingsoon.html" class="btn-primary">Angalia Bidhaa Zetu</a>
 
-      <div class="live-stats">
-        <div class="time-since-start">
-          
-          <span id="days">0</span> siku, 
-          <span id="hours">0</span> saa, 
-          <span id="minutes">0</span> dakika, 
-          <span id="seconds">0</span> sekunde. ⏳
-          <p>zimetumika kuujenga urembo wako na muonekano wako uwe wa kisasa na kipekee <P>
-            <P>na bado tunazidi kukufanya<p>
-            <h1><STRONG>UNASHINE<STRONG></h1>
-        </div>
-        
-      </div>
+      <h2>Kuhusu Moges Vipodozi</h2>
+
+      <p>Tunakuleta ulimwengu wa urembo kwa spidi ya teknolojia. Ubora, mwonekano, na thamani ndizo tunazoishi nazo.</p>
+
     </div>
+
   </section>
 
-  <section class="quick-links">
-    <a href="index.html">🏠 Nyumbani</a>
-    <a href="comingsoon.html">🛍️ Bidhaa</a>
-    <a href="comingsoon.html">💸 Ofa Maalum</a>
-    <a href="contact.html">📞 Wasiliana Nasi</a>
-    <a href="about.html">ℹ️ Kuhusu Sisi</a>
+
+
+  <section class="container">
+
+    <div class="about-grid">
+
+      <img src="https://img.freepik.com/premium-photo/beauty-products-pink-table_1048944-18026106.jpg" alt="Moges Store">
+
+      <div>
+
+        <h3 class="section-title">Historia Yetu</h3>
+
+        <p>
+
+          <strong>MOGES(Mori General Supplier) VIPODOZI</strong> ni duka la kisasa la urembo linalotoa bidhaa bora kutoka ndani na nje ya nchi.
+
+          Tumejikita katika kuhakikisha kila mteja anapata bidhaa halisi, salama, na zenye matokeo halisi.
+
+        </p>
+
+        <p>
+
+          Lengo letu ni kufanya ununuzi wa bidhaa za urembo kuwa rahisi, wa haraka na wa kuaminika —
+
+          ukiwa nyumbani, ofisini au hata safarini, bidhaa zako tunakuletea kwa spidi ya teknolojia.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div style="margin-top:40px;">
+
+      <h3 class="section-title">Dhamira Yetu</h3>
+
+      <p>
+
+        Kuleta furaha, urembo na ujasiri kwa kila mteja kupitia bidhaa za ubora wa juu na huduma bora.
+
+      </p>
+
+    </div>
+
+
+
+    <div style="margin-top:30px;">
+
+      <h3 class="section-title">Maono Yetu</h3>
+
+      <p>
+
+        Kuwa duka namba moja Tanzania katika sekta ya vipodozi na urembo,
+
+        likijulikana kwa ubunifu, uwazi, na huduma ya haraka.
+
+      </p>
+
+    </div>
+
+
+
+    <div class="values">
+
+      <div class="value-card"><h4>Ubora</h4><p>Bidhaa zetu zote ni halisi na zenye viwango vya kimataifa.</p></div>
+
+      <div class="value-card"><h4>Huduma Bora</h4><p>Tunathamini kila mteja kama sehemu ya familia ya Moges.</p></div>
+
+      <div class="value-card"><h4>Uaminifu</h4><p>Tunaamini biashara nzuri hujengwa kwa uaminifu na uwazi.</p></div>
+
+      <div class="value-card"><h4>Ubunifu</h4><p>Tunatumia teknolojia ya kisasa kuongeza urahisi na kasi ya huduma.</p></div>
+
+      <div class="value-card"><h4>Thamani</h4><p>Tunatoa bidhaa bora kwa bei rafiki na ofa za kuvutia kila mwezi.</p></div>
+
+      <div class="value-card"><h4>Urembo wa Asili</h4><p>Tunakuza bidhaa zinazolinda ngozi na mwili bila madhara.</p></div>
+
+      <div class="value-card"><h4>Upendo</h4><p>Tunajali muonekano wako kwa dhati, si biashara tu.</p></div>
+
+      <div class="value-card"><h4>Haraka</h4><p>Huduma zetu ni za spidi ya teknolojia — unachotaka, papo hapo.</p></div>
+
+    </div>
+
   </section>
+
+
 
   <footer>
-    <p>© 2025 MOGES STORE | Vipodozi vya Kisasa kwa Bei Nafuu</p>
+
+    <p>© 2025 MOGES STORE | Vipodozi vya Kisasa kwa Bei Nafuu</p> 
+
   </footer>
 
-<script>
-const menuToggle = document.getElementById('menu-toggle');
-const nav = document.getElementById('nav');
-menuToggle.addEventListener('click',()=>{nav.classList.toggle('active');menuToggle.classList.toggle('open');});
-
-// Live time since start
-const startDate = new Date('2025-01-01T00:00:00');
-const daysEl = document.getElementById('days');
-const hoursEl = document.getElementById('hours');
-const minutesEl = document.getElementById('minutes');
-const secondsEl = document.getElementById('seconds');
-
-function updateTime(){
-  const now = new Date();
-  const diffMs = now - startDate;
-  const days = Math.floor(diffMs / (1000*60*60*24));
-  const hours = Math.floor((diffMs % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((diffMs % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((diffMs % (1000*60)) / 1000);
-  daysEl.textContent = days;
-  hoursEl.textContent = hours;
-  minutesEl.textContent = minutes;
-  secondsEl.textContent = seconds;
-}
-setInterval(updateTime,1000);
-updateTime();
-</script>
-
 </body>
+
 </html>
+
+
 
 
 
