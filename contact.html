@@ -11,7 +11,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
-      // Public Key yako uliyotoa
+      // Public Key yako uliyotoa: 5YibMRUKMXnWuqebg
       emailjs.init("5YibMRUKMXnWuqebg");
     })();
   </script>
@@ -106,7 +106,11 @@
   <section class="contact-container">
     <div class="contact-info">
       <h3>Tuandikie Ujumbe</h3>
-      <p><i class="fas fa-map-marker-alt"></i> Mbeya, Tanzania</p>
+      <p>
+        <i class="fas fa-map-marker-alt"></i> 
+        <a href="https://www.google.com/maps/search/Mwanjelwa+Mbeya" target="_blank">Mwanjelwa - Mbeya, Tanzania</a>
+      </p>
+
       <p><i class="fas fa-phone-alt"></i> <a href="tel:+255756019062">+255 756 019 062</a></p>
       <p><i class="fas fa-envelope"></i> <a href="mailto:mogesstore@gmail.com">mogesstore@gmail.com</a></p>
       <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255756019062" target="_blank">Chat na Sisi WhatsApp</a></p>
@@ -133,7 +137,7 @@
         <textarea name="message" id="message" rows="4" placeholder="Andika maswali au hitaji lako hapa..." required></textarea>
 
         <button type="submit" id="submitBtn">Tuma Ujumbe Sasa</button>
-        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umetumwa kwa mafanikio kupitia EmailJS. Tutakujibu hivi punde.</p>
+        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umetumwa kwa mafanikio. Tutakujibu hivi punde.</p>
       </form>
     </div>
   </section>
@@ -162,7 +166,9 @@
       submitBtn.disabled = true;
       submitBtn.style.opacity = "0.7";
 
-      // Kutuma kupitia EmailJS ukitumia ID zako
+      // Kutuma kupitia EmailJS ukitumia ID zako:
+      // Service ID: service_gf7vp3i
+      // Template ID: template_nltawnn
       emailjs.sendForm('service_gf7vp3i', 'template_nltawnn', this)
         .then(function() {
           successMsg.style.display = "block";
@@ -175,7 +181,7 @@
             successMsg.style.display = "none";
           }, 8000);
         }, function(error) {
-          alert("Imeshindikana! Error: " + JSON.stringify(error));
+          alert("Imeshindikana! Error: " + error.text);
           submitBtn.innerText = "Tuma Ujumbe Sasa";
           submitBtn.disabled = false;
           submitBtn.style.opacity = "1";
@@ -184,4 +190,3 @@
   </script>
 </body>
 </html>
-
