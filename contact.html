@@ -94,13 +94,40 @@
     }
     form button:hover {transform:scale(1.05);}
 
-    footer {
-      text-align:center;
-      background:linear-gradient(to right, #66ff9986, #5eb7ffd8);
-      color:white;
-      padding:20px;
-      font-size:.9rem;
-      margin-top:40px;
+      footer {
+      background: linear-gradient(90deg, #1b5e20, #2e7d32);
+      padding: 45px 20px;
+      margin-top: 60px;
+      border-top: 3px solid var(--gold);
+      color: white;
+    }
+
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .social-grid a { font-size: 2.2rem; transition: 0.3s; }
+    .fa-x-twitter { color: #ffffff; }
+    .fa-facebook { color: #ffffff; }
+    .fa-tiktok { color: #ffffff; }
+    .fa-instagram { color: #ffffff; }
+    .fa-youtube { color: #FF0000; }
+    .fa-whatsapp { color: #25D366; }
+
+    .social-grid a:hover { transform: scale(1.2); color: var(--gold); }
+
+    .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      header { padding: 10px; }
+      nav { gap: 10px; }
+      .unit { min-width: 65px; padding: 10px 5px; }
     }
 
     .success-msg {
@@ -242,5 +269,6 @@
   </script>
 </body>
 </html>
+
 
 
