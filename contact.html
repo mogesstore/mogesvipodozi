@@ -8,6 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      // Public Key yako uliyotoa
+      emailjs.init("5YibMRUKMXnWuqebg");
+    })();
+  </script>
+
   <style>
     :root {
       --kijani-mzito: #1b5e20;
@@ -112,26 +120,20 @@
 
     <div class="contact-form">
       <form id="contactForm">
-        <input type="hidden" name="access_key" value="e11d30a6-f76d-4607-819f-d9c230265eb4">
-        
-        <input type="hidden" name="from_name" value="Moges Store Support">
-        <input type="hidden" name="subject" value="UJUMBE MPYA KUTOKA WEB - Moges Store">
-        <input type="checkbox" name="botcheck" style="display: none;">
-
         <label>Jina Kamili</label>
-        <input type="text" name="name" placeholder="Ingiza jina lako hapa..." required>
+        <input type="text" name="name" id="name" placeholder="Ingiza jina lako hapa..." required>
 
         <label>Namba ya Simu (WhatsApp)</label>
-        <input type="tel" name="phone" placeholder="Mfano: 0756 XXX XXX" required>
+        <input type="tel" name="phone" id="phone" placeholder="Mfano: 0756 XXX XXX" required>
 
         <label>Barua Pepe (Email)</label>
-        <input type="email" name="email" placeholder="mfano@gmail.com" required>
+        <input type="email" name="email" id="email" placeholder="mfano@gmail.com" required>
 
         <label>Ujumbe Wako</label>
-        <textarea name="message" rows="4" placeholder="Andika maswali au hitaji lako hapa..." required></textarea>
+        <textarea name="message" id="message" rows="4" placeholder="Andika maswali au hitaji lako hapa..." required></textarea>
 
         <button type="submit" id="submitBtn">Tuma Ujumbe Sasa</button>
-        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umetumwa kwa mafanikio. Tutakujibu hivi punde.</p>
+        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umetumwa kwa mafanikio kupitia EmailJS. Tutakujibu hivi punde.</p>
       </form>
     </div>
   </section>
@@ -139,10 +141,10 @@
   <footer>
     <div class="footer-label">TUFUATILIE MITANDAONI</div>
     <div class="social-grid">
-      <a href="https://facebook.com/jina_lako" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://instagram.com/jina_lako" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@jina_lako" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://youtube.com/@jina_lako" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://facebook.com/mogesvipodozi" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/mogesstore" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@mogesstore" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://wa.me/255756019062" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
     <p class="copy-text">&copy; 2026 MOGES STORE | Mbeya - Tanzania</p>
@@ -153,48 +155,31 @@
     const successMsg = document.getElementById("successMsg");
     const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
       
-      // Badilisha muonekano wa button wakati inatuma
       submitBtn.innerText = "Inatuma... Tafadhali subiri";
       submitBtn.disabled = true;
       submitBtn.style.opacity = "0.7";
 
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-
-      try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { 
-            "Content-Type": "application/json", 
-            "Accept": "application/json" 
-          },
-          body: json
-        });
-
-        const result = await response.json();
-
-        if (response.status === 200) {
+      // Kutuma kupitia EmailJS ukitumia ID zako
+      emailjs.sendForm('service_mxw5gqo', 'template_nltawnn', this)
+        .then(function() {
           successMsg.style.display = "block";
           form.reset();
-        } else {
-          alert("Kuna tatizo kidogo: " + result.message);
-        }
-      } catch (error) {
-        alert("Inaonekana una tatizo la mtandao (Internet). Jaribu tena.");
-      } finally {
-        submitBtn.innerText = "Tuma Ujumbe Sasa";
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = "1";
-        
-        // Ficha ujumbe wa mafanikio baada ya sekunde 10
-        setTimeout(() => {
-          successMsg.style.display = "none";
-        }, 10000);
-      }
+          submitBtn.innerText = "Tuma Ujumbe Sasa";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+
+          setTimeout(() => {
+            successMsg.style.display = "none";
+          }, 8000);
+        }, function(error) {
+          alert("Imeshindikana! Error: " + JSON.stringify(error));
+          submitBtn.innerText = "Tuma Ujumbe Sasa";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+        });
     });
   </script>
 </body>
