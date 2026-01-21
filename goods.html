@@ -9,184 +9,62 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
   <style>
+    /* STYLE ZAKO ZOTE ZIMEBAKI VILE VILE ILI KUTUNZA MUONEKANO WAKO */
     :root {
       --pink: #e91e63;
       --gold: #bfa14a;
       --dark: #1a1a1a;
       --white: #ffffff;
       --kijani-moges: #2e7d32;
-      --transparent: rgba(255,255,255,0.1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #f4f4f4; /* Background nyepesi ili bidhaa zing'ae */
-      color: #333;
-    }
+    body { font-family: "Poppins", sans-serif; background: #f4f4f4; color: #333; }
 
-    /* ===== Header Style (Ili ifanane na kurasa nyingine) ===== */
     header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #1b5e20, #2e7d32);
-      padding: 12px 20px;
-      z-index: 1000;
-      border-bottom: 3px solid var(--gold);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: sticky; top: 0; width: 100%; background: linear-gradient(90deg, #1b5e20, #2e7d32);
+      padding: 12px 20px; z-index: 1000; border-bottom: 3px solid var(--gold);
     }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      color: white;
-      text-decoration: none;
-    }
-
-    .logo img {
-      height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-    }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: white; text-decoration: none; }
+    .logo img { height: 50px; width: 50px; border-radius: 50%; border: 2px solid var(--gold); }
 
     nav { display: flex; gap: 15px; }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: 0.3s;
-    }
-    nav a:hover { color: var(--gold); }
+    nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
 
-    /* ===== Filter & Search (Imeboreshwa) ===== */
-    .controls-container {
-      background: white;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-    }
-
-    .filter-tabs {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
-
+    .controls-container { background: white; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; }
+    .filter-tabs { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px; }
     .filter-btn {
-      background: white;
-      border: 2px solid var(--kijani-moges);
-      color: var(--kijani-moges);
-      padding: 8px 18px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
+      background: white; border: 2px solid var(--kijani-moges); color: var(--kijani-moges);
+      padding: 8px 18px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: 0.3s;
     }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--kijani-moges);
-      color: white;
-    }
+    .filter-btn.active, .filter-btn:hover { background: var(--kijani-moges); color: white; }
 
     .search-bar { width: 100%; max-width: 500px; margin: 0 auto; }
-    .search-bar input {
-      width: 100%;
-      padding: 12px 20px;
-      border-radius: 30px;
-      border: 2px solid #ddd;
-      outline: none;
-      font-family: inherit;
-    }
+    .search-bar input { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid #ddd; outline: none; }
 
-    /* ===== Product Grid ===== */
     main { max-width: 1200px; margin: 0 auto; padding: 15px; min-height: 60vh; }
-    
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      border: 1px solid #eee;
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-
+    .card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #eee; transition: 0.3s; display: flex; flex-direction: column; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-    .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #f9f9f9; }
-
+    .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
     .card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; }
-    .card-body h3 { font-size: 0.95rem; margin-bottom: 8px; color: #333; }
-    
+    .card-body h3 { font-size: 0.95rem; margin-bottom: 8px; color: #333; height: 40px; overflow: hidden; }
     .price { font-weight: 700; color: var(--kijani-moges); margin-bottom: 12px; font-size: 1.1rem; }
 
     .whatsapp-btn {
-      margin-top: auto;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
+      margin-top: auto; background: #25D366; color: white; text-decoration: none; text-align: center;
+      padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 5px;
     }
 
-    /* ===== Footer Style ===== */
-    footer {
-      background: linear-gradient(90deg, #1b5e20, #2e7d32);
-      padding: 45px 20px;
-      margin-top: 60px;
-      border-top: 3px solid var(--gold);
-      color: white;
-      text-align: center;
-    }
-
-    .social-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      margin-bottom: 25px;
-    }
-
-    .social-grid a { font-size: 2.2rem; transition: 0.3s; text-decoration: none; }
-    .fa-x-twitter, .fa-facebook, .fa-tiktok, .fa-instagram { color: white; }
-    .fa-youtube { color: #FF0000; }
-    .fa-whatsapp { color: #25D366; }
-    .social-grid a:hover { transform: scale(1.2); }
-    .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
+    footer { background: linear-gradient(90deg, #1b5e20, #2e7d32); padding: 45px 20px; margin-top: 60px; color: white; text-align: center; border-top: 3px solid var(--gold); }
+    .social-grid { display: flex; justify-content: center; gap: 25px; margin-bottom: 25px; }
+    .social-grid a { font-size: 2.2rem; color: white; }
 
     @media(max-width:768px){
       .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .top-bar { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -200,7 +78,7 @@
     <nav>
       <a href="index.html">Nyumbani</a>
       <a href="goods.html">Bidhaa</a>
-      <a href="about.html">Kuhusu</a>
+      <a href="offers.html">Offers</a>
       <a href="contact.html">Wasiliana</a>
     </nav>
   </div>
@@ -208,9 +86,9 @@
 
 <div class="controls-container">
   <div class="filter-tabs">
-    <button class="filter-btn active" onclick="fetchData('data.json', this)">Zote</button>
-    <button class="filter-btn" onclick="fetchData('data2.json', this)">Pochi Tu</button>
-    <button class="filter-btn" onclick="fetchData('data3.json', this)">Vipodozi & Nyumbani</button>
+    <button class="filter-btn active" onclick="applyFilter('zote', this)">Zote</button>
+    <button class="filter-btn" onclick="applyFilter('pochi', this)">Pochi Tu</button>
+    <button class="filter-btn" onclick="applyFilter('vipodozi', this)">Vipodozi & Nyumbani</button>
   </div>
 
   <div class="search-bar">
@@ -219,6 +97,7 @@
 </div>
 
 <main>
+  <div id="loadingText" style="text-align:center; padding:20px;">Inapakia bidhaa mpya...</div>
   <div class="grid" id="productGrid"></div>
   <div id="noResults" style="display:none; text-align:center; padding:40px;">
     <p>Samahani, bidhaa hiyo haijapatikana.</p>
@@ -226,22 +105,39 @@
 </main>
 
 <footer>
-  <div style="margin-bottom: 20px; font-weight: bold; letter-spacing: 1px;">TUFUATILIE MITANDAONI</div>
   <div class="social-grid">
-    <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
     <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
     <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
   </div>
   <p class="copy-text">&copy; 2026 MOGES STORE | Chaguo Namba Moja</p>
 </footer>
 
 <script>
-let currentProducts = [];
+let allCloudProducts = [];
+let currentFilteredList = [];
+const BIN_ID = "8732e769fcb900ea7588";
 
-function renderProducts(list, query=""){
+// 1. PAKIA DATA KUTOKA CLOUD
+async function loadProducts() {
+  const loading = document.getElementById("loadingText");
+  try {
+    const res = await fetch(`https://api.npoint.io/${BIN_ID}`);
+    const data = await res.json();
+    
+    // CHUJA: Chukua bidhaa tu (sio ofa)
+    allCloudProducts = data.filter(p => p.type === 'item');
+    currentFilteredList = allCloudProducts;
+    
+    loading.style.display = "none";
+    renderProducts(allCloudProducts);
+  } catch (err) {
+    loading.innerText = "Hitilafu imetokea wakati wa kupakia bidhaa.";
+  }
+}
+
+// 2. ONYESHA BIDHAA KWENYE GRID
+function renderProducts(list) {
   const grid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
   grid.innerHTML = "";
@@ -254,16 +150,14 @@ function renderProducts(list, query=""){
   noResults.style.display="none";
   
   list.forEach(p => {
-    const name = p.item_name || p.name || "Bidhaa";
-    const imageUrl = p.image.includes('weserv.nl') ? p.image : `https://images.weserv.nl/?url=${p.image}`;
-    
+    const name = p.name || "Bidhaa";
     const card = document.createElement("div");
     card.className="card";
     card.innerHTML = `
-      <img src="${imageUrl}" alt="${name}" onerror="this.src='https://via.placeholder.com/300?text=Picha+Itaonekana'">
+      <img src="${p.image}" alt="${name}" onerror="this.src='https://via.placeholder.com/300?text=Moges+Store'">
       <div class="card-body">
         <h3>${name}</h3>
-        <p class="price">TZS ${p.price.toLocaleString()}</p>
+        <p class="price">TZS ${Number(p.price).toLocaleString()}</p>
         <a class="whatsapp-btn" href="https://wa.me/255756019062?text=Habari%20Moges%20Store%2C%20nahitaji%20kuagiza%20${encodeURIComponent(name)}" target="_blank">
           <i class="fab fa-whatsapp"></i> Agiza Sasa
         </a>
@@ -273,32 +167,33 @@ function renderProducts(list, query=""){
   });
 }
 
-function fetchData(fileName, btnElement) {
+// 3. CHUJA KWA VITUFE (POCHI, VIPODOZI)
+function applyFilter(category, btnElement) {
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
   if(btnElement) btnElement.classList.add('active');
 
-  fetch(fileName)
-    .then(res => res.json())
-    .then(json => {
-      currentProducts = json;
-      renderProducts(json);
-      document.getElementById("searchInput").value = "";
-    })
-    .catch(err => {
-      console.error("Data error:", err);
-      document.getElementById("productGrid").innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Inapakia bidhaa...</p>";
-    });
+  if(category === 'zote') {
+    currentFilteredList = allCloudProducts;
+  } else if(category === 'pochi') {
+    currentFilteredList = allCloudProducts.filter(p => p.name.toLowerCase().includes('pochi') || p.name.toLowerCase().includes('bag'));
+  } else {
+    // Kwa Vipodozi & Nyumbani
+    currentFilteredList = allCloudProducts.filter(p => !p.name.toLowerCase().includes('pochi'));
+  }
+  
+  renderProducts(currentFilteredList);
+  document.getElementById("searchInput").value = "";
 }
 
+// 4. SEARCH BAR LOGIC
 document.getElementById("searchInput").addEventListener("input", e => {
   const query = e.target.value.toLowerCase().trim();
-  const filtered = currentProducts.filter(p => ((p.item_name||p.name||"").toLowerCase().includes(query)));
-  renderProducts(filtered, query);
+  const searched = currentFilteredList.filter(p => p.name.toLowerCase().includes(query));
+  renderProducts(searched);
 });
 
-window.onload = () => {
-  fetchData('data.json', document.querySelector('.filter-btn'));
-};
+// Anza kupakia
+loadProducts();
 </script>
 </body>
 </html>
