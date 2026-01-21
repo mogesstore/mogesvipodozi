@@ -1,1 +1,245 @@
+[
+  {
+    "item_name": "AIR FRESH",
+    "price": 4000,
+    "image": "https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "AIRFRESH TIN",
+    "price": 10000,
+    "image": "https://images.unsplash.com/photo-1584622781564-1d9876a13d00?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "AL DRAM (Perfume)",
+    "price": 40000,
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "ALLSUN JELLY",
+    "price": 8000,
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "ALWAYS YOUNG SHOWER",
+    "price": 14000,
+    "image": "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "AMERICAN DREAM BODY",
+    "price": 23000,
+    "image": "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "ASANTE SOAP",
+    "price": 700,
+    "image": "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "AXE SPRAY",
+    "price": 5000,
+    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "BABY JOHNSON KUBWA",
+    "price": 35000,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "BLUE MAGIC MAFUTA",
+    "price": 10000,
+    "image": "https://images.unsplash.com/photo-1620917670397-dc7bc43e813e?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "BODY MIST ETERNAL",
+    "price": 11000,
+    "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "BODY OIL VASELINE COCOA",
+    "price": 10000,
+    "image": "https://images.unsplash.com/photo-1617897903246-7392ce73773d?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "BOXER",
+    "price": 8000,
+    "image": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "COLGATE MAX FRESH",
+    "price": 200,
+    "image": "https://images.unsplash.com/photo-1559591937-e620fb975bf7?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "COTTON BAND KUBWA",
+    "price": 5000,
+    "image": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "DETTOL 250MLS",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1614859132130-97204489a265?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "DOVE SOAP",
+    "price": 1000,
+    "image": "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "DR RASHEL VITAMIN C",
+    "price": 60000,
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "DUDU SOAP",
+    "price": 8500,
+    "image": "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "EGG SHAMPOO",
+    "price": 2000,
+    "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "NIVEA BODY CREAM",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1611082216913-b85521400a9d?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "OMO 1KG",
+    "price": 1000,
+    "image": "https://images.unsplash.com/photo-1551462147-37885acc3c41?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "ST IVES SHOWER",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1559591937-e620fb975bf7?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "SOFTCARE WIPES",
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "YARA PERFUME",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    "item_name": "DUDU SOAP",
+    "price": 8500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51BqC8P53LL._SL1000_.jpg"
+  },
+  {
+    "item_name": "EGG SHAMPOO",
+    "price": 2000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71YvR04L68L._SL1500_.jpg"
+  },
+  {
+    "item_name": "FAMILIA MAFUTA",
+    "price": 5000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71y+vX1nU5L._SL1500_.jpg"
+  },
+  {
+    "item_name": "FAIR AND WHITE SERUM",
+    "price": 15000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61e089XpYmL._SL1500_.jpg"
+  },
+  {
+    "item_name": "GLYCERIN PURE",
+    "price": 3500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51p1I63vXHL._SL1000_.jpg"
+  },
+  {
+    "item_name": "HAWAIIAN SILK",
+    "price": 12000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61vY4Jm6-xL._SL1000_.jpg"
+  },
+  {
+    "item_name": "JOHNSON BABY OIL",
+    "price": 8000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71f-B8l63eL._SL1500_.jpg"
+  },
+  {
+    "item_name": "KOJIC SOAP",
+    "price": 5000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61S7p6rW1ML._SL1000_.jpg"
+  },
+  {
+    "item_name": "LURE PERFUME",
+    "price": 25000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51mXvU8iWHL._SL1000_.jpg"
+  },
+  {
+    "item_name": "MARY KAJAL",
+    "price": 1500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61-mS5k+4pL._SL1000_.jpg"
+  },
+  {
+    "item_name": "MOVATE CREAM",
+    "price": 3000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71lD2W79x0L._SL1500_.jpg"
+  },
+  {
+    "item_name": "NIVEA BODY CREAM",
+    "price": 1500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71y+vX1nU5L._SL1500_.jpg"
+  },
+  {
+    "item_name": "OMO 1KG",
+    "price": 1000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X8k8QG-2L._SL1500_.jpg"
+  },
+  {
+    "item_name": "OLD SPICE DEO",
+    "price": 12000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/81xG2U-X-ML._SL1500_.jpg"
+  },
+  {
+    "item_name": "PEARL DROPS",
+    "price": 15000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61-mS5k+4pL._SL1000_.jpg"
+  },
+  {
+    "item_name": "POND'S POWDER",
+    "price": 7000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61S7p6rW1ML._SL1000_.jpg"
+  },
+  {
+    "item_name": "SENSODYNE REPAIR",
+    "price": 9000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/81+G7vInBGL._SL1500_.jpg"
+  },
+  {
+    "item_name": "ST IVES SCRUB",
+    "price": 15000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X-O0-O-pL._SL1500_.jpg"
+  },
+  {
+    "item_name": "SOFTCARE WIPES",
+    "price": 800,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71X-O0-O-pL._SL1500_.jpg"
+  },
+  {
+    "item_name": "VIVA WHITE",
+    "price": 2500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/71lD2W79x0L._SL1500_.jpg"
+  },
+  {
+    "item_name": "WHITE DENT",
+    "price": 1000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/61-mS5k+4pL._SL1000_.jpg"
+  },
+  {
+    "item_name": "YARA PERFUME",
+    "price": 1500,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51mXvU8iWHL._SL1000_.jpg"
+  },
+  {
+    "item_name": "ZARA PERFUME",
+    "price": 45000,
+    "image": "https://images.weserv.nl/?url=https://m.media-amazon.com/images/I/51mXvU8iWHL._SL1000_.jpg"
+  }
+]
+
+
 
