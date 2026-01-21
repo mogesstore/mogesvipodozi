@@ -7,160 +7,89 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <style>
-/* STYLE ZAKO ZOTE ZIMEBAKI VILE VILE */
-body {
-  font-family: 'Times New Roman', Times, serif;
-  background: url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg') center/cover fixed no-repeat;
-  color: #fff;
-  margin: 0;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(10px);
-}
+/* STYLE ZAKO ZILE ZILE - SIJABADILISHA CHOCHOTE CHA MSINGI */
+body { font-family: 'Times New Roman', Times, serif; background: url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg') center/cover fixed no-repeat; color: #fff; margin: 0; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); border-bottom: 2px solid #00eaff; }
 header img { height: 55px; border-radius: 8px; }
-nav a { color: #00eaff; margin-left: 15px; text-decoration: none; font-weight: 600; }
-nav a:hover { text-decoration: underline; color: #fff; }
-nav button {
-  padding: 8px 14px;
-  margin-left: 10px;
-  border: none;
-  border-radius: 6px;
-  background: #28a745;
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-}
-nav button:hover { background: #1e7e34; }
-
-.container {
-  max-width: 1000px;
-  margin: 30px auto;
-  background: rgba(0,0,0,0.55);
-  border-radius: 16px;
-  padding: 30px;
-}
-h1 { text-align: center; color: #00eaff; margin-bottom: 20px; }
-
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-form label { flex: 1 0 150px; font-weight: 600; }
-form input, form select { flex: 2 0 300px; padding: 8px; border-radius: 6px; border: none; }
-form button {
-  padding: 10px 20px;
-  background: #00eaff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #000;
-  transition: 0.3s;
-}
-form button:hover { background: #fff; }
-
-#itemsTable {
-  width: 100%;
-  border-collapse: collapse;
-}
-#itemsTable th, #itemsTable td {
-  padding: 10px;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-#itemsTable th { background: rgba(0, 234, 255, 0.3); }
-
-.delete-btn {
-  background: red;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-}
-.delete-btn:hover { background: darkred; }
-
-/* Kitufe kipya cha kusave online */
-.save-online-btn {
-  background: #ffc107;
-  color: #000;
-  margin-left: 10px;
-}
-
-footer {
-  text-align: center;
-  background: rgba(0,0,0,0.7);
-  padding: 15px;
-  color: #00eaff;
-  font-weight: 500;
-  margin-top: 40px;
-}
+.container { max-width: 1000px; margin: 30px auto; background: rgba(0,0,0,0.65); border-radius: 16px; padding: 30px; box-shadow: 0 0 20px rgba(0,234,255,0.2); }
+h1, h2 { text-align: center; color: #00eaff; }
+form { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; padding: 20px; border: 1px solid rgba(0,234,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.05); }
+form label { flex: 1 0 100%; font-weight: 600; color: #00eaff; margin-bottom: -5px; }
+form input, form select { flex: 1 0 250px; padding: 12px; border-radius: 6px; border: none; outline: none; }
+.btn-group { flex: 1 0 100%; display: flex; gap: 10px; margin-top: 10px; }
+button { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+.add-btn { background: #00eaff; color: #000; flex: 1; }
+.save-btn { background: #28a745; color: #fff; flex: 2; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4); }
+.delete-btn { background: #ff4444; color: #fff; padding: 5px 10px; border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.3); }
+th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; }
+th { background: rgba(0, 234, 255, 0.3); color: #00eaff; }
+.img-preview { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #00eaff; }
+#uploadStatus { font-size: 0.9rem; color: #ffc107; font-weight: bold; width: 100%; display: block; margin-top: 5px; }
 </style>
 </head>
 <body>
 
 <header>
   <img src="logo.png.png" alt="Logo">
-  <nav>
-    <a href="#">Dashboard</a>
-    <button id="logoutBtn">Logout</button>
-  </nav>
+  <div style="font-weight: bold; color: #00eaff;">MOGES ADMIN PANEL</div>
+  <nav><button onclick="window.location.href='index.html'" style="background:transparent; color:#ff4444; border:1px solid #ff4444;">Logout</button></nav>
 </header>
 
 <div class="container">
-  <h1>Admin Dashboard - Moges Store</h1>
+  <h1>Dashboard ya Moges Store</h1>
 
   <form id="addItemForm">
-    <div>
-      <label for="name">Item Name:</label>
-      <input type="text" id="name" required>
-    </div>
-    <div>
-      <label for="price">Price (Tsh):</label>
-      <input type="number" id="price" required>
-    </div>
-    <div>
-      <label for="image">Image URL:</label>
-      <input type="text" id="image" placeholder="https://mfano.com/picha.jpg" required>
-    </div>
-    <div style="flex: 1 0 100%;">
-      <button type="submit">Add to Local List</button>
-      <button type="button" class="save-online-btn" onclick="saveToCloud()">🚀 Update Shop Online</button>
-      <button type="button" onclick="downloadJSON()">Local Backup (JSON)</button>
+    <label>Chagua Sehemu ya Kuweka:</label>
+    <select id="type">
+      <option value="item">Bidhaa (Goods Page)</option>
+      <option value="offer">Ofa (Offers Page)</option>
+    </select>
+
+    <label>Jina la Bidhaa:</label>
+    <input type="text" id="name" placeholder="Mfano: Pochi ya Kike" required>
+
+    <label>Bei (Tsh):</label>
+    <input type="number" id="price" placeholder="Mfano: 35000" required>
+
+    <label>Picha (Chagua kutoka kwenye Simu/PC):</label>
+    <input type="file" id="imageFile" accept="image/*">
+    <span id="uploadStatus"></span>
+    
+    <label>AU tumia URL ya picha (Kama unayo):</label>
+    <input type="text" id="imageUrl" placeholder="https://...">
+
+    <div class="btn-group">
+      <button type="submit" class="add-btn">Weka Kwenye Orodha</button>
+      <button type="button" class="save-btn" onclick="saveToCloud()">🚀 PUSH TO ONLINE SHOP</button>
     </div>
   </form>
 
-  <h2 id="statusLabel">Current Items</h2>
+  <h2>Orodha ya Bidhaa na Ofa Mtandaoni</h2>
   <table id="itemsTable">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Image URL</th>
+        <th>Aina</th>
+        <th>Picha</th>
+        <th>Jina</th>
+        <th>Bei</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td colspan="4">Loading from cloud...</td></tr>
+      <tr><td colspan="5" style="text-align:center;">Inapakia data...</td></tr>
     </tbody>
   </table>
 </div>
 
-<footer>© 2026 Moges Store | Admin Dashboard</footer>
+<footer>© 2026 Moges Store | Admin System</footer>
 
 <script>
 let itemsData = [];
-// BIN ID YAKO
-const BIN_ID = "8732e769fcb900ea7588";
+const BIN_ID = "8732e769fcb900ea7588"; 
+const IMGBB_API_KEY = "a3db8960b8488df238d6bea0c123d52e"; // API Key yako imewekwa hapa
 
-// 1. Pakia data moja kwa moja kutoka npoint ukurasa ukifunguka
+// 1. Pakia data kutoka npoint
 function loadFromCloud() {
   fetch(`https://api.npoint.io/${BIN_ID}`)
     .then(res => res.json())
@@ -168,49 +97,84 @@ function loadFromCloud() {
       itemsData = Array.isArray(data) ? data : [];
       renderTable();
     })
-    .catch(err => {
-      console.error("Cloud data empty or error:", err);
+    .catch(() => {
       itemsData = [];
       renderTable();
     });
 }
 
-// 2. Render table
+// 2. Render Table
 function renderTable(){
   const tbody = document.querySelector("#itemsTable tbody");
-  tbody.innerHTML = "";
-  if(itemsData.length === 0){
-    tbody.innerHTML = "<tr><td colspan='4'>No items yet.</td></tr>";
-    return;
-  }
+  tbody.innerHTML = itemsData.length === 0 ? "<tr><td colspan='5' style='text-align:center;'>Hamna bidhaa yoyote mtandaoni.</td></tr>" : "";
+  
   itemsData.forEach((item, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
+      <td style="color:${item.type === 'offer' ? '#ffc107' : '#00eaff'}">${item.type === 'offer' ? 'OFA' : 'ITEM'}</td>
+      <td><img src="${item.image}" class="img-preview" onerror="this.src='https://via.placeholder.com/50'"></td>
       <td>${item.name}</td>
-      <td>${item.price.toLocaleString()}</td>
-      <td style="font-size:11px;">${item.image}</td>
-      <td><button class="delete-btn" onclick="deleteItem(${index})">Delete</button></td>
+      <td>${Number(item.price).toLocaleString()}</td>
+      <td><button class="delete-btn" onclick="deleteItem(${index})">Futa</button></td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-// 3. Add new item (kwenye memory ya browser kwanza)
-document.getElementById("addItemForm").addEventListener("submit", function(e){
+// 3. Add Item / Offer kwa kutumia Image Upload
+document.getElementById("addItemForm").addEventListener("submit", async function(e){
   e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const price = parseFloat(document.getElementById("price").value);
-  const image = document.getElementById("image").value.trim();
+  const fileInput = document.getElementById('imageFile');
+  const status = document.getElementById('uploadStatus');
+  let finalImageUrl = document.getElementById('imageUrl').value.trim();
 
-  itemsData.push({name, price, image});
+  // Kama amechagua file la picha
+  if (fileInput.files.length > 0) {
+    status.innerText = "⏳ Inapakia picha mtandaoni... Tafadhali subiri.";
+    const formData = new FormData();
+    formData.append("image", fileInput.files[0]);
+
+    try {
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+        method: "POST",
+        body: formData
+      });
+      const resData = await res.json();
+      if(resData.success) {
+        finalImageUrl = resData.data.url;
+        status.innerText = "✅ Picha imekubali!";
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      alert("Picha imegoma kupanda! Angalia kama API Key iko sawa au internet.");
+      status.innerText = "❌ Hitilafu ya picha.";
+      return;
+    }
+  }
+
+  if (!finalImageUrl) { 
+    alert("Tafadhali chagua picha kwanza au weka URL!"); 
+    return; 
+  }
+
+  // Ongeza kwenye list
+  itemsData.push({
+    type: document.getElementById("type").value,
+    name: document.getElementById("name").value.trim(),
+    price: document.getElementById("price").value,
+    image: finalImageUrl,
+    timestamp: new Date().getTime()
+  });
+
   renderTable();
   this.reset();
+  status.innerText = "";
 });
 
-// 4. SAVE TO CLOUD (Hapa ndio unarusha data kwa wateja)
+// 4. Save mabadiliko yote kwenda npoint (Cloud)
 async function saveToCloud() {
-  const label = document.getElementById('statusLabel');
-  label.innerText = "Saving to Cloud... Please wait.";
+  if(!confirm("Je, unataka kurusha mabadiliko haya kwenye duka lako mtandaoni?")) return;
   
   try {
     const response = await fetch(`https://api.npoint.io/${BIN_ID}`, {
@@ -218,42 +182,22 @@ async function saveToCloud() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(itemsData)
     });
-
     if (response.ok) {
-      alert("✅ MOGES STORE UPDATED! Mabadiliko yameonekana dukani.");
-      label.innerText = "Current Items (Updated Online)";
+      alert("✅ HONGERA! Duka lako limekuwa Updated mtandaoni.");
     }
   } catch (err) {
-    alert("❌ Error: Imeshindwa kuunganisha!");
-    label.innerText = "Current Items (Error)";
+    alert("Imeshindwa kusave! Angalia internet yako.");
   }
 }
 
-// Delete item
 function deleteItem(index){
-  if(confirm("Delete this item?")){
-    itemsData.splice(index,1);
+  if(confirm("Je, una uhakika unataka kufuta item hii?")) {
+    itemsData.splice(index, 1);
     renderTable();
   }
 }
 
-// Download JSON (Local Backup)
-function downloadJSON(){
-  const blob = new Blob([JSON.stringify(itemsData, null, 2)], {type: "application/json"});
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "moges_backup.json";
-  link.click();
-}
-
-// Logout
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  window.location.href = "index.html";
-});
-
-// Anza kupakia data mara tu ukurasa unapoingia
 loadFromCloud();
 </script>
-
 </body>
 </html>
