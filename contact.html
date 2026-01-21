@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
   <style>
-    /* RANGI ZA MOGES STORE */
     :root {
       --kijani-mzito: #1b5e20;
       --kijani-moges: #2e7d32;
@@ -19,7 +18,6 @@
     * {margin:0; padding:0; box-sizing:border-box;}
     body { font-family:'Poppins',sans-serif; background-color:#f0fdf4; color:#333; line-height:1.6; }
 
-    /* HEADER CONSISTENCY */
     header {
       position: sticky; top: 0; width: 100%; background: linear-gradient(90deg, var(--kijani-mzito), var(--kijani-moges));
       padding: 12px 20px; z-index: 1000; border-bottom: 3px solid var(--gold); display: flex; justify-content: space-between; align-items: center;
@@ -33,7 +31,7 @@
 
     .hero {
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://tse2.mm.bing.net/th?id=OIP.81rqXkmwaBIAZXmthHaIGgHaEd');
-      background-size:cover; background-position:center; height:40vh; display:flex; align-items:center; justify-content:center; text-align:center; color:white;
+      background-size:cover; background-position:center; height:35vh; display:flex; align-items:center; justify-content:center; text-align:center; color:white;
     }
     .hero h2 {font-size:2.2rem; text-shadow:2px 2px 5px rgba(0,0,0,0.5);}
 
@@ -44,13 +42,14 @@
 
     .contact-info h3 {color: var(--kijani-mzito); font-size:1.7rem; margin-bottom:20px;}
     .contact-info p {margin-bottom:15px; display: flex; align-items: center; gap: 10px;}
-    .contact-info i { color: var(--kijani-moges); font-size: 1.2rem; }
-    .contact-info a {color:#333; text-decoration:none; font-weight:500;}
+    .contact-info i { color: var(--kijani-moges); font-size: 1.2rem; min-width: 25px;}
+    .contact-info a {color:#333; text-decoration:none; font-weight:500; transition: 0.3s;}
+    .contact-info a:hover {color: var(--kijani-moges);}
 
     form {display:flex; flex-direction:column;}
     form label {font-weight:600; margin-bottom:5px; font-size: 0.9rem;}
     form input, form textarea {
-      padding:12px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd; font-size:1rem; outline: none;
+      padding:12px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd; font-size:1rem; outline: none; transition: 0.3s;
     }
     form input:focus, form textarea:focus { border-color: var(--kijani-moges); box-shadow: 0 0 5px rgba(46, 125, 50, 0.2); }
     
@@ -58,25 +57,25 @@
       background: var(--kijani-mzito); color:white; padding:15px; border:none; border-radius:30px;
       font-weight:bold; cursor:pointer; transition: 0.3s; font-size: 1rem;
     }
-    form button:hover { background: var(--gold); transform: translateY(-3px); }
+    form button:hover { background: var(--gold); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-    /* FOOTER ILIYOBORESHWA */
     footer { background: linear-gradient(90deg, var(--kijani-mzito), var(--kijani-moges)); padding: 45px 20px; color: white; text-align: center; border-top: 3px solid var(--gold); }
+    .footer-label { font-weight: bold; margin-bottom: 20px; letter-spacing: 1px; }
     .social-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 20px 0; }
     .social-icon { 
       font-size: 1.6rem; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; 
       border-radius: 50%; background: rgba(255,255,255,0.1); color: white; text-decoration: none; transition: 0.3s;
     }
     .social-icon:hover { transform: translateY(-5px); background: var(--gold); }
-    .copy-text { font-size: 0.85rem; color: var(--gold); font-weight: 600; }
+    .copy-text { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-top: 10px; }
 
-    .success-msg { display:none; text-align:center; color: #2e7d32; font-weight:bold; margin-top:15px; padding: 10px; background: #e8f5e9; border-radius: 8px; }
+    .success-msg { display:none; text-align:center; color: #2e7d32; font-weight:bold; margin-top:15px; padding: 10px; background: #e8f5e9; border-radius: 8px; border: 1px solid #c8e6c9; }
 
     @media(max-width:768px){
       .contact-container { grid-template-columns:1fr; margin: 20px; padding: 25px; }
-      header { padding: 15px; }
-      nav { gap: 10px; }
-      nav a { font-size: 0.8rem; }
+      .hero { height: 25vh; }
+      .hero h2 { font-size: 1.7rem; }
+      header { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -104,44 +103,47 @@
       <p><i class="fas fa-envelope"></i> <a href="mailto:mogesstore@gmail.com">mogesstore@gmail.com</a></p>
       <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255756019062" target="_blank">Chat na Sisi WhatsApp</a></p>
       
-      <div style="margin-top: 30px;">
-        <h4 style="margin-bottom: 10px;">Muda wa Kazi:</h4>
+      <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 15px;">
+        <h4 style="margin-bottom: 10px; color: var(--kijani-mzito);">Muda wa Kazi:</h4>
         <p>Jumatatu - Jumamosi: 8:00 AM - 9:00 PM</p>
+        <p>Jumapili: Mapumziko</p>
       </div>
     </div>
 
     <div class="contact-form">
       <form id="contactForm">
         <input type="hidden" name="access_key" value="e11d30a6-f76d-4607-819f-d9c230265eb4">
-        <input type="hidden" name="subject" value="UJUMBE MPYA KUTOKA MOGES STORE WEB">
-        <input type="checkbox" name="botcheck" id="" style="display: none;">
+        
+        <input type="hidden" name="from_name" value="Moges Store Support">
+        <input type="hidden" name="subject" value="UJUMBE MPYA KUTOKA WEB - Moges Store">
+        <input type="checkbox" name="botcheck" style="display: none;">
 
         <label>Jina Kamili</label>
-        <input type="text" name="name" placeholder="Jina lako..." required>
+        <input type="text" name="name" placeholder="Ingiza jina lako hapa..." required>
 
         <label>Namba ya Simu (WhatsApp)</label>
-        <input type="tel" name="phone" placeholder="0756 XXX XXX" required>
+        <input type="tel" name="phone" placeholder="Mfano: 0756 XXX XXX" required>
 
-        <label>Barua Pepe</label>
-        <input type="email" name="email" placeholder="email@gmail.com" required>
+        <label>Barua Pepe (Email)</label>
+        <input type="email" name="email" placeholder="mfano@gmail.com" required>
 
         <label>Ujumbe Wako</label>
-        <textarea name="message" rows="4" placeholder="Andika unachohitaji hapa..." required></textarea>
+        <textarea name="message" rows="4" placeholder="Andika maswali au hitaji lako hapa..." required></textarea>
 
-        <button type="submit" id="submitBtn">Tuma Sasa</button>
-        <p class="success-msg" id="successMsg">✅ Hongera! Ujumbe wako umepokelewa. Tutakucheki hivi punde.</p>
+        <button type="submit" id="submitBtn">Tuma Ujumbe Sasa</button>
+        <p class="success-msg" id="successMsg">✅ Asante! Ujumbe wako umetumwa kwa mafanikio. Tutakujibu hivi punde.</p>
       </form>
     </div>
   </section>
 
   <footer>
-    <div class="copy-text">TUFUATILIE MITANDAONI</div>
+    <div class="footer-label">TUFUATILIE MITANDAONI</div>
     <div class="social-grid">
-      <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-      <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-      <a href="https://wa.me/255756019062" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://facebook.com/jina_lako" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/jina_lako" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@jina_lako" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://youtube.com/@jina_lako" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/255756019062" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
     <p class="copy-text">&copy; 2026 MOGES STORE | Mbeya - Tanzania</p>
   </footer>
@@ -153,8 +155,11 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      submitBtn.innerText = "Inatuma...";
+      
+      // Badilisha muonekano wa button wakati inatuma
+      submitBtn.innerText = "Inatuma... Tafadhali subiri";
       submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.7";
 
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
@@ -163,21 +168,32 @@
       try {
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          headers: { 
+            "Content-Type": "application/json", 
+            "Accept": "application/json" 
+          },
           body: json
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (response.status === 200) {
           successMsg.style.display = "block";
           form.reset();
         } else {
-          alert("Samahani, kuna tatizo. Jaribu tena baadae.");
+          alert("Kuna tatizo kidogo: " + result.message);
         }
       } catch (error) {
-        alert("Internet yako inasumbua. Angalia network.");
+        alert("Inaonekana una tatizo la mtandao (Internet). Jaribu tena.");
       } finally {
-        submitBtn.innerText = "Tuma Sasa";
+        submitBtn.innerText = "Tuma Ujumbe Sasa";
         submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+        
+        // Ficha ujumbe wa mafanikio baada ya sekunde 10
+        setTimeout(() => {
+          successMsg.style.display = "none";
+        }, 10000);
       }
     });
   </script>
