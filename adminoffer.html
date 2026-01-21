@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard - Moges Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <style>
+/* STYLE ZAKO ZOTE ZIMEBAKI VILE VILE */
 body {
   font-family: 'Times New Roman', Times, serif;
   background: url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg') center/cover fixed no-repeat;
@@ -87,6 +87,13 @@ form button:hover { background: #fff; }
 }
 .delete-btn:hover { background: darkred; }
 
+/* Kitufe kipya cha kusave online */
+.save-online-btn {
+  background: #ffc107;
+  color: #000;
+  margin-left: 10px;
+}
+
 footer {
   text-align: center;
   background: rgba(0,0,0,0.7);
@@ -116,54 +123,59 @@ footer {
       <input type="text" id="name" required>
     </div>
     <div>
-      <label for="price">Price (Ksh):</label>
+      <label for="price">Price (Tsh):</label>
       <input type="number" id="price" required>
     </div>
     <div>
-      <label for="image">Image Filename:</label>
-      <input type="text" id="image" placeholder="example.jpg" required>
+      <label for="image">Image URL:</label>
+      <input type="text" id="image" placeholder="https://mfano.com/picha.jpg" required>
     </div>
     <div style="flex: 1 0 100%;">
-      <button type="submit">Add Item</button>
-      <button type="button" onclick="downloadJSON()">Download JSON</button>
+      <button type="submit">Add to Local List</button>
+      <button type="button" class="save-online-btn" onclick="saveToCloud()">🚀 Update Shop Online</button>
+      <button type="button" onclick="downloadJSON()">Local Backup (JSON)</button>
     </div>
   </form>
 
-  <h2>Current Items</h2>
+  <h2 id="statusLabel">Current Items</h2>
   <table id="itemsTable">
     <thead>
       <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Image</th>
+        <th>Image URL</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td colspan="4">Loading...</td></tr>
+      <tr><td colspan="4">Loading from cloud...</td></tr>
     </tbody>
   </table>
 </div>
 
-<footer>© 2025 Moges Store | Admin Dashboard</footer>
+<footer>© 2026 Moges Store | Admin Dashboard</footer>
 
 <script>
 let itemsData = [];
+// BIN ID YAKO
+const BIN_ID = "8732e769fcb900ea7588";
 
-// Load data from data.json
-fetch("data.json")
-  .then(res => res.json())
-  .then(data => {
-    itemsData = data; // assume data.json is an array of items
-    renderTable();
-  })
-  .catch(err => {
-    console.log("Could not load data.json, starting with empty array.");
-    itemsData = [];
-    renderTable();
-  });
+// 1. Pakia data moja kwa moja kutoka npoint ukurasa ukifunguka
+function loadFromCloud() {
+  fetch(`https://api.npoint.io/${BIN_ID}`)
+    .then(res => res.json())
+    .then(data => {
+      itemsData = Array.isArray(data) ? data : [];
+      renderTable();
+    })
+    .catch(err => {
+      console.error("Cloud data empty or error:", err);
+      itemsData = [];
+      renderTable();
+    });
+}
 
-// Render table
+// 2. Render table
 function renderTable(){
   const tbody = document.querySelector("#itemsTable tbody");
   tbody.innerHTML = "";
@@ -176,29 +188,46 @@ function renderTable(){
     tr.innerHTML = `
       <td>${item.name}</td>
       <td>${item.price.toLocaleString()}</td>
-      <td>${item.image}</td>
+      <td style="font-size:11px;">${item.image}</td>
       <td><button class="delete-btn" onclick="deleteItem(${index})">Delete</button></td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-// Add new item
+// 3. Add new item (kwenye memory ya browser kwanza)
 document.getElementById("addItemForm").addEventListener("submit", function(e){
   e.preventDefault();
   const name = document.getElementById("name").value.trim();
   const price = parseFloat(document.getElementById("price").value);
   const image = document.getElementById("image").value.trim();
 
-  if(!name || !price || !image){
-    alert("Please fill all fields.");
-    return;
-  }
-
   itemsData.push({name, price, image});
   renderTable();
   this.reset();
 });
+
+// 4. SAVE TO CLOUD (Hapa ndio unarusha data kwa wateja)
+async function saveToCloud() {
+  const label = document.getElementById('statusLabel');
+  label.innerText = "Saving to Cloud... Please wait.";
+  
+  try {
+    const response = await fetch(`https://api.npoint.io/${BIN_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(itemsData)
+    });
+
+    if (response.ok) {
+      alert("✅ MOGES STORE UPDATED! Mabadiliko yameonekana dukani.");
+      label.innerText = "Current Items (Updated Online)";
+    }
+  } catch (err) {
+    alert("❌ Error: Imeshindwa kuunganisha!");
+    label.innerText = "Current Items (Error)";
+  }
+}
 
 // Delete item
 function deleteItem(index){
@@ -208,12 +237,12 @@ function deleteItem(index){
   }
 }
 
-// Download JSON
+// Download JSON (Local Backup)
 function downloadJSON(){
   const blob = new Blob([JSON.stringify(itemsData, null, 2)], {type: "application/json"});
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "moges_items.json";
+  link.download = "moges_backup.json";
   link.click();
 }
 
@@ -221,11 +250,10 @@ function downloadJSON(){
 document.getElementById("logoutBtn").addEventListener("click", () => {
   window.location.href = "index.html";
 });
+
+// Anza kupakia data mara tu ukurasa unapoingia
+loadFromCloud();
 </script>
 
 </body>
 </html>
-
-
-
-
