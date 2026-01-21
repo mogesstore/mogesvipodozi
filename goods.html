@@ -4,187 +4,189 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moges vipodozi</title>
+  <title>Bidhaa — Moges Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
   <style>
     :root {
       --pink: #e91e63;
       --gold: #bfa14a;
       --dark: #1a1a1a;
       --white: #ffffff;
-      --transparent: rgba(255,255,255,0.15);
+      --kijani-moges: #2e7d32;
+      --transparent: rgba(255,255,255,0.1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: "Poppins", sans-serif;
-      background: var(--dark);
-      color: var(--white);
+      background: #f4f4f4; /* Background nyepesi ili bidhaa zing'ae */
+      color: #333;
     }
 
+    /* ===== Header Style (Ili ifanane na kurasa nyingine) ===== */
     header {
-      padding: 15px 20px;
-      background: var(--transparent);
-      display: flex;
-      flex-direction: column; /* Ili vitu vijipange chini kwa chini kwenye simu */
-      align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
+      width: 100%;
+      background: linear-gradient(90deg, #1b5e20, #2e7d32);
+      padding: 12px 20px;
+      z-index: 1000;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .top-bar {
-      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gold);
       display: flex;
       align-items: center;
       gap: 10px;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
     }
 
     .logo img {
-      height: 60px;
-      width: 60px;
+      height: 50px;
+      width: 50px;
       border-radius: 50%;
       border: 2px solid var(--gold);
     }
 
-    /* FILTER STYLES */
-    .filter-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .filter-btn {
-      background: var(--transparent);
-      border: 1px solid var(--gold);
+    nav { display: flex; gap: 15px; }
+    nav a {
       color: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
       font-size: 0.9rem;
       transition: 0.3s;
     }
+    nav a:hover { color: var(--gold); }
 
-    .filter-btn.active {
-      background: var(--pink);
-      border-color: var(--pink);
+    /* ===== Filter & Search (Imeboreshwa) ===== */
+    .controls-container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
     }
 
-    .search-bar { width: 100%; display: flex; justify-content: center; }
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
 
+    .filter-btn {
+      background: white;
+      border: 2px solid var(--kijani-moges);
+      color: var(--kijani-moges);
+      padding: 8px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--kijani-moges);
+      color: white;
+    }
+
+    .search-bar { width: 100%; max-width: 500px; margin: 0 auto; }
     .search-bar input {
       width: 100%;
-      max-width: 500px;
-      padding: 10px 15px;
+      padding: 12px 20px;
       border-radius: 30px;
-      border: 1px solid var(--gold);
-      background: var(--transparent);
-      color: var(--white);
+      border: 2px solid #ddd;
       outline: none;
-      transition: all 0.3s ease;
-      margin-bottom: 10px;
+      font-family: inherit;
     }
 
-    .search-bar input:focus { 
-      border-color: var(--pink);
-      box-shadow: 0 0 10px var(--pink);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      font-size: 0.9rem;
-    }
-
-    nav a:hover { color: var(--pink); }
-
-    main { padding: 15px; }
-
+    /* ===== Product Grid ===== */
+    main { max-width: 1200px; margin: 0 auto; padding: 15px; min-height: 60vh; }
+    
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.08);
+      background: white;
       border-radius: 15px;
       overflow: hidden;
+      border: 1px solid #eee;
+      transition: 0.3s;
       display: flex;
       flex-direction: column;
-      height: 100%;
-      border: 1px solid var(--gold);
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
-    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-    .card img {
-      width: 100%;
-      object-fit: cover;
-      aspect-ratio: 1/1;
-    }
+    .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #f9f9f9; }
 
-    .card-body {
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .card-body h3 {
-      font-size: 0.9rem;
-      margin-bottom: 5px;
-      color: var(--white);
-    }
-
-    .price {
-      font-weight: bold;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
+    .card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; }
+    .card-body h3 { font-size: 0.95rem; margin-bottom: 8px; color: #333; }
+    
+    .price { font-weight: 700; color: var(--kijani-moges); margin-bottom: 12px; font-size: 1.1rem; }
 
     .whatsapp-btn {
       margin-top: auto;
-      padding: 8px 12px;
-      background: var(--pink);
-      color: var(--white);
+      background: #25D366;
+      color: white;
       text-decoration: none;
       text-align: center;
+      padding: 10px;
       border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
 
+    /* ===== Footer Style ===== */
+    footer {
+      background: linear-gradient(90deg, #1b5e20, #2e7d32);
+      padding: 45px 20px;
+      margin-top: 60px;
+      border-top: 3px solid var(--gold);
+      color: white;
+      text-align: center;
+    }
+
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .social-grid a { font-size: 2.2rem; transition: 0.3s; text-decoration: none; }
+    .fa-x-twitter, .fa-facebook, .fa-tiktok, .fa-instagram { color: white; }
+    .fa-youtube { color: #FF0000; }
+    .fa-whatsapp { color: #25D366; }
+    .social-grid a:hover { transform: scale(1.2); }
+    .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
+
     @media(max-width:768px){
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .logo img { height: 45px; width: 45px; }
-      .filter-btn { padding: 6px 12px; font-size: 0.8rem; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .top-bar { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -192,66 +194,79 @@
 
 <header>
   <div class="top-bar">
-    <div class="logo">
+    <a href="index.html" class="logo">
       <img src="logo.png.png" alt="logo"> Moges Store
-    </div>
+    </a>
     <nav>
       <a href="index.html">Nyumbani</a>
       <a href="goods.html">Bidhaa</a>
+      <a href="about.html">Kuhusu</a>
       <a href="contact.html">Wasiliana</a>
     </nav>
   </div>
+</header>
 
+<div class="controls-container">
   <div class="filter-tabs">
-    <button class="filter-btn active" onclick="fetchData('data.json', this)">All</button>
+    <button class="filter-btn active" onclick="fetchData('data.json', this)">Zote</button>
     <button class="filter-btn" onclick="fetchData('data2.json', this)">Pochi Tu</button>
-    <button class="filter-btn" onclick="fetchData('data3.json', this)">Vipodozi na vitu vya nyumbani</button>
+    <button class="filter-btn" onclick="fetchData('data3.json', this)">Vipodozi & Nyumbani</button>
   </div>
 
   <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Tafuta kwenye kundi hili...">
+    <input type="text" id="searchInput" placeholder="Tafuta bidhaa hapa...">
   </div>
-</header>
+</div>
 
 <main>
   <div class="grid" id="productGrid"></div>
-  <div id="noResults" class="no-results" style="display:none; text-align:center; padding:20px;">Hakuna bidhaa zinazolingana.</div>
+  <div id="noResults" style="display:none; text-align:center; padding:40px;">
+    <p>Samahani, bidhaa hiyo haijapatikana.</p>
+  </div>
 </main>
+
+<footer>
+  <div style="margin-bottom: 20px; font-weight: bold; letter-spacing: 1px;">TUFUATILIE MITANDAONI</div>
+  <div class="social-grid">
+    <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
+    <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p class="copy-text">&copy; 2026 MOGES STORE | Chaguo Namba Moja</p>
+</footer>
 
 <script>
 let currentProducts = [];
-
-function highlight(text, query){
-  if(!query) return text;
-  const regex = new RegExp(`(${query})`, "gi");
-  return text.replace(regex, "<mark>$1</mark>");
-}
 
 function renderProducts(list, query=""){
   const grid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
   grid.innerHTML = "";
   
-  if(!list || !list.length){ 
+  if(!list || list.length === 0){ 
     noResults.style.display="block"; 
     return; 
   }
   
   noResults.style.display="none";
   
-  list.forEach(p=>{
-    const name = p.item_name || p.name || "BIDHAA";
-    // Tumia proxy kuzuia picha giza
+  list.forEach(p => {
+    const name = p.item_name || p.name || "Bidhaa";
     const imageUrl = p.image.includes('weserv.nl') ? p.image : `https://images.weserv.nl/?url=${p.image}`;
     
     const card = document.createElement("div");
     card.className="card";
     card.innerHTML = `
-      <img src="${imageUrl}" alt="${name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      <img src="${imageUrl}" alt="${name}" onerror="this.src='https://via.placeholder.com/300?text=Picha+Itaonekana'">
       <div class="card-body">
-        <h3>${highlight(name, query)}</h3>
+        <h3>${name}</h3>
         <p class="price">TZS ${p.price.toLocaleString()}</p>
-        <a class="whatsapp-btn" href="https://wa.me/255756019062?text=Hello%20Moges%20Store%2C%20naomba%20kuagiza%20${encodeURIComponent(name)}%20kwa%20bei%20ya%20TZS%20${p.price}" target="_blank">Agiza WhatsApp</a>
+        <a class="whatsapp-btn" href="https://wa.me/255756019062?text=Habari%20Moges%20Store%2C%20nahitaji%20kuagiza%20${encodeURIComponent(name)}" target="_blank">
+          <i class="fab fa-whatsapp"></i> Agiza Sasa
+        </a>
       </div>
     `;
     grid.appendChild(card);
@@ -259,7 +274,6 @@ function renderProducts(list, query=""){
 }
 
 function fetchData(fileName, btnElement) {
-  // Badilisha rangi ya button
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
   if(btnElement) btnElement.classList.add('active');
 
@@ -268,28 +282,23 @@ function fetchData(fileName, btnElement) {
     .then(json => {
       currentProducts = json;
       renderProducts(json);
-      document.getElementById("searchInput").value = ""; // Safisha search unapochange file
+      document.getElementById("searchInput").value = "";
     })
     .catch(err => {
-      console.error("Kushindwa kupakia data:", err);
-      document.getElementById("productGrid").innerHTML = "";
-      document.getElementById("noResults").style.display = "block";
-      document.getElementById("noResults").innerText = "File la " + fileName + " halijapatikana.";
+      console.error("Data error:", err);
+      document.getElementById("productGrid").innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Inapakia bidhaa...</p>";
     });
 }
 
-// Search event
-document.getElementById("searchInput").addEventListener("input", e=>{
+document.getElementById("searchInput").addEventListener("input", e => {
   const query = e.target.value.toLowerCase().trim();
   const filtered = currentProducts.filter(p => ((p.item_name||p.name||"").toLowerCase().includes(query)));
   renderProducts(filtered, query);
 });
 
-// Pakia data ya kwanza (All) ukurasa ukifunguka
 window.onload = () => {
   fetchData('data.json', document.querySelector('.filter-btn'));
 };
 </script>
 </body>
 </html>
-
