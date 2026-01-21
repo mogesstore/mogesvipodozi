@@ -1,472 +1,237 @@
 <!DOCTYPE html>
-
 <html lang="sw">
-
 <head>
-
-   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Kuhusu — Moges Vipodozi</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Moges Vipodozi — 2026 App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
-
-    * {margin:0; padding:0; box-sizing:border-box;}
-
-    body {
-
-      font-family: 'Poppins', sans-serif;
-
-      background: linear-gradient(135deg, #fff8f8, #ffe6f0);
-
-      color: #333;
-
-      line-height: 1.7;
-
+    :root {
+      --pink: #e91e63;
+      --gold: #bfa14a;
+      --dark: #1a1a1a;
+      --white: #ffffff;
+      --green: #25d366;
     }
 
-
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden; /* Inazuia kuserereka pembeni */
+      text-align: center;
+    }
 
     /* ===== Header ===== */
-
     header {
-
       position: fixed;
-
       top: 0; left: 0;
-
       width: 100%;
-
-      background-color: rgba(69, 245, 148, 0.95);
-
+      background: rgba(26, 26, 26, 0.98);
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       padding: 12px 20px;
-
-      z-index: 100;
-
-      backdrop-filter: blur(6px);
-
-      flex-wrap: wrap;
-
+      z-index: 1000;
+      border-bottom: 1px solid var(--gold);
     }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--gold); }
+    .logo img { height: 50px; width: 50px; border-radius: 50%; border: 2px solid var(--gold); }
+    
+    nav { display: flex; gap: 15px; }
+    nav a { color: white; text-decoration: none; font-size: 0.85rem; }
 
-    .logo {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-    }
-
-    .logo img { height: 60px; width: 60px; border-radius: 50%; }
-
-    .logo h1 { color: white; font-size: 1.3rem; letter-spacing: 1px; }
-
-    .logo span { color: #ffe6f0; }
-
-
-
-    nav {
-
-      display: flex;
-
-      gap: 15px;
-
-      flex-wrap: wrap;
-
-    }
-
-    nav a {
-
-      color: white;
-
-      text-decoration: none;
-
-      font-weight: 500;
-
-      transition: color 0.3s ease;
-
-      font-size: 0.95rem;
-
-    }
-
-    nav a:hover { color: #ffeff3; }
-
-
-
-    /* ===== Hero ===== */
-
+    /* ===== Hero Section ===== */
     .hero {
+      margin-top: 100px;
+      padding: 40px 20px;
+    }
+    .hero h1 { font-size: 2.2rem; color: var(--gold); margin-bottom: 10px; }
+    .hero p { color: #ccc; font-style: italic; margin-bottom: 30px; }
 
-      margin-top: 90px;
+    /* ===== Modern App Counter (Since April 1, 2025) ===== */
+    .app-counter-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--gold);
+      border-radius: 25px;
+      padding: 30px 15px;
+      width: 90%;
+      max-width: 500px;
+      margin: 0 auto 40px auto;
+      backdrop-filter: blur(15px);
+    }
 
-      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+    .app-counter-box h2 {
+      color: var(--pink);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-        url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg');
-
-      background-size: cover;
-
-      background-position: center;
-
-      height: 55vh;
-
+    .timer-display {
       display: flex;
-
-      align-items: center;
-
       justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
 
-      text-align: center;
+    .unit {
+      background: linear-gradient(145deg, #222, #333);
+      padding: 12px;
+      border-radius: 12px;
+      min-width: 65px;
+      border-bottom: 3px solid var(--pink);
+    }
 
+    .unit span { display: block; font-size: 1.4rem; font-weight: 800; color: var(--white); }
+    .unit label { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; }
+
+    /* Slogan Katikati */
+    .slogan-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 25px;
+      padding: 0 10px;
+    }
+
+    .btn-goods {
+      display: inline-block;
+      padding: 15px 35px;
+      background: var(--pink);
       color: white;
-
-      border-radius: 0 0 30px 30px;
-
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+      transition: 0.3s;
     }
+    .btn-goods:hover { transform: scale(1.05); background: var(--gold); }
 
-    .hero-content {
-
-      max-width: 700px;
-
-      padding: 20px;
-
-    }
-
-    .hero h2 {
-
-      font-size: 2.3rem;
-
-      margin-bottom: 15px;
-
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-
-    }
-
-
-
-    /* ===== Main ===== */
-
-    .container {
-
-      max-width: 1000px;
-
-      margin: 60px auto;
-
-      background: white;
-
-      border-radius: 20px;
-
-      padding: 40px 30px;
-
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-    }
-
-    h3.section-title {
-
-      color: #e91e63;
-
-      font-size: 1.5rem;
-
-      margin-bottom: 15px;
-
-      border-left: 4px solid #ff80ab;
-
-      padding-left: 10px;
-
-    }
-
-    .about-grid {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 30px;
-
-      align-items: center;
-
-    }
-
-    .about-grid img {
-
-      width: 100%;
-
-      border-radius: 20px;
-
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-
-    }
-
-
-
-    .values {
-
-      margin-top: 40px;
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-
-      gap: 20px;
-
-    }
-
-    .value-card {
-
-      background-color: #ffeef5;
-
-      padding: 25px;
-
-      border-radius: 20px;
-
-      text-align: center;
-
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-      transition: transform 0.2s;
-
-    }
-
-    .value-card:hover { transform: translateY(-5px); }
-
-    .value-card h4 { color: #00c2b8; margin-bottom: 8px; }
-
-
-
+    /* ===== Footer & Actual Social Icons ===== */
     footer {
-
-      text-align: center;
-
-      background-color: #1ee984a8;
-
-      color: white;
-
-      padding: 20px;
-
-      font-size: 0.9rem;
-
-      margin-top: 40px;
-
+      background: #000;
+      padding: 50px 20px;
+      margin-top: 60px;
+      border-top: 1px solid var(--gold);
     }
 
+    .footer-slogan { margin-bottom: 25px; color: var(--gold); font-weight: 600; }
 
-
-    /* ===== Responsive Design ===== */
-
-    @media (max-width: 900px) {
-
-      .hero h2 { font-size: 2rem; }
-
-      .about-grid { grid-template-columns: 1fr; }
-
-      .container { margin: 40px 15px; padding: 25px; }
-
-      nav { justify-content: center; margin-top: 8px; }
-
-      nav a { font-size: 0.9rem; }
-
-      .logo img { height: 55px; width: 55px; }
-
-      .hero { height: 45vh; border-radius: 0 0 20px 20px; }
-
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
     }
 
+    .social-grid a {
+      font-size: 1.8rem;
+      color: var(--white);
+      transition: 0.3s ease;
+    }
 
+    /* Rangi halisi za Icons */
+    .fa-facebook { color: #1877F2; }
+    .fa-instagram { color: #E4405F; }
+    .fa-tiktok { color: #fff; }
+    .fa-x-twitter { color: #fff; }
+    .fa-youtube { color: #FF0000; }
+    .fa-whatsapp { color: #25D366; }
 
+    .social-grid a:hover { transform: translateY(-8px); opacity: 0.8; }
+
+    .copy-text { font-size: 0.75rem; opacity: 0.5; }
+
+    /* Responsive */
     @media (max-width: 600px) {
-
-      header { flex-direction: column; align-items: center; padding: 10px; }
-
-      .hero-content { padding: 10px; }
-
-      .hero h2 { font-size: 1.6rem; }
-
-      p { font-size: 0.95rem; }
-
-      .values { grid-template-columns: 1fr 1fr; }
-
-      .value-card { padding: 15px; font-size: 0.9rem; }
-
-      nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
-
+      .hero h1 { font-size: 1.6rem; }
+      header { flex-direction: column; gap: 10px; }
+      .unit { min-width: 55px; padding: 8px; }
+      .unit span { font-size: 1.1rem; }
     }
-
-
-
-    @media (max-width: 400px) {
-
-      nav a { font-size: 0.85rem; }
-
-      .hero h2 { font-size: 1.4rem; }
-
-      .values { grid-template-columns: 1fr; }
-
-    }
-
   </style>
-
 </head>
-
-
-
 <body>
 
   <header>
-
     <div class="logo">
-
-      <img src="logo.png.png" alt="logo">
-
-      <h1>MOGES <span>VIPODOZI</span></h1>
-
+      <img src="logo.png.png" alt="logo"> Moges Store
     </div>
-
     <nav>
-
       <a href="index.html">Nyumbani</a>
-
-      <a href="comingsoon.html">Bidhaa</a>
-
-      <a href="comingsoon.html">Ofa</a>
-
+      <a href="goods.html">Bidhaa</a>
       <a href="about.html">Kuhusu</a>
-
       <a href="contact.html">Wasiliana</a>
-
     </nav>
-
   </header>
 
-
-
   <section class="hero">
+    <h1>MOGES VIPODOZI APP</h1>
+    <p>"Urembo wa Uhakika, Spidi ya Teknolojia"</p>
 
-    <div class="hero-content">
-
-      <h2>Kuhusu Moges Vipodozi</h2>
-
-      <p>Tunakuleta ulimwengu wa urembo kwa spidi ya teknolojia. Ubora, mwonekano, na thamani ndizo tunazoishi nazo.</p>
-
-    </div>
-
-  </section>
-
-
-
-  <section class="container">
-
-    <div class="about-grid">
-
-      <img src="https://img.freepik.com/premium-photo/beauty-products-pink-table_1048944-18026106.jpg" alt="Moges Store">
-
-      <div>
-
-        <h3 class="section-title">Historia Yetu</h3>
-
-        <p>
-
-          <strong>MOGES(Mori General Supplier) VIPODOZI</strong> ni duka la kisasa la urembo linalotoa bidhaa bora kutoka ndani na nje ya nchi.
-
-          Tumejikita katika kuhakikisha kila mteja anapata bidhaa halisi, salama, na zenye matokeo halisi.
-
-        </p>
-
-        <p>
-
-          Lengo letu ni kufanya ununuzi wa bidhaa za urembo kuwa rahisi, wa haraka na wa kuaminika —
-
-          ukiwa nyumbani, ofisini au hata safarini, bidhaa zako tunakuletea kwa spidi ya teknolojia.
-
-        </p>
-
+    <div class="app-counter-box">
+      <h2>Muda wa Huduma Bora</h2>
+      
+      <div class="timer-display" id="timer">
+        <div class="unit"><span id="days">00</span><label>Siku</label></div>
+        <div class="unit"><span id="hours">00</span><label>Saa</label></div>
+        <div class="unit"><span id="minutes">00</span><label>Dk</label></div>
+        <div class="unit"><span id="seconds">00</span><label>Sek</label></div>
       </div>
 
+      <p class="slogan-text">"Tangu tarehe 1 April 2025, tunakuhudumia kwa mapenzi na ubunifu wa hali ya juu!"</p>
+
+      <a href="goods.html" class="btn-goods">ANGALIA BIDHAA HAPA <i class="fas fa-arrow-right"></i></a>
     </div>
-
-
-
-    <div style="margin-top:40px;">
-
-      <h3 class="section-title">Dhamira Yetu</h3>
-
-      <p>
-
-        Kuleta furaha, urembo na ujasiri kwa kila mteja kupitia bidhaa za ubora wa juu na huduma bora.
-
-      </p>
-
-    </div>
-
-
-
-    <div style="margin-top:30px;">
-
-      <h3 class="section-title">Maono Yetu</h3>
-
-      <p>
-
-        Kuwa duka namba moja Tanzania katika sekta ya vipodozi na urembo,
-
-        likijulikana kwa ubunifu, uwazi, na huduma ya haraka.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="values">
-
-      <div class="value-card"><h4>Ubora</h4><p>Bidhaa zetu zote ni halisi na zenye viwango vya kimataifa.</p></div>
-
-      <div class="value-card"><h4>Huduma Bora</h4><p>Tunathamini kila mteja kama sehemu ya familia ya Moges.</p></div>
-
-      <div class="value-card"><h4>Uaminifu</h4><p>Tunaamini biashara nzuri hujengwa kwa uaminifu na uwazi.</p></div>
-
-      <div class="value-card"><h4>Ubunifu</h4><p>Tunatumia teknolojia ya kisasa kuongeza urahisi na kasi ya huduma.</p></div>
-
-      <div class="value-card"><h4>Thamani</h4><p>Tunatoa bidhaa bora kwa bei rafiki na ofa za kuvutia kila mwezi.</p></div>
-
-      <div class="value-card"><h4>Urembo wa Asili</h4><p>Tunakuza bidhaa zinazolinda ngozi na mwili bila madhara.</p></div>
-
-      <div class="value-card"><h4>Upendo</h4><p>Tunajali muonekano wako kwa dhati, si biashara tu.</p></div>
-
-      <div class="value-card"><h4>Haraka</h4><p>Huduma zetu ni za spidi ya teknolojia — unachotaka, papo hapo.</p></div>
-
-    </div>
-
   </section>
 
-
-
   <footer>
+    <div class="footer-slogan">MOGES VIPODOZI: CHAGUO LA WAREMBO WA KISASA</div>
+    
+    <div class="social-grid">
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/255756019062"><i class="fab fa-whatsapp"></i></a>
+    </div>
 
-    <p>© 2025 MOGES STORE | Vipodozi vya Kisasa kwa Bei Nafuu</p> 
-
+    <p class="copy-text">&copy; 2026 MOGES STORE. All Rights Reserved.</p>
   </footer>
 
+  <script>
+    function calculateTime() {
+      // Tarehe ya kuanza (April 1, 2025)
+      const startDate = new Date("April 1, 2025 00:00:00").getTime();
+      const now = new Date().getTime();
+      
+      // Tunatafuta muda uliopita (Muda uliopita tangu kuanza)
+      const difference = now - startDate;
+
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = d;
+      document.getElementById("hours").innerText = h;
+      document.getElementById("minutes").innerText = m;
+      document.getElementById("seconds").innerText = s;
+    }
+
+    // Update kila sekunde 1
+    setInterval(calculateTime, 1000);
+    calculateTime(); // Call mara moja kuanza
+  </script>
+
 </body>
-
 </html>
-
-
-
-
-
-
-
