@@ -4,49 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moges Store — Offers</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
     * {margin:0; padding:0; box-sizing:border-box;}
     body {
       font-family:'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7); /* Background ya kijani hafifu */
       color:#333;
       min-height:100vh;
     }
 
-    /* HEADER */
+    /* HEADER - Kijani kama kurasa nyingine */
     header {
-      background:rgba(8, 240, 162, 0.95);
+      background: linear-gradient(90deg, #1b5e20, #2e7d32);
       color:white;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding:10px 20px;
+      padding:12px 20px;
       position:sticky;
       top:0;
       backdrop-filter:blur(8px);
-      z-index:100;
+      z-index: 1000;
+      border-bottom: 3px solid #bfa14a;
     }
 
     .logo {
       display:flex;
       align-items:center;
-      gap:8px;
+      gap:10px;
     }
 
     .logo img {
-      height:60px;
-      width:60px;
+      height:55px;
+      width:55px;
       border-radius:50%;
+      border: 2px solid #bfa14a;
     }
 
     .logo h1 {
-      font-size:1.2rem;
+      font-size:1.3rem;
       color:white;
-      font-weight:600;
+      font-weight:700;
     }
+    .logo span { color: #bfa14a; }
 
     nav {
       display:flex;
@@ -56,11 +60,12 @@
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 0.9rem;
     }
 
-    nav a:hover { color: #004d40; }
+    nav a:hover { color: #bfa14a; }
 
     .menu-toggle {
       display:none;
@@ -73,26 +78,26 @@
       width:25px;
       margin:4px 0;
       border-radius:3px;
-      transition:0.3s;
     }
 
     /* OFFERS SECTION */
     .offers-container {
-      padding:100px 20px 50px;
+      padding:60px 20px;
       max-width:1200px;
       margin:auto;
       text-align:center;
     }
 
-    h1 {
-      font-size:2rem;
+    h1.page-title {
+      font-size:2.2rem;
       margin-bottom:30px;
-      color:#004d40;
+      color:#1b5e20;
+      font-weight: 700;
     }
 
     .offer-grid {
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:25px;
     }
 
@@ -101,57 +106,83 @@
       border-radius:15px;
       overflow:hidden;
       box-shadow:0 4px 15px rgba(0,0,0,0.1);
-      transition:transform .3s, box-shadow .3s;
+      transition: transform .3s;
+      border: 1px solid #eee;
     }
 
     .offer-card:hover { 
-      transform:translateY(-5px); 
-      box-shadow:0 8px 25px rgba(0,0,0,0.2);
+      transform:translateY(-8px); 
     }
 
     .offer-card img {
       width:100%;
-      height:200px;
+      height:230px;
       object-fit:cover;
     }
 
     .offer-info {
-      padding:15px;
+      padding:20px;
     }
 
     .offer-info h3 {
-      color:#05f197bd;
-      margin-bottom:8px;
+      color:#2e7d32;
+      margin-bottom:10px;
+      font-size: 1.2rem;
     }
 
     .offer-info p {
       font-size:0.95rem;
-      margin-bottom:5px;
+      margin-bottom:8px;
     }
 
-    footer {
-      text-align:center;
-      padding:15px;
-      background:#1976d2;
-      color:white;
-      margin-top:50px;
-      font-size:0.9rem;
+    .offer-price {
+      font-weight: 700;
+      color: #e91e63;
+      font-size: 1.1rem;
     }
+
+    /* FOOTER STYLE */
+    footer {
+      background: linear-gradient(90deg, #1b5e20, #2e7d32);
+      padding: 45px 20px;
+      margin-top: 60px;
+      border-top: 3px solid #bfa14a;
+      color: white;
+      text-align: center;
+    }
+
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .social-grid a { font-size: 2.2rem; transition: 0.3s; text-decoration: none; }
+    .fa-x-twitter, .fa-facebook, .fa-tiktok, .fa-instagram { color: white; }
+    .fa-youtube { color: #FF0000; }
+    .fa-whatsapp { color: #25D366; }
+
+    .social-grid a:hover { transform: scale(1.2); }
+    .copy-text { font-size: 0.85rem; font-weight: 600; color: #bfa14a; }
 
     /* RESPONSIVE DESIGN */
     @media (max-width:768px) {
-      .logo img { height:50px; width:50px; }
-      .logo h1 { font-size:1rem; }
-      nav { display:none; flex-direction:column; background:rgba(0,77,64,0.95); position:absolute; top:70px; right:20px; padding:15px; border-radius:10px;}
+      header { padding: 10px; }
+      nav { 
+        display:none; 
+        flex-direction:column; 
+        background:#1b5e20; 
+        position:absolute; 
+        top:75px; 
+        right:20px; 
+        padding:20px; 
+        border-radius:10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
       nav.active { display:flex; }
       .menu-toggle { display:flex; }
-    }
-
-    @media (max-width:480px) {
-      .offers-container { padding-top:80px; }
-      h1 { font-size:1.5rem; }
-      .offer-card img { height:180px; }
-      .offer-info p { font-size:0.9rem; }
     }
   </style>
 </head>
@@ -159,7 +190,7 @@
   <header>
     <div class="logo">
       <img src="logo.png.png" alt="logo">
-      <h1>Moges Store</h1>
+      <h1>Moges <span>Store</span></h1>
     </div>
 
     <div class="menu-toggle" id="menu-toggle">
@@ -170,27 +201,28 @@
 
     <nav id="nav">
       <a href="index.html">Nyumbani</a>
-      <a href="comingsoon.html">Bidhaa</a>
+      <a href="goods.html">Bidhaa</a>
       <a href="offers.html">Ofa</a>
+      <a href="about.html">Kuhusu</a>
       <a href="contact.html">Wasiliana</a>
-      <a href="adminoffer.html">Admin</a>
     </nav>
   </header>
 
   <section class="offers-container">
-    <h1>Offers za Wiki Hii</h1>
+    <h1 class="page-title">Offers za Wiki Hii</h1>
     <div id="offersList" class="offer-grid"></div>
   </section>
- <footer>
+
+  <footer>
     <div style="margin-bottom: 20px; font-weight: bold; letter-spacing: 1px;">TUFUATILIE MITANDAONI</div>
     <div class="social-grid">
-      <div class="social-grid">
-  <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
-  <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
-  <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
-  <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
-  <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
+      <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
     <p class="copy-text">&copy; 2026 MOGES STORE | Chaguo Namba Moja</p>
   </footer>
 
@@ -208,22 +240,21 @@
     function displayOffers() {
       let offers = JSON.parse(localStorage.getItem('offers')) || [];
       
-      // Remove expired offers (older than 7 days)
       const now = new Date().getTime();
       offers = offers.filter(offer => now - offer.timestamp < 7*24*60*60*1000);
       localStorage.setItem('offers', JSON.stringify(offers));
 
       if (offers.length === 0) {
-        container.innerHTML = "<p>Hakuna offers kwa sasa. Tafadhali rudi baadae.</p>";
+        container.innerHTML = "<p style='grid-column: 1/-1;'>Hakuna offers kwa sasa. Tafadhali rudi baadae.</p>";
       } else {
         container.innerHTML = offers.map(offer => `
           <div class="offer-card">
-            <img src="${offer.image}" alt="${offer.title}">
+            <img src="${offer.image}" alt="${offer.title}" onerror="this.src='https://via.placeholder.com/300?text=Picha+ya+Ofa'">
             <div class="offer-info">
               <h3>${offer.title}</h3>
               <p>${offer.description}</p>
-              <p><strong>Bei ya Ofa:</strong> ${offer.price}</p>
-              <p>⏰ ${offer.date}</p>
+              <p class="offer-price">Bei ya Ofa: ${offer.price}</p>
+              <p style="font-size: 0.8rem; color: #666;">⏰ Imechaguliwa tarehe: ${offer.date}</p>
             </div>
           </div>
         `).join('');
@@ -234,5 +265,3 @@
   </script>
 </body>
 </html>
-
-
