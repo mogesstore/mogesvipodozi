@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
   <style>
-    
     :root {
       --pink: #e91e63;
       --gold: #bfa14a;
@@ -130,7 +129,7 @@
   <div id="loadingText" style="text-align:center; padding:20px;">Inapakia bidhaa mpya...</div>
   <div class="grid" id="productGrid"></div>
   <div id="noResults" style="display:none; text-align:center; padding:40px;">
-    <p>mfumo upo kwenye matengenezo tafadhali rejea hivi punde.</p>
+    <p>Samahani, bidhaa hiyo haijapatikana.</p>
   </div>
 </main>
 
@@ -150,19 +149,24 @@
 <script>
 let allCloudProducts = [];
 let currentFilteredList = [];
-const BIN_ID = "8732e769fcb900ea7588";
+// BIN ID MPYA ULIYOTOA
+const BIN_ID = "6589e8a2071eb5a19971";
 
 async function loadProducts() {
   const loading = document.getElementById("loadingText");
   try {
-    const res = await fetch(`https://api.npoint.io/${BIN_ID}`);
+    // Tumeongeza Timestamp ili kuzuia cache ya browser
+    const res = await fetch(`https://api.npoint.io/${BIN_ID}?t=${new Date().getTime()}`);
     const data = await res.json();
+    
     allCloudProducts = Array.isArray(data) ? data.filter(p => p.type === 'item') : [];
     currentFilteredList = allCloudProducts;
+    
     loading.style.display = "none";
     renderProducts(allCloudProducts);
   } catch (err) {
     loading.innerText = "Hitilafu imetokea wakati wa kupakia bidhaa.";
+    console.error(err);
   }
 }
 
@@ -170,14 +174,22 @@ function renderProducts(list) {
   const grid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
   grid.innerHTML = "";
-  if(!list || list.length === 0){ noResults.style.display="block"; return; }
+  
+  if(!list || list.length === 0){ 
+    noResults.style.display="block"; 
+    return; 
+  }
+  
   noResults.style.display="none";
+  
   list.forEach(p => {
     const name = p.name || "Bidhaa";
-    const priceValue = Number(p.price);
+    const priceValue = Number(p.price) || 0;
     const formattedPrice = priceValue.toLocaleString();
+    
     const waMessage = `Habari Moges Store, nahitaji kuagiza ${name} kwa bei ya TZS ${formattedPrice}`;
     const waLink = `https://wa.me/255756019062?text=${encodeURIComponent(waMessage)}`;
+    
     const card = document.createElement("div");
     card.className="card";
     card.innerHTML = `
@@ -208,13 +220,11 @@ function applyFilter(category, btnElement) {
       p.name.toLowerCase().includes('chupi')
     );
   } else if(category === 'other') {
-    // Inaonyesha vitu ambavyo havipo kwenye kundi lolote kuu
     const mainCategories = ['pochi', 'bag', 'perfume', 'boxer', 'chupi', 'bodyoil', 'serum', 'shower'];
     currentFilteredList = allCloudProducts.filter(p => 
       !mainCategories.some(cat => p.name.toLowerCase().includes(cat))
     );
   } else {
-    // Hapa inachuja kulingana na jina la category (pochi, perfume, bodyoil, serum, n.k.)
     currentFilteredList = allCloudProducts.filter(p => p.name.toLowerCase().includes(query));
   }
   
@@ -232,5 +242,3 @@ loadProducts();
 </script>
 </body>
 </html>
-
-
