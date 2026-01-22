@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
   <style>
-    /* STYLE ZAKO ZOTE ZIMEBAKI VILE VILE */
+    
     :root {
       --pink: #e91e63;
       --gold: #bfa14a;
@@ -62,7 +62,6 @@
     }
     .whatsapp-btn:hover { background: #128C7E; transform: scale(1.02); }
 
-    /* FOOTER ILIYOBORESHWA NA ICON ZA UKWELI */
     footer { 
       background: linear-gradient(90deg, #1b5e20, #2e7d32); 
       padding: 45px 20px; 
@@ -75,20 +74,10 @@
     .social-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
     
     .social-icon { 
-      font-size: 1.8rem; 
-      width: 50px; 
-      height: 50px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      border-radius: 50%; 
-      background: rgba(255,255,255,0.1); 
-      color: white; 
-      text-decoration: none; 
-      transition: 0.4s; 
+      font-size: 1.8rem; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; 
+      border-radius: 50%; background: rgba(255,255,255,0.1); color: white; text-decoration: none; transition: 0.4s; 
     }
     
-    /* Rangi za Mitandao */
     .social-icon.facebook:hover { background: #1877F2; transform: translateY(-5px); }
     .social-icon.instagram:hover { background: #E4405F; transform: translateY(-5px); }
     .social-icon.tiktok:hover { background: #000000; transform: translateY(-5px); }
@@ -123,8 +112,13 @@
 <div class="controls-container">
   <div class="filter-tabs">
     <button class="filter-btn active" onclick="applyFilter('zote', this)">Zote</button>
-    <button class="filter-btn" onclick="applyFilter('pochi', this)">Pochi Tu</button>
-    <button class="filter-btn" onclick="applyFilter('vipodozi', this)">Vipodozi & Nyumbani</button>
+    <button class="filter-btn" onclick="applyFilter('pochi', this)">Pochi</button>
+    <button class="filter-btn" onclick="applyFilter('perfume', this)">Perfumes</button>
+    <button class="filter-btn" onclick="applyFilter('boxer', this)">Boxer & Chupi</button>
+    <button class="filter-btn" onclick="applyFilter('bodyoil', this)">Bodyoil</button>
+    <button class="filter-btn" onclick="applyFilter('serum', this)">Serum</button>
+    <button class="filter-btn" onclick="applyFilter('shower', this)">Shower Jelly</button>
+    <button class="filter-btn" onclick="applyFilter('other', this)">Nyinginezo</button>
   </div>
 
   <div class="search-bar">
@@ -158,17 +152,13 @@ let allCloudProducts = [];
 let currentFilteredList = [];
 const BIN_ID = "8732e769fcb900ea7588";
 
-// 1. PAKIA DATA KUTOKA CLOUD
 async function loadProducts() {
   const loading = document.getElementById("loadingText");
   try {
     const res = await fetch(`https://api.npoint.io/${BIN_ID}`);
     const data = await res.json();
-    
-    // CHUJA: Chukua bidhaa tu (sio ofa)
     allCloudProducts = Array.isArray(data) ? data.filter(p => p.type === 'item') : [];
     currentFilteredList = allCloudProducts;
-    
     loading.style.display = "none";
     renderProducts(allCloudProducts);
   } catch (err) {
@@ -176,28 +166,18 @@ async function loadProducts() {
   }
 }
 
-// 2. ONYESHA BIDHAA KWENYE GRID
 function renderProducts(list) {
   const grid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
   grid.innerHTML = "";
-  
-  if(!list || list.length === 0){ 
-    noResults.style.display="block"; 
-    return; 
-  }
-  
+  if(!list || list.length === 0){ noResults.style.display="block"; return; }
   noResults.style.display="none";
-  
   list.forEach(p => {
     const name = p.name || "Bidhaa";
     const priceValue = Number(p.price);
     const formattedPrice = priceValue.toLocaleString();
-    
-    // UJUMBE WA WHATSAPP AUTOMATIC (Jina + Bei)
     const waMessage = `Habari Moges Store, nahitaji kuagiza ${name} kwa bei ya TZS ${formattedPrice}`;
     const waLink = `https://wa.me/255756019062?text=${encodeURIComponent(waMessage)}`;
-    
     const card = document.createElement("div");
     card.className="card";
     card.innerHTML = `
@@ -214,33 +194,42 @@ function renderProducts(list) {
   });
 }
 
-// 3. CHUJA KWA VITUFE (POCHI, VIPODOZI)
 function applyFilter(category, btnElement) {
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
   if(btnElement) btnElement.classList.add('active');
 
+  const query = category.toLowerCase();
+
   if(category === 'zote') {
     currentFilteredList = allCloudProducts;
-  } else if(category === 'pochi') {
-    currentFilteredList = allCloudProducts.filter(p => p.name.toLowerCase().includes('pochi') || p.name.toLowerCase().includes('bag') || p.name.toLowerCase().includes('handbag'));
+  } else if(category === 'boxer') {
+    currentFilteredList = allCloudProducts.filter(p => 
+      p.name.toLowerCase().includes('boxer') || 
+      p.name.toLowerCase().includes('chupi')
+    );
+  } else if(category === 'other') {
+    // Inaonyesha vitu ambavyo havipo kwenye kundi lolote kuu
+    const mainCategories = ['pochi', 'bag', 'perfume', 'boxer', 'chupi', 'bodyoil', 'serum', 'shower'];
+    currentFilteredList = allCloudProducts.filter(p => 
+      !mainCategories.some(cat => p.name.toLowerCase().includes(cat))
+    );
   } else {
-    // Kwa Vipodozi & Nyumbani (Vitu visivyo na neno pochi)
-    currentFilteredList = allCloudProducts.filter(p => !p.name.toLowerCase().includes('pochi') && !p.name.toLowerCase().includes('bag'));
+    // Hapa inachuja kulingana na jina la category (pochi, perfume, bodyoil, serum, n.k.)
+    currentFilteredList = allCloudProducts.filter(p => p.name.toLowerCase().includes(query));
   }
   
   renderProducts(currentFilteredList);
   document.getElementById("searchInput").value = "";
 }
 
-// 4. SEARCH BAR LOGIC
 document.getElementById("searchInput").addEventListener("input", e => {
   const query = e.target.value.toLowerCase().trim();
   const searched = currentFilteredList.filter(p => p.name.toLowerCase().includes(query));
   renderProducts(searched);
 });
 
-// Anza kupakia ukurasa ukifunguka
 loadProducts();
 </script>
 </body>
 </html>
+
