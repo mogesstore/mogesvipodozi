@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard - Moges Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <style>
-/* STYLE ZAKO ZILE ZILE */
-body { font-family: 'Poppins', sans-serif; background: #0f172a; color: #fff; margin: 0; }
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(0, 0, 0, 0.8); border-bottom: 2px solid #00eaff; }
-header img { height: 45px; border-radius: 5px; }
-.container { max-width: 1000px; margin: 20px auto; background: #1e293b; border-radius: 12px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+/* STYLE ZAKO ZILE ZILE - SIJABADILISHA CHOCHOTE */
+body { font-family: 'Times New Roman', Times, serif; background: url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg') center/cover fixed no-repeat; color: #fff; margin: 0; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); border-bottom: 2px solid #00eaff; }
+header img { height: 55px; border-radius: 8px; }
+.container { max-width: 1000px; margin: 30px auto; background: rgba(0,0,0,0.65); border-radius: 16px; padding: 30px; box-shadow: 0 0 20px rgba(0,234,255,0.2); }
 h1, h2 { text-align: center; color: #00eaff; }
-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; }
-label { grid-column: span 2; color: #00eaff; font-weight: 600; margin-bottom: -10px; }
-input, select { padding: 12px; border-radius: 5px; border: none; font-family: inherit; }
-.full-width { grid-column: span 2; }
-.btn-group { grid-column: span 2; display: flex; gap: 10px; }
-button { padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; transition: 0.3s; }
+form { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; padding: 20px; border: 1px solid rgba(0,234,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.05); }
+form label { flex: 1 0 100%; font-weight: 600; color: #00eaff; margin-bottom: -5px; }
+form input, form select { flex: 1 0 250px; padding: 12px; border-radius: 6px; border: none; outline: none; }
+.btn-group { flex: 1 0 100%; display: flex; gap: 10px; margin-top: 10px; }
+button { padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
 .add-btn { background: #00eaff; color: #000; flex: 1; }
-.save-btn { background: #22c55e; color: #fff; flex: 2; font-size: 1.1rem; }
-.delete-btn { background: #ef4444; color: #fff; padding: 5px 10px; }
-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #334155; }
-th, td { padding: 12px; border: 1px solid #475569; text-align: left; }
-th { background: #0f172a; color: #00eaff; }
-.img-preview { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
-#status { color: #facc15; font-weight: bold; grid-column: span 2; text-align: center; }
+.save-btn { background: #28a745; color: #fff; flex: 2; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4); }
+.delete-btn { background: #ff4444; color: #fff; padding: 5px 10px; border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.3); }
+th, td { padding: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; }
+th { background: rgba(0, 234, 255, 0.3); color: #00eaff; }
+.img-preview { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #00eaff; }
+#uploadStatus { font-size: 0.9rem; color: #ffc107; font-weight: bold; width: 100%; display: block; margin-top: 5px; }
 </style>
 </head>
 <body>
@@ -34,36 +33,39 @@ th { background: #0f172a; color: #00eaff; }
 <header>
   <img src="logo.png.png" alt="Logo">
   <div style="font-weight: bold; color: #00eaff;">MOGES ADMIN PANEL</div>
-  <button onclick="window.location.reload()" style="background:#475569; color:white; padding:5px 10px;">Refresh Data</button>
+  <nav><button onclick="window.location.href='index.html'" style="background:transparent; color:#ff4444; border:1px solid #ff4444;">Logout</button></nav>
 </header>
 
 <div class="container">
-  <h1>Jikoni (Backend Dashboard)</h1>
+  <h1>Dashboard ya Moges Store</h1>
 
   <form id="addItemForm">
-    <label>Aina ya Bidhaa:</label>
-    <select id="type" class="full-width">
-      <option value="item">Bidhaa ya Kawaida (Goods Page)</option>
-      <option value="offer">Ofa Maalum (Offers Page)</option>
+    <label>Chagua Sehemu ya Kuweka:</label>
+    <select id="type">
+      <option value="item">Bidhaa (Goods Page)</option>
+      <option value="offer">Ofa (Offers Page)</option>
     </select>
 
-    <label>Jina:</label>
+    <label>Jina la Bidhaa:</label>
     <input type="text" id="name" placeholder="Mfano: Pochi ya Kike" required>
-    
+
     <label>Bei (Tsh):</label>
     <input type="number" id="price" placeholder="Mfano: 35000" required>
 
-    <label>Picha (Upload):</label>
-    <input type="file" id="imageFile" accept="image/*" class="full-width">
-    <div id="status"></div>
+    <label>Picha (Chagua kutoka kwenye Simu/PC):</label>
+    <input type="file" id="imageFile" accept="image/*">
+    <span id="uploadStatus"></span>
+    
+    <label>AU tumia URL ya picha (Kama unayo):</label>
+    <input type="text" id="imageUrl" placeholder="https://...">
 
     <div class="btn-group">
-      <button type="submit" class="add-btn">WEKA KWENYE LIST</button>
-      <button type="button" class="save-btn" onclick="saveToCloud()">🚀 PUSH TO ONLINE SHOP (LIVE)</button>
+      <button type="submit" class="add-btn">Weka Kwenye Orodha</button>
+      <button type="button" class="save-btn" onclick="saveToCloud()">🚀 PUSH TO ONLINE SHOP</button>
     </div>
   </form>
 
-  <h2>Bidhaa Zilizopo Mtandaoni (Mteja anavyoona)</h2>
+  <h2>Orodha ya Bidhaa na Ofa Mtandaoni</h2>
   <table id="itemsTable">
     <thead>
       <tr>
@@ -74,46 +76,42 @@ th { background: #0f172a; color: #00eaff; }
         <th>Action</th>
       </tr>
     </thead>
-    <tbody id="tbody">
-      <tr><td colspan="5" style="text-align:center;">Inatafuta bidhaa mtandaoni...</td></tr>
+    <tbody>
+      <tr><td colspan="5" style="text-align:center;">Inapakia data...</td></tr>
     </tbody>
   </table>
 </div>
 
+<footer>© 2026 Moges Store | Admin System</footer>
+
 <script>
 let itemsData = [];
-// BIN ID ILIYOPO KWENYE GOODS NA OFFERS
+// BIN ID NA API KEY ZAKO SAHIHI
 const BIN_ID = "73c2d0be507a20ec7e0d"; 
 const IMGBB_API_KEY = "a3db8960b8488df238d6bea0c123d52e";
 
-// 1. Kazi ya kwanza: Pakia bidhaa zilizopo mtandaoni sasa hivi
-async function loadFromCloud() {
-  const tableBody = document.getElementById("tbody");
-  try {
-    const res = await fetch(`https://api.npoint.io/${BIN_ID}?t=${new Date().getTime()}`);
-    const data = await res.json();
-    itemsData = Array.isArray(data) ? data : [];
-    renderTable();
-  } catch (err) {
-    tableBody.innerHTML = "<tr><td colspan='5' style='text-align:center;'>Hakuna bidhaa mtandaoni kwa sasa.</td></tr>";
-  }
+function loadFromCloud() {
+  fetch(`https://api.npoint.io/${BIN_ID}`)
+    .then(res => res.json())
+    .then(data => {
+      itemsData = Array.isArray(data) ? data : [];
+      renderTable();
+    })
+    .catch(() => {
+      itemsData = [];
+      renderTable();
+    });
 }
 
-// 2. Onyesha bidhaa kwenye Table
 function renderTable(){
-  const tbody = document.getElementById("tbody");
-  tbody.innerHTML = "";
+  const tbody = document.querySelector("#itemsTable tbody");
+  tbody.innerHTML = itemsData.length === 0 ? "<tr><td colspan='5' style='text-align:center;'>Hamna bidhaa yoyote mtandaoni.</td></tr>" : "";
   
-  if (itemsData.length === 0) {
-    tbody.innerHTML = "<tr><td colspan='5' style='text-align:center;'>List ni tupu. Ongeza bidhaa mpya.</td></tr>";
-    return;
-  }
-
   itemsData.forEach((item, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td style="color:${item.type === 'offer' ? '#facc15' : '#00eaff'}">${item.type.toUpperCase()}</td>
-      <td><img src="${item.image}" class="img-preview"></td>
+      <td style="color:${item.type === 'offer' ? '#ffc107' : '#00eaff'}">${item.type === 'offer' ? 'OFA' : 'ITEM'}</td>
+      <td><img src="${item.image}" class="img-preview" onerror="this.src='https://via.placeholder.com/50'"></td>
       <td>${item.name}</td>
       <td>${Number(item.price).toLocaleString()}</td>
       <td><button class="delete-btn" onclick="deleteItem(${index})">Futa</button></td>
@@ -122,76 +120,66 @@ function renderTable(){
   });
 }
 
-// 3. Ongeza Bidhaa Mpya
 document.getElementById("addItemForm").addEventListener("submit", async function(e){
   e.preventDefault();
   const fileInput = document.getElementById('imageFile');
-  const statusDiv = document.getElementById('status');
-  let imageUrl = "";
+  const status = document.getElementById('uploadStatus');
+  let finalImageUrl = document.getElementById('imageUrl').value.trim();
 
   if (fileInput.files.length > 0) {
-    statusDiv.innerText = "⏳ Inapakia picha mtandaoni...";
+    status.innerText = "⏳ Inapakia picha...";
     const formData = new FormData();
     formData.append("image", fileInput.files[0]);
+
     try {
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: "POST", body: formData });
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+        method: "POST",
+        body: formData
+      });
       const resData = await res.json();
-      if(resData.success) imageUrl = resData.data.url;
-    } catch (err) { alert("Picha imeshindwa kupanda!"); return; }
-  } else {
-    alert("Tafadhali chagua picha ya bidhaa.");
-    return;
+      if(resData.success) {
+        finalImageUrl = resData.data.url;
+        status.innerText = "✅ Picha imekubali!";
+      }
+    } catch (err) {
+      alert("Picha imegoma!");
+      return;
+    }
   }
 
-  // Weka kwenye list ya muda
   itemsData.push({
     type: document.getElementById("type").value,
     name: document.getElementById("name").value.trim(),
     price: document.getElementById("price").value,
-    image: imageUrl
+    image: finalImageUrl
   });
 
   renderTable();
   this.reset();
-  statusDiv.innerText = "✅ Bidhaa imeongezwa kwenye list. Sasa bonyeza PUSH!";
 });
 
-// 4. PUSH - Hapa ndipo inatuma data LIVE kwa mteja
 async function saveToCloud() {
-  const saveBtn = document.querySelector(".save-btn");
-  saveBtn.innerText = "⏳ Inatuma bidhaa dukani...";
-  saveBtn.disabled = true;
-
+  if(!confirm("Je, unataka kurusha bidhaa hizi mtandaoni?")) return;
+  
   try {
     const response = await fetch(`https://api.npoint.io/${BIN_ID}`, {
-      method: 'PUT',
+      method: 'POST', // POST KAMA ULIVYOTAKA
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(itemsData)
     });
-    
     if (response.ok) {
-      alert("✅ HONGERA! Mteja sasa anaweza kuona mabadiliko haya.");
-      loadFromCloud(); // Refresh list kutoka mtandaoni
-    } else {
-      alert("❌ Hitilafu: npoint imekataa data.");
+      alert("✅ BIDHAA ZIMEONGEZWA TAYARI!");
     }
   } catch (err) {
-    alert("❌ Angalia Internet yako!");
-  } finally {
-    saveBtn.innerText = "🚀 PUSH TO ONLINE SHOP (LIVE)";
-    saveBtn.disabled = false;
+    alert("Hitilafu ya Server! Jaribu tena.");
   }
 }
 
-// 5. DELETE
 function deleteItem(index){
-  if(confirm("Je, unataka kufuta bidhaa hii mtandaoni? (Lazima ubonyeze PUSH baada ya hapa)")) {
-    itemsData.splice(index, 1);
-    renderTable();
-  }
+  itemsData.splice(index, 1);
+  renderTable();
 }
 
-// Pakia data punde tu ukurasa unapofunguka
 loadFromCloud();
 </script>
 </body>
