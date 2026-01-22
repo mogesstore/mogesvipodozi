@@ -149,17 +149,29 @@
 <script>
 let allCloudProducts = [];
 let currentFilteredList = [];
-// BIN ID MPYA ULIYOTOA
 const BIN_ID = "2521735f650580279ac6";
+
+// Function ya kupanga bidhaa A-Z
+function sortAlphabetically(data) {
+  return data.sort((a, b) => {
+    let nameA = (a.name || "").toLowerCase();
+    let nameB = (b.name || "").toLowerCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+  });
+}
 
 async function loadProducts() {
   const loading = document.getElementById("loadingText");
   try {
-    // Tumeongeza Timestamp ili kuzuia cache ya browser
     const res = await fetch(`https://api.npoint.io/${BIN_ID}?t=${new Date().getTime()}`);
     const data = await res.json();
     
-    allCloudProducts = Array.isArray(data) ? data.filter(p => p.type === 'item') : [];
+    let rawItems = Array.isArray(data) ? data.filter(p => p.type === 'item') : [];
+    
+    // Panga bidhaa zote kuanzia A-Z mara tu zinapotoka Cloud
+    allCloudProducts = sortAlphabetically(rawItems);
     currentFilteredList = allCloudProducts;
     
     loading.style.display = "none";
@@ -211,23 +223,26 @@ function applyFilter(category, btnElement) {
   if(btnElement) btnElement.classList.add('active');
 
   const query = category.toLowerCase();
+  let filtered = [];
 
   if(category === 'zote') {
-    currentFilteredList = allCloudProducts;
+    filtered = allCloudProducts;
   } else if(category === 'boxer') {
-    currentFilteredList = allCloudProducts.filter(p => 
+    filtered = allCloudProducts.filter(p => 
       p.name.toLowerCase().includes('boxer') || 
       p.name.toLowerCase().includes('chupi')
     );
   } else if(category === 'other') {
     const mainCategories = ['pochi', 'bag', 'perfume', 'boxer', 'chupi', 'bodyoil', 'serum', 'shower'];
-    currentFilteredList = allCloudProducts.filter(p => 
+    filtered = allCloudProducts.filter(p => 
       !mainCategories.some(cat => p.name.toLowerCase().includes(cat))
     );
   } else {
-    currentFilteredList = allCloudProducts.filter(p => p.name.toLowerCase().includes(query));
+    filtered = allCloudProducts.filter(p => p.name.toLowerCase().includes(query));
   }
   
+  // Panga list iliyochujwa nayo iwe A-Z
+  currentFilteredList = sortAlphabetically(filtered);
   renderProducts(currentFilteredList);
   document.getElementById("searchInput").value = "";
 }
@@ -235,12 +250,11 @@ function applyFilter(category, btnElement) {
 document.getElementById("searchInput").addEventListener("input", e => {
   const query = e.target.value.toLowerCase().trim();
   const searched = currentFilteredList.filter(p => p.name.toLowerCase().includes(query));
-  renderProducts(searched);
+  // Panga matokeo ya utafutaji nayo yawe A-Z
+  renderProducts(sortAlphabetically(searched));
 });
 
 loadProducts();
 </script>
 </body>
 </html>
-
-
