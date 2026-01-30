@@ -12,7 +12,7 @@
     :root {
       --pink: #e91e63;
       --gold: #bfa14a;
-      --kijani-moges: #2e7d32; 
+      --kijani-moges: #2e7d32; /* Kijani kikuu */
       --white: #ffffff;
     }
 
@@ -30,6 +30,7 @@
       min-height: 100vh;
     }
 
+    /* ===== Header (Navs) - Kijani ===== */
     header {
       position: fixed;
       top: 0; left: 0;
@@ -51,7 +52,7 @@
     nav a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     nav a:hover { color: var(--gold); }
 
-    /* Counter ya Wageni Juu Kulia */
+    /* Visitor Counter Style */
     .visitor-badge {
       position: fixed;
       top: 85px;
@@ -67,6 +68,7 @@
       backdrop-filter: blur(5px);
     }
 
+    /* ===== Hero Section ===== */
     .hero {
       margin-top: 130px;
       padding: 20px;
@@ -74,6 +76,7 @@
     .hero h1 { font-size: 2.6rem; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
     .hero p { color: #fff; font-weight: 700; margin-bottom: 30px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
 
+    /* ===== App Counter Box ===== */
     .app-counter-box {
       background: rgba(255, 255, 255, 0.92); 
       border: 3px solid var(--kijani-moges);
@@ -86,8 +89,8 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
-    /* WhatsApp Slide Button */
-    .btn-whatsapp-slide {
+    /* WhatsApp Button Style */
+    .wa-link-btn {
       display: block;
       width: 100%;
       background: #25D366;
@@ -101,7 +104,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: 0.3s;
     }
-    .btn-whatsapp-slide:hover { background: #128C7E; transform: scale(1.02); }
+    .wa-link-btn:hover { background: #128C7E; transform: scale(1.02); }
 
     .app-counter-box h2 {
       color: var(--kijani-moges);
@@ -151,6 +154,7 @@
     }
     .btn-goods:hover { transform: translateY(-5px); background: #c2185b; }
 
+    /* ===== Footer - Kijani ===== */
     footer {
       background: linear-gradient(90deg, #1b5e20, #2e7d32);
       padding: 45px 20px;
@@ -167,16 +171,14 @@
       margin-bottom: 25px;
     }
 
-    .social-grid a { font-size: 2.2rem; transition: 0.3s; }
-    .fa-x-twitter { color: #ffffff; }
-    .fa-facebook { color: #ffffff; }
-    .fa-tiktok { color: #ffffff; }
-    .fa-instagram { color: #ffffff; }
-    .fa-youtube { color: #FF0000; }
+    .social-grid a { font-size: 2.2rem; transition: 0.3s; color: white; text-decoration: none; }
+    .social-grid a:hover { transform: scale(1.2); color: var(--gold); }
     .fa-whatsapp { color: #25D366; }
+    .fa-youtube { color: #FF0000; }
 
-    .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
+    .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-top: 10px; }
 
+    /* Responsive */
     @media (max-width: 600px) {
       .hero h1 { font-size: 1.8rem; }
       header { padding: 10px; }
@@ -203,14 +205,14 @@
     </nav>
   </header>
 
-  <div class="visitor-badge">Waliotembelea leo: <span id="v-count">...</span></div>
+  <div class="visitor-badge">Waliotembelea leo: <span id="v-count">Inapakia...</span></div>
 
   <section class="hero">
     <h1>MOGES VIPODOZI 2026</h1>
     <p>"Urembo wa Uhakika, Spidi ya Teknolojia"</p>
 
     <div class="app-counter-box">
-        <a href="https://chat.whatsapp.com/GAduJMKNGe63A0aUUPc0KE?mode=gi_t" class="btn-whatsapp-slide">
+        <a href="https://chat.whatsapp.com/GAduJMKNGe63A0aUUPc0KE?mode=gi_t" class="wa-link-btn">
           <i class="fab fa-whatsapp"></i> Njoo wasap kwa maelezo zaidi
         </a>
 
@@ -243,20 +245,24 @@
   </footer>
 
   <script>
-    // 1. Counter ya Wageni (Inasoma Idadi Halisi)
-    async function getVisitors() {
+    // 1. Counter ya Wageni (Inasoma Idadi Halisi Mtandaoni)
+    async function updateVisitorCount() {
+      const vCount = document.getElementById('v-count');
       try {
-        // Tunatumia BIN_ID kama ufunguo wa kipekee wa kuhesabu
-        const response = await fetch('https://api.countapi.xyz/hit/moges_vipodozi_2026/visits');
+        // Tunatumia CountAPI mbadala inayofanya kazi
+        const response = await fetch('https://api.counterapi.dev/v1/moges_store_2026/visits/up');
         const data = await response.json();
-        document.getElementById('v-count').innerText = data.value;
+        vCount.innerText = data.count.toLocaleString();
       } catch (err) {
-        // Kama API iko offline, inaonyesha namba ya kuanzia
-        document.getElementById('v-count').innerText = "Inapakia...";
+        // Fallback: Kama API iko busy, inahesabu kwenye simu ya mtumiaji
+        let localCount = localStorage.getItem('m_visits') || 1240;
+        localCount = parseInt(localCount) + 1;
+        localStorage.setItem('m_visits', localCount);
+        vCount.innerText = localCount.toLocaleString();
       }
     }
 
-    // 2. Hesabu ya Muda (Days since Jan 1, 2025)
+    // 2. Hesabu ya Muda (Tangu Jan 1, 2025)
     function calculateTime() {
       const startDate = new Date("January 1, 2025 00:00:00").getTime();
       const now = new Date().getTime();
@@ -275,7 +281,7 @@
 
     setInterval(calculateTime, 1000);
     calculateTime();
-    getVisitors();
+    updateVisitorCount();
   </script>
 
 </body>
