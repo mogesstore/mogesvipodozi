@@ -51,19 +51,20 @@
     nav a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     nav a:hover { color: var(--gold); }
 
-    /* ===== Visitor Counter (Top Right) ===== */
-    .visitor-count {
-      position: absolute;
-      top: 75px;
-      right: 20px;
+    /* Counter ya Wageni Juu Kulia */
+    .visitor-badge {
+      position: fixed;
+      top: 85px;
+      right: 15px;
       background: rgba(0, 0, 0, 0.7);
       color: var(--gold);
-      padding: 5px 15px;
+      padding: 6px 15px;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
       border: 1px solid var(--gold);
       z-index: 999;
+      backdrop-filter: blur(5px);
     }
 
     .hero {
@@ -85,8 +86,8 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
-    /* WhatsApp Button Styles */
-    .wa-maelezo-btn {
+    /* WhatsApp Slide Button */
+    .btn-whatsapp-slide {
       display: block;
       width: 100%;
       background: #25D366;
@@ -95,12 +96,12 @@
       padding: 15px;
       border-radius: 15px;
       font-weight: 700;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
+      margin-bottom: 25px;
+      font-size: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: 0.3s;
     }
-    .wa-maelezo-btn:hover { background: #128C7E; transform: scale(1.02); }
+    .btn-whatsapp-slide:hover { background: #128C7E; transform: scale(1.02); }
 
     .app-counter-box h2 {
       color: var(--kijani-moges);
@@ -174,15 +175,15 @@
     .fa-youtube { color: #FF0000; }
     .fa-whatsapp { color: #25D366; }
 
-    .social-grid a:hover { transform: scale(1.2); color: var(--gold); }
     .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
 
     @media (max-width: 600px) {
       .hero h1 { font-size: 1.8rem; }
       header { padding: 10px; }
-      nav { gap: 10px; }
+      nav { gap: 8px; }
+      nav a { font-size: 0.75rem; }
       .unit { min-width: 65px; padding: 10px 5px; }
-      .visitor-count { top: 70px; right: 10px; font-size: 0.7rem; }
+      .visitor-badge { top: 75px; right: 10px; font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -202,14 +203,14 @@
     </nav>
   </header>
 
-  <div class="visitor-count">Waliotembelea leo: <span id="v-count">0</span></div>
+  <div class="visitor-badge">Waliotembelea leo: <span id="v-count">...</span></div>
 
   <section class="hero">
     <h1>MOGES VIPODOZI 2026</h1>
     <p>"Urembo wa Uhakika, Spidi ya Teknolojia"</p>
 
     <div class="app-counter-box">
-        <a href="https://chat.whatsapp.com/GAduJMKNGe63A0aUUPc0KE?mode=gi_t" class="wa-maelezo-btn">
+        <a href="https://chat.whatsapp.com/GAduJMKNGe63A0aUUPc0KE?mode=gi_t" class="btn-whatsapp-slide">
           <i class="fab fa-whatsapp"></i> Njoo wasap kwa maelezo zaidi
         </a>
 
@@ -242,20 +243,22 @@
   </footer>
 
   <script>
-    // 1. Counter ya Wageni (Inatumia LocalStorage kuiga hesabu ya leo)
-    function updateVisitorCount() {
-      let count = localStorage.getItem('visitor_count_today');
-      if (!count) {
-        count = Math.floor(Math.random() * 50) + 100; // Inaanza na namba fulani kwa mara ya kwanza
+    // 1. Counter ya Wageni (Inasoma Idadi Halisi)
+    async function getVisitors() {
+      try {
+        // Tunatumia BIN_ID kama ufunguo wa kipekee wa kuhesabu
+        const response = await fetch('https://api.countapi.xyz/hit/moges_vipodozi_2026/visits');
+        const data = await response.json();
+        document.getElementById('v-count').innerText = data.value;
+      } catch (err) {
+        // Kama API iko offline, inaonyesha namba ya kuanzia
+        document.getElementById('v-count').innerText = "Inapakia...";
       }
-      count = parseInt(count) + 1;
-      localStorage.setItem('visitor_count_today', count);
-      document.getElementById('v-count').innerText = count;
     }
 
-    // 2. Hesabu ya Muda
+    // 2. Hesabu ya Muda (Days since Jan 1, 2025)
     function calculateTime() {
-      const startDate = new Date("january 1, 2025 00:00:00").getTime();
+      const startDate = new Date("January 1, 2025 00:00:00").getTime();
       const now = new Date().getTime();
       const difference = now - startDate;
 
@@ -272,7 +275,7 @@
 
     setInterval(calculateTime, 1000);
     calculateTime();
-    updateVisitorCount();
+    getVisitors();
   </script>
 
 </body>
