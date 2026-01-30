@@ -12,7 +12,7 @@
     :root {
       --pink: #e91e63;
       --gold: #bfa14a;
-      --kijani-moges: #2e7d32; /* Kijani kikuu */
+      --kijani-moges: #2e7d32; 
       --white: #ffffff;
     }
 
@@ -20,7 +20,6 @@
     
     body {
       font-family: 'Poppins', sans-serif;
-      /* PICHA HALISI: Bila rangi juu yake ili ionekane kama picha tu */
       background: url('https://png.pngtree.com/background/20210710/original/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-picture-image_1048684.jpg');
       background-size: cover;
       background-position: center;
@@ -31,12 +30,11 @@
       min-height: 100vh;
     }
 
-    /* ===== Header (Navs) - Kijani ===== */
     header {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
-      background: linear-gradient(90deg, #1b5e20, #2e7d32); /* Kijani Mkolezo */
+      background: linear-gradient(90deg, #1b5e20, #2e7d32); 
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -53,7 +51,21 @@
     nav a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
     nav a:hover { color: var(--gold); }
 
-    /* ===== Hero Section ===== */
+    /* ===== Visitor Counter (Top Right) ===== */
+    .visitor-count {
+      position: absolute;
+      top: 75px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--gold);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid var(--gold);
+      z-index: 999;
+    }
+
     .hero {
       margin-top: 130px;
       padding: 20px;
@@ -61,7 +73,6 @@
     .hero h1 { font-size: 2.6rem; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
     .hero p { color: #fff; font-weight: 700; margin-bottom: 30px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
 
-    /* ===== App Counter Box ===== */
     .app-counter-box {
       background: rgba(255, 255, 255, 0.92); 
       border: 3px solid var(--kijani-moges);
@@ -73,6 +84,23 @@
       backdrop-filter: blur(5px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
+
+    /* WhatsApp Button Styles */
+    .wa-maelezo-btn {
+      display: block;
+      width: 100%;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 15px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .wa-maelezo-btn:hover { background: #128C7E; transform: scale(1.02); }
 
     .app-counter-box h2 {
       color: var(--kijani-moges);
@@ -122,7 +150,6 @@
     }
     .btn-goods:hover { transform: translateY(-5px); background: #c2185b; }
 
-    /* ===== Footer - Kijani ===== */
     footer {
       background: linear-gradient(90deg, #1b5e20, #2e7d32);
       padding: 45px 20px;
@@ -148,15 +175,14 @@
     .fa-whatsapp { color: #25D366; }
 
     .social-grid a:hover { transform: scale(1.2); color: var(--gold); }
-
     .copy-text { font-size: 0.85rem; font-weight: 600; color: var(--gold); }
 
-    /* Responsive */
     @media (max-width: 600px) {
       .hero h1 { font-size: 1.8rem; }
       header { padding: 10px; }
       nav { gap: 10px; }
       .unit { min-width: 65px; padding: 10px 5px; }
+      .visitor-count { top: 70px; right: 10px; font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -176,11 +202,17 @@
     </nav>
   </header>
 
+  <div class="visitor-count">Waliotembelea leo: <span id="v-count">0</span></div>
+
   <section class="hero">
     <h1>MOGES VIPODOZI 2026</h1>
     <p>"Urembo wa Uhakika, Spidi ya Teknolojia"</p>
 
     <div class="app-counter-box">
+        <a href="https://chat.whatsapp.com/GAduJMKNGe63A0aUUPc0KE?mode=gi_t" class="wa-maelezo-btn">
+          <i class="fab fa-whatsapp"></i> Njoo wasap kwa maelezo zaidi
+        </a>
+
         <h2>Tangu Tarehe 1 january 2025</h2>
         
         <div class="timer-display" id="timer">
@@ -199,17 +231,29 @@
   <footer>
     <div style="margin-bottom: 20px; font-weight: bold; letter-spacing: 1px;">TUFUATILIE MITANDAONI</div>
     <div class="social-grid">
-      <div class="social-grid">
-  <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
-  <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
-  <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
-  <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
-  <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://x.com/jina_lako" target="_blank"><i class="fab fa-x-twitter"></i></a> 
+      <a href="https://facebook.com/jina_lako" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://tiktok.com/@jina_lako" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com/jina_lako" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@jina_lako" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/255756019062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
     <p class="copy-text">&copy; 2026 MOGES STORE | Chaguo Namba Moja</p>
   </footer>
 
   <script>
+    // 1. Counter ya Wageni (Inatumia LocalStorage kuiga hesabu ya leo)
+    function updateVisitorCount() {
+      let count = localStorage.getItem('visitor_count_today');
+      if (!count) {
+        count = Math.floor(Math.random() * 50) + 100; // Inaanza na namba fulani kwa mara ya kwanza
+      }
+      count = parseInt(count) + 1;
+      localStorage.setItem('visitor_count_today', count);
+      document.getElementById('v-count').innerText = count;
+    }
+
+    // 2. Hesabu ya Muda
     function calculateTime() {
       const startDate = new Date("january 1, 2025 00:00:00").getTime();
       const now = new Date().getTime();
@@ -225,14 +269,11 @@
       document.getElementById("minutes").innerText = m;
       document.getElementById("seconds").innerText = s;
     }
+
     setInterval(calculateTime, 1000);
     calculateTime();
+    updateVisitorCount();
   </script>
 
 </body>
 </html>
-
-
-
-
-
